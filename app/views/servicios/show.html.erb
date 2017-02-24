@@ -1,0 +1,37 @@
+<div class="content-servicio-background" style="background: transparent url('<%= image_path('carousel/alice-fondo-consulta-medica.jpg') %>')  50% 0 no-repeat; background-size: cover;">
+	<div class="container">
+		<div class="content-title">
+		  	<h2 class="title-section"><%= @servicio.especialidad.nombre %></h2>
+		  	<h3 class="title-section"><%= @servicio.nombre %></h3>
+		</div>
+	</div>	
+</div>
+<section id="servicio" class="white-section unique-section">
+  <div class="container">
+  		
+  		<div class="m-t-xs font-bold text-promo">Este es nuestro equipo de expertos que estan dispuestos a darte la mejor atencion, pide tu cita con el tu medico de confianza </div>
+  	<div class="row">
+    <% @servicio.especialistas.each do |especialista| %>
+	    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+	       	<div class="contact-box">
+	        	<div class="col-sm-4">
+	                <div class="text-center">
+	                    <img alt="image" class="img-circle m-t-xs img-responsive" src="<%= image_url 'landing/default_profile.png' %>">
+	               	</div>
+	            </div>
+	            <div class="col-sm-8">
+	                <h3><strong><%= especialista.nombre %></strong></h3>
+	                <div class="m-t-xs font-bold">Especialidad: <%= @servicio.especialidad.nombre %></div>
+	                <p class="m-t-xs font-bold">Pacientes a atender: <strong>Adultos y Niños</strong></p>
+	                <p>Titulo: Especialidad - Postgrado - Universidad</p>
+	                <p><i class="fa fa-map-marker"></i> Direccion: </p>
+  					<%= link_to "Solicita una Cita", '#', class: "btn btn-lg btn-primary", type: "button" %>
+	                <!--categoria_servicio_especialidad_servicio_especialista_path(@especialidad.categoria_servicio.slug, @especialidad.slug, @especialidad.servicios.find(1).slug, especialista.id)-->
+	            </div>
+	            <div class="clearfix"></div>
+	        </div>
+	    </div>
+    <% end %>
+    </div>
+  </div>
+</section>

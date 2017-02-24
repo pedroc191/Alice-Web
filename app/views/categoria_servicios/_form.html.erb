@@ -1,0 +1,32 @@
+<%= form_for(categoria_servicio) do |f| %>
+  <% if categoria_servicio.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(categoria_servicio.errors.count, "error") %> prohibited this categoria_servicio from being saved:</h2>
+
+      <ul>
+      <% categoria_servicio.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :codigo %>
+    <%= f.text_field :codigo %>
+  </div>
+
+  <div class="field">
+    <%= f.label :nombre %>
+    <%= f.text_field :nombre %>
+  </div>
+
+  <div class="field">
+    <%= f.label :estatus %>
+    <%= f.text_field :estatus %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

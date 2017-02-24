@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  codigo: MyString
+  servicio: one
+  especialista: one
+  estatus: MyString
+
+two:
+  codigo: MyString
+  servicio: two
+  especialista: two
+  estatus: MyString

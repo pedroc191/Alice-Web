@@ -1,0 +1,45 @@
+// Place all the styles related to the Servicios controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "base/variables";
+@import "base/skins";
+
+.landing-page{
+
+    .title-section{
+      margin: 0px 0px 30px;
+      font-size: 30px;
+      font-weight: 400px;
+      color: $skin-1-color;
+    }
+    .content-servicio-background{
+    	height: 250px;
+
+    	.container{
+    		height: inherit;
+    	}
+    	.content-title{
+    		position: relative;
+    		top: 95px;
+			height: 130px;
+			width: 550px;
+			color: $skin-1-color;
+			background-color: rgba(255, 255, 255, 0.9);
+			margin: 10px 0px 20px;
+			padding: 20px 10px;
+			border-radius: 20px;
+
+			.title-section{
+				margin: 0px 0px 10px;
+			}
+    	}
+    }
+    #servicio{
+    	margin: 0px 0px;
+    	.text-promo{
+    		width: 800px;
+    		margin: 20px 0px;
+    	}
+    }
+}

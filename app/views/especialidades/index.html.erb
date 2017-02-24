@@ -1,0 +1,26 @@
+<section id="especialidades" class="white-section">
+  <div class="container">
+      <h2 class="title-section"><%= @especialidades.find(1).categoria_servicio.nombre %></h2>
+    <div class="row">
+      <% @especialidades.each do |especialidad| %>
+      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+        <div class="content-especialidades">
+          <div class="image-head-especialidades">
+            <img class="img-especialidades" width="inherit" height="120" src="">
+          </div>
+          <div class="title-especialidades">
+            <h2><%= especialidad.nombre %></h2>
+          </div>
+          <div class="content-list-especialidades">
+            <ul class="list-especialidades">
+              <% especialidad.servicios.each do |servicio| %>
+                  <li><%= link_to servicio.nombre, categoria_servicio_especialidad_servicio_path( especialidad.categoria_servicio.slug, especialidad.slug, servicio.slug) %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</section>

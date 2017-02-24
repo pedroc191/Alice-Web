@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Alice | Responsive admin theme</title>
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+        
+        <%= stylesheet_link_tag 'application' if ::Rails.application.assets.find_asset("application.css") %>
+        <!-- Include style per-controller - vendor plugins -->
+        <%= stylesheet_link_tag params[:controller] if ::Rails.application.assets.find_asset("#{params[:controller]}.css") %>
+        
+        <!-- Main javascript files -->
+        <%= javascript_include_tag 'application' if ::Rails.application.assets.find_asset("application.js") %>
+        <%= csrf_meta_tags %>
+    </head>
+    <body class="gray-bg">
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.8&appId=1651902325069987";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+        <!-- Wrapper-->
+        <div id="wrapper" class="<%= params[:controller] %>.<%= params[:action] %>">
+
+            <!-- Navigation -->
+            <%= render 'layouts/navigation' %>
+
+           <!-- Main view  -->
+            <%= yield %>
+
+            <!-- Footer -->
+            <%= render 'layouts/footer' %>
+
+        </div>
+        <!-- End wrapper-->
+
+        <!-- Include javascript per-controller - vendor plugins -->
+        <%= javascript_include_tag params[:controller] if ::Rails.application.assets.find_asset("#{params[:controller]}.js") %>
+
+        <!-- Include javascript per-view -->
+        <!-- For demo purpose we include javascript in view but you can easily start SeedProject and organize it with Rails asset pipeline as you want -->
+        <%= yield :javascript %>
+    </body>
+</html>
