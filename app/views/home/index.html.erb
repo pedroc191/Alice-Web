@@ -110,21 +110,23 @@
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <div class="content-servicio">
-                    <h3 class="text-white text-center">Conoce a Nuestros Medicos</h3>
-                    <p class="text-white">Selecciona el Servicio de tu preferencia y conoce a los especilistas que te pueden atender</p>
-                    <form id="form-servicio">
-                        <select class="select-box form-control">
-                            <option></option>
-                            <option value="Cadiologia">Cadiologia</option>
-                            <option value="Ginecologia">Ginecologia</option>
-                            <option value="Dermatologia">Dermatologia</option>
-                            <option value="Gastroenterologia">Gastroenterologia</option>
-                            <option value="Pediatria">Pediatria</option>
-                            <option value="Urologia">Urologia</option>
-                        </select>
-                        <button class="btn btn-info" type="submit">Buscar</button>
-                    </form>
+                <div class="tabs-container" style="height:300px !important">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#tab-facebook">Facebook</a></li>
+                        <li class=""><a data-toggle="tab" href="#tab-twitter">Twitter</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="tab-facebook" class="tab-pane active">
+                             <div class="panel-body">
+                                <div class="fb-page" data-href="https://www.facebook.com/facebook" data-tabs="timeline" data-height="300" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/facebook" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/facebook">Facebook</a></blockquote></div>
+                            </div>
+                        </div>
+                        <div id="tab-twitter" class="tab-pane">
+                            <div class="panel-body">
+                                <a class="twitter-timeline" data-lang="es" data-width="240" data-height="300" href="https://twitter.com/Twitter">Tweets by Twitter</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
