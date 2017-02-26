@@ -11,6 +11,8 @@ gem 'rails', '~> 5.0.1'
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'font-awesome-rails', '4.7.0.1'
 
+gem 'httparty', '~> 0.14.0'
+
 # Use mysql as the database for Active Record
 gem 'mysql2'
 # Use Puma as the app server

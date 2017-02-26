@@ -75,10 +75,11 @@
                 </div>
                 <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11">
                     <ul id="tira-noticias" class="nt-title newsticker">
-                        <li><a href="#"><i class="fa fa-"></i>Etiam imperdiet volutpat libero eu tristique.</a></li>
-                        <li><a href="#"><i class="fa fa-"></i>Curabitur porttitor ante eget hendrerit adipiscing.</a></li>
-                        <li><a href="#"><i class="fa fa-"></i>Praesent ornare nisl lorem, ut condimentum lectus gravida ut.</a></li>
-                        <li><a href="#"><i class="fa fa-"></i>Nunc ultrices tortor eu massa placerat posuere.</a></li>
+                        
+                        <% @response.each do |single| %>
+                            <li><a href="#"><i class="fa fa-"></i><%= single['id'] %></a></li>
+                            
+                        <% end %>
                     </ul>
                 </div>
             </div>
@@ -197,6 +198,7 @@
                 placeholder: "Seleccione un Servicio",
                 allowClear: true
             });
+
             $('.newsticker').newsTicker({
                 row_height: 46,
                 max_rows: 1,
