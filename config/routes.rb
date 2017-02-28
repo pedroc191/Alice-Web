@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   end
 
   get "home/index"
+  post "home/create"
   get "home/empresa"
   get "home/servicios"
   get "home/eventos"

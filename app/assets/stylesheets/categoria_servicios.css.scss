@@ -7,6 +7,35 @@
 
 .landing-page{
 
+    .title-section{
+      margin: 0px 0px 30px;
+      font-size: 30px;
+      font-weight: 400px;
+      color: $skin-1-color;
+    }
+    .content-servicio-background{
+    	height: 230px;
+    	margin-top: 66px;
+
+    	.container{
+    		height: inherit;
+    	}
+    	.content-title{
+    		position: relative;
+    		top: 100px;
+			height: 80px;
+			width: 550px;
+			color: $skin-1-color;
+			background-color: rgba(255, 255, 255, 0.9);
+			margin: 10px 0px 20px;
+			padding: 20px 10px;
+			border-radius: 20px;
+
+			.title-section{
+				margin: 0px 0px 10px;
+			}
+    	}
+    }
 	#categoria-servicios{
 
 		.content-categoria-servicio{
@@ -27,17 +56,24 @@
 				}
 			}
 			.content-list-especialidades{
-				padding: 15px 0px 15px 10px;
+				padding: 15px 10px;
 				border: 1px solid $skin-1-color;
 				
 				.list-especialidades{
 					list-style: none;
 					padding: 0px 0px;
+					margin-bottom: 0px;
 
 					li{
 						a{
 
 						}
+					}
+					li.ver-mas a{
+						text-align: center;
+						display: block;
+						font-size: 16px;
+						margin: 15px 0px 0px;
 					}
 				}
 			}

@@ -6,10 +6,10 @@
       <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
         <div class="content-categoria-servicio">
           <div class="image-content-categoria-servicio">
-            <img class="img-categoria-servicio" height="120" src="">
+            <img class="img-categoria-servicio" height="120" src="<%= image_path('carousel/alice-fondo-consulta-medica.jpg') %>">
           </div>
           <div class="title-categoria-servicio">
-            <h2 class="text-white"><%= categoria_servicio.nombre %></h2>
+            <h2 class="text-white"><strong><%= categoria_servicio.nombre %></strong></h2>
           </div>
           <div class="content-list-especialidades">
             <ul class="list-especialidades">
@@ -24,10 +24,15 @@
                 </li>
               <% end %>
             <% end %>
+              <li class="ver-mas">
+                <%= link_to categoria_servicio_path(categoria_servicio.slug), class: "link-ver" do %>
+                  <i class="fa fa-plus"></i> Servicios
+                <% end %>
+              </li>
             </ul>
           </div>
           <div class="content-btn-categoria-servicio">
-            <%= link_to "Ver Mas",  categoria_servicio_path(categoria_servicio.slug), class: "btn btn-info btn-lg", type: "button" %>
+            
           </div>
         </div>
       </div>

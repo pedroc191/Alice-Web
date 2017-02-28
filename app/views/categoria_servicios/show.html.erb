@@ -1,6 +1,12 @@
+<div class="content-servicio-background" style="background: transparent url('<%= image_path('carousel/alice-fondo-consulta-medica.jpg') %>')  50% 0 no-repeat; background-size: cover;">
+  <div class="container">
+    <div class="content-title">
+        <h2 class="title-section"><%= @categoria_servicio.nombre %></h2>
+    </div>
+  </div>  
+</div>
 <section id="especialidades" class="white-section">
   <div class="container">
-      <h2 class="title-section"><%= @categoria_servicio.nombre %></h2>
     <div class="row">
       <% @categoria_servicio.especialidades.each do |especialidad| %>
       <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">

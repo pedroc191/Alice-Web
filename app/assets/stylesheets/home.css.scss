@@ -25,14 +25,20 @@
 .landing-page{
 	font-size: 14px;
   
-  .unique-section{
-
-  }
   .pace .pace-progress{
     background: $skin-1-color;
   }
   .text-white{
     color: #FFFFFF;
+  }
+  .text-blue{
+  	color: $color-blue;
+  }
+  .text-blue-dark{
+  	color: $color-darkblue;
+  }
+  .text-green{
+  	color: $color-green;
   }
   .white-section{
     margin-top: 40px;
@@ -47,95 +53,6 @@
   .header-back{
     height: 380px;
   }
-/*	CUSTOM LINK FLOTANTE  */
-	.links-redes-app {
-		position: fixed;
-		float: right;
-		left: 97%;
-		top: 90px;
-		margin: 0;
-		z-index: 10000;
-		list-style: none;
-
-		li {
-			margin: 0px 0px 10px;
-			width: 250px;
-			height: 55px;
-			float: left;
-			position: relative;
-			display: block;
-			border-color: #000000;
-			border-width: 0px;
-			border-radius: 10px;
-			box-shadow: 0 0 5px rgba(0,0,0,.2);
-			background-color: #FFFFFF;
-		}
-		li:hover {
-			transform: translateX(-110px);
-			transition: transform .3s;
-		}
-		li a {
-			display: block;
-			position: relative;
-			line-height: 18px;
-			margin-left: 15px;
-			color: $skin-1-color;
-			text-decoration: none;
-		}
-		.facebook:hover a {
-			color: $color-facebook;
-		}
-		.twitter:hover a {
-			color: $color-twitter;
-		}
-		.instagram:hover a {
-			color: $color-instagram;
-		}
-		.android:hover{
-			transform: translateX(-170px);
-			transition: transform .3s;
-		}
-		.android:hover a{
-			color: $color-android;
-		}
-		li a span i {
-			font-size: 35px;
-		}
-		li a .icon-telf,li a .text-telf {
-			position: relative;
-		}
-		li a .icon-telf {
-			top: 10px;
-			margin-right: 5px;
-		}
-		li a .text-telf {
-			font-size: 20px;
-			padding: 0px 0px 0px 15px;
-			top: 5px;
-		}
-
-		@media (max-width:1600px){
-			
-			left: 96%;
-		}
-		@media (max-width:1366px) {
-		
-			left: 93%;
-		}
-		@media (max-width:1100px){
-			
-			left: 95%;
-		}
-		@media (max-width:870px){
-			
-			left: 93%;
-		}
-		@media (max-width:767px){
-			
-			display: none;
-		}
-	}
-
 /*	CUSTOM CAROUSEL	*/
 	.carousel{
 		height: 380px;
@@ -144,26 +61,26 @@
 			width: 12%;
 		}
 		.carousel-control, .carousel-control:hover, .carousel-control:focus{
-			color: $skin-1-color;
+			color: $color-darkblue;
 		}
 		.carousel-indicators{
 			bottom: 0px;
 		}
 		.carousel-indicators li{
-			border: 3px solid $skin-1-color;
+			border: 3px solid $color-darkblue;
 			width: 20px;
 			height: 20px;
 			margin: 0px;
 		}
 		.carousel-indicators .active{
-			background-color: $skin-1-color;
-			border: 3px solid $skin-1-color;
+			background-color: $color-darkblue;
+			border: 3px solid $color-darkblue;
 			width: 20px;
 			height: 20px;
 		}
 		.carousel-caption{
 			height: 200px;
-			color: $skin-1-color;
+			color: $color-darkblue;
 			background-color: rgba(255, 255, 255, 0.9);
 			margin: 10px 0px 20px;
 			padding: 20px 10px;
@@ -207,19 +124,19 @@
 		margin: 50px 0px 0px;
 
 		.nt-title-container{
-			background-color: $skin-1-color;
+			background-color: $color-darkblue;
 
 			.col-title-noticias{
 				padding: 0px;
 				text-align: center;
-				border: 2px solid $skin-1-color;
+				border: 2px solid $color-darkblue;
 				background-color: #FFFFFF;
 			}
 			.title-noticias{
 				font-size: 18px;
 				padding: 11px 0px;
 				margin: 0px 0px;
-				color: $skin-1-color;
+				color: $color-darkblue;
 				font-weight: 400;
 			}
 			#tira-noticias{
@@ -242,37 +159,66 @@
 /*	CUSTOM SERVICIO-CLIENTE	*/
 	#servicios-cliente{
 		
+		.col-servicio{
+			margin-bottom: 30px;
+		}
+
 		.content-servicio{
-			border-radius: 20px;
-			background-color: $skin-1-color;
 			padding:20px;
-			height: 200px;
-			
-			#form-consulta, #form-suscripcion, #form-servicio{
+			height: 320px !important;
+			position: relative;
+			-webkit-box-shadow: 4px 4px 0px 0px rgba(0,0,0,0.18);
+			-moz-box-shadow: 4px 4px 0px 0px rgba(0,0,0,0.18);
+			box-shadow: 4px 4px 0px 0px rgba(0,0,0,0.18);
 
-				.btn-info{
-					margin-top: 10px;
-					width: 100%;
-				}
+			.text-descarga{
+				float: right;
+				padding: 30px 30px 0px;
 			}
-			.content-app{
-				margin-top: 40px;
+			.content-descarga{
+				bottom: 0px;
+				position: absolute;
+				width: 60%;
+				right: 0px;
+				padding: 0px 20px 80px;
+			}
 
-				.logo-android{
-					width: 55px;
-					height: 55px;
+			.text-servicio{
+				
+				h2{
+					height: 50px; 
+					padding: 12px 0px;
 
 					i{
-						position: relative;
-						left: 7px;
-						color: $color-android;
+						float: right; 
+						position: relative; 
+						bottom: 12px;
+						font-size: 60px;
 					}
 				}
-				.btn-info{
-					margin-top: 10px;
-					width: 100%;
+				p{
+					margin-top: 20px;
 				}
 			}
+			#form-consulta{
+				bottom: 0px;
+				position: absolute;
+				width: 100%;
+				left: 0px;
+				padding: 0px 20px 60px;
+			}
+			.btn-info{
+				margin-top: 10px;
+				width: 100%;
+			}
+		}
+
+		.content-servicio.blue{
+			background-color: $skin-1-color;
+			padding:20px;
+			height: 320px !important;
+			position: relative;
+			
 		}
 	}
 

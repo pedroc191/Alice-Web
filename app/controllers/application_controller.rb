@@ -10,4 +10,17 @@ class ApplicationController < ActionController::Base
   		return 'http://192.168.1.103:3000/'
   		
   	end
+
+  	def Respond_notice(response)
+
+  		case response.code
+  			when 201
+    			puts "All good!"
+  			when 404
+    			puts "O noes not found!"
+ 			when 500...600
+    			puts "ZOMG ERROR #{response.code}"
+		end
+  		
+  	end
 end

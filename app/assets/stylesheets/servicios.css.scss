@@ -6,6 +6,18 @@
 @import "base/skins";
 
 .landing-page{
+    .col-sidebar{
+        padding-right: 0px;
+        width: 20%;
+    }
+    .col-content{
+        padding-left: 0px;
+        width: 80%;
+    }
+    .sidebar-filtro{
+        position: relative;
+        margin-top: 67px;
+    }
 
     .title-section{
       margin: 0px 0px 30px;
@@ -14,32 +26,52 @@
       color: $skin-1-color;
     }
     .content-servicio-background{
-    	height: 250px;
+        height: 230px;
+        margin: 66px 0px 30px;
 
-    	.container{
-    		height: inherit;
-    	}
-    	.content-title{
-    		position: relative;
-    		top: 95px;
-			height: 130px;
-			width: 550px;
-			color: $skin-1-color;
-			background-color: rgba(255, 255, 255, 0.9);
-			margin: 10px 0px 20px;
-			padding: 20px 10px;
-			border-radius: 20px;
+        .container{
+            height: inherit;
+        }
+        .content-title{
+            position: relative;
+            top: 90px;
+            height: 120px;
+            width: 550px;
+            color: $skin-1-color;
+            background-color: rgba(255, 255, 255, 0.9);
+            margin: 10px 0px 20px;
+            padding: 20px 10px;
+            border-radius: 20px;
 
-			.title-section{
-				margin: 0px 0px 10px;
-			}
-    	}
+            .title-section{
+                margin: 0px 0px 10px;
+            }
+        }
     }
     #servicio{
     	margin: 0px 0px;
+
+        .container{
+            width: 1100px;
+        }
     	.text-promo{
     		width: 800px;
     		margin: 20px 0px;
     	}
+        @media (min-width: 768px) {
+          .container {
+            width: 630px;
+          }
+        }
+        @media (min-width: 992px) {
+          .container {
+            width: 850px;
+          }
+        }
+        @media (min-width: 1200px) {
+          .container {
+            width: 1050px;
+          }
+        }
     }
 }

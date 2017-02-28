@@ -9,3 +9,7 @@
 
 /*	SLICK CAROUSEL	*/
 //= require slick/slick.min.js
+
+$(window).on('load', function() {
+    $('#twitter-widget-0').addClass('embed-responsive-item');
+});
