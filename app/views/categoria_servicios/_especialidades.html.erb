@@ -1,0 +1,26 @@
+        <%= ajax_will_paginate @especialidades %>
+          <div class="row">
+            <% @especialidades.each do |especialidad| %>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <div class="content-categoria-servicio">
+                <div class="image-content-categoria-servicio">
+                  <img class="img-categoria-servicio" width="inherit" height="120" src="<%= image_path('carousel/alice-fondo-consulta-medica.jpg') %>">
+                </div>
+                <div class="title-categoria-servicio">
+                  <h2><%= especialidad.nombre %></h2>
+                </div>
+                <div class="content-list-especialidades">
+                  <ul class="list-especialidades">
+                  <% especialidad.servicios.each do |servicio| %>
+                      <li>
+                      	<%= link_to servicio.nombre, 
+                      	categoria_servicio_especialidad_servicio_path( @categoria_servicio.slug, especialidad.slug, servicio.slug) %>
+                     	</li>
+                  <% end %>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        <%= ajax_will_paginate @especialidades %>
