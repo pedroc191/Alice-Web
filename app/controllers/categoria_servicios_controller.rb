@@ -10,6 +10,7 @@ class CategoriaServiciosController < ApplicationController
   # GET /categoria_servicios/1
   # GET /categoria_servicios/1.json
   def show
+    @especialidades = @categoria_servicio.especialidades.paginate(page: params[:page], per_page: 4)
   end
 
   # GET /categoria_servicios/new

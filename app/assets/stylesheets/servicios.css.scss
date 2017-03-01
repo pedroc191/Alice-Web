@@ -14,6 +14,7 @@
     border-color: $color-blue;
 }
 .landing-page{
+
     .col-sidebar{
         padding-right: 0px;
         width: 20%;
@@ -36,7 +37,6 @@
             padding: 0px 0px 0px 20px;
         }
     }
-
     .title-section{
       margin: 0px 0px 30px;
       font-size: 30px;
@@ -69,9 +69,6 @@
     #servicio{
     	margin: 0px 0px;
 
-        .container{
-            width: 1100px;
-        }
     	.text-promo{
     		width: 800px;
     		margin: 20px 0px;

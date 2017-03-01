@@ -1,0 +1,21 @@
+				<%= ajax_will_paginate @servicios %>
+					<div class="row">
+				    	<% @servicios.each do |servicio| %>
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+					        	<div class="contact-box content-servicio">
+					        		<div class="col-sm-4">
+					                    <div class="text-center">
+					                        <img alt="image" class=" m-t-xs img-responsive" src="<%= image_url 'landing/default_servicio.png' %>">
+					                    </div>
+					                </div>
+					                <div class="col-sm-8">
+					                <h3><strong><%= servicio.nombre %></strong></h3>
+				                	<p class="m-t-xs font-bold">Disponibilidad (Dias): <strong>L M M J V</strong></p>
+				  					<%= link_to "Solicita una Cita", '#', class: "btn btn-lg btn-dark-blue", type: "button" %>
+					                </div>
+					                <div class="clearfix"></div>
+					          	</div>
+					        </div>
+				    	<% end %>
+				    </div>
+    			<%= ajax_will_paginate @servicios %>

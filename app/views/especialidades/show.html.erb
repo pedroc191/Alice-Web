@@ -6,26 +6,17 @@
 		</div>
 	</div>	
 </div>
-<section id="especialidades" class="white-section">
-  <div class="container">
-    <div class="row">
-    	<% @especialidad.servicios.each do |servicio| %>
-			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
-	        	<div class="contact-box content-servicio">
-	        		<div class="col-sm-4">
-	                    <div class="text-center">
-	                        <img alt="image" class=" m-t-xs img-responsive" src="<%= image_url 'landing/default_servicio.png' %>">
-	                    </div>
-	                </div>
-	                <div class="col-sm-8">
-	                <h3><strong><%= servicio.nombre %></strong></h3>
-	                <p><i class="fa fa-map-marker"></i> Direccion: </p>
-  					<%= link_to "Solicita una Cita", '#', class: "btn btn-lg btn-primary", type: "button" %>
-	                </div>
-	                <div class="clearfix"></div>
-	          	</div>
-	        </div>
-    	<% end %>
-    </div>
-  </div>
-</section>
+
+<div class="row">
+  	<div class="col-sidebar col-lg-2">
+		<%= render 'layouts/sidebar-servicios' %>  				
+  	</div>
+  	<div class="col-content col-lg-10">
+		<section id="especialidades" class="white-section">
+		  	<div class="container">
+		  		
+				<%= render 'servicios'%>
+		  	</div>
+		</section>	
+  	</div>
+</div>

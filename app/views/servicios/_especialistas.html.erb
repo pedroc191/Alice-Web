@@ -3,7 +3,7 @@
 				<div class="row">
 			    	<% @especialistas.each do |especialista| %>
 				    	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-				       		<div class="contact-box">
+				       		<div class="contact-box content-especialista">
 				        		<div class="col-sm-4">
 				                	<div class="text-center">
 				                    	<img alt="image" class="img-circle m-t-xs img-responsive" src="<%= image_url 'landing/default_profile.png' %>">
@@ -12,9 +12,10 @@
 				            	<div class="col-sm-8">
 				                	<h3><strong><%= especialista.nombre %></strong></h3>
 				                	<div class="m-t-xs font-bold">Especialidad: <%= @servicio.especialidad.nombre %></div>
-				                	<p class="m-t-xs font-bold">Pacientes a atender: <strong>Adultos y Niños</strong></p>
-				                	<p>Titulo: Especialidad - Postgrado - Universidad</p>
-				                	<p><i class="fa fa-map-marker"></i> Direccion: </p>
+				                	<p>Titulo: Postgrado - Universidad</p>
+				                	<p class="m-t-xs font-bold">Pacientes a atender: <strong>Adultos</strong></p>
+				                	<p class="m-t-xs font-bold">Disponibilidad (Dias): <strong>L M M J V</strong></p>
+				                	
 			  						<%= link_to "Solicita una Cita", '#', class: "btn btn-lg btn-dark-blue", type: "button" %>
 				                	<!--categoria_servicio_especialidad_servicio_especialista_path(@especialidad.categoria_servicio.slug, @especialidad.slug, @especialidad.servicios.find(1).slug, especialista.id)-->
 				            	</div>
