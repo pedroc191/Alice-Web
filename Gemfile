@@ -14,7 +14,7 @@ gem 'font-awesome-rails', '4.7.0.1'
 gem 'httparty', '~> 0.14.0'
 
 # Use mysql as the database for Active Record
-gem 'mysql2'
+gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets

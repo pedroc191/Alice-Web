@@ -1,0 +1,98 @@
+<section id="servicios-solicitar" class="white-section">
+    <div class="container">
+        <div class="row">
+        <h2 class="title-section"> </h2>
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                <div class="content-servicio">
+                    <h1 class="text-white text-center">Reserva tu Cita</h1>
+                    <h3 class="text-white">_____________________________________________</h3>
+                    <h2 class="text-white">EMPIEZA AQUÍ</h2>
+                    <p class="text-white">Tipo de Servicio</p>
+                    <form id="form-servicio">
+                        <select class="select-box form-control">
+                            <option></option>
+                            <option value="Cadiologia">Cadiologia</option>
+                            <option value="Ginecologia">Ginecologia</option>
+                            <option value="Dermatologia">Dermatologia</option>
+                            <option value="Gastroenterologia">Gastroenterologia</option>
+                            <option value="Pediatria">Pediatria</option>
+                            <option value="Urologia">Urologia</option>
+                        </select>
+                    </form>
+                    <p class="text-white">Especialidad</p>
+                    <form id="form-servicio">
+                        <select class="select-box form-control">
+                            <option></option>
+                            <option value="Cadiologia">Cadiologia</option>
+                            <option value="Ginecologia">Ginecologia</option>
+                            <option value="Dermatologia">Dermatologia</option>
+                            <option value="Gastroenterologia">Gastroenterologia</option>
+                            <option value="Pediatria">Pediatria</option>
+                            <option value="Urologia">Urologia</option>
+                        </select>
+                    </form>
+                    <p class="text-white">Otro</p>
+                    <form id="form-consulta">
+                        <input type="text" placeholder="" class="form-control">
+                        <button class="btn btn-info" type="submit">Buscar</button>
+                    </form>
+                </div>
+            </div>
+            <div class="header-back2" style="background: transparent url('<%= image_path('cita/eutanasia.jpg') %>')  50% 0 no-repeat; background-size: cover;"></div>
+        </div>
+    </div>
+</section>
+<% content_for :javascript do %>
+    <script type="text/javascript">
+
+        $(function() {
+
+            $(".select-box").select2({
+                placeholder: "",
+                allowClear: true
+            });
+            $('.newsticker').newsTicker({
+                row_height: 46,
+                max_rows: 1,
+                speed: 600,
+                direction: 'up',
+                duration: 4000,
+                autostart: 1,
+                pauseOnHover: 0
+            });
+
+            $('.slick-eventos').slick({
+                infinite: true,
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                centerMode: true,
+                responsive: [
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3,
+                            infinite: true,
+                            dots: true
+                        }
+                    },
+                    {
+                        breakpoint: 600,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 2
+                        }
+                    },
+                    {
+                        breakpoint: 480,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                    }
+                ]
+            });
+        });
+
+    </script>
+<% end %>
