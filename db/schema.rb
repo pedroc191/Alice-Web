@@ -10,9 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170219211634) do
+ActiveRecord::Schema.define(version: 20170227205228) do
 
-  create_table "categoria_servicios", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "categoria_servicios", force: :cascade do |t|
     t.string   "codigo"
     t.string   "nombre"
     t.string   "slug"
@@ -22,7 +25,14 @@ ActiveRecord::Schema.define(version: 20170219211634) do
     t.index ["slug"], name: "index_categoria_servicios_on_slug", unique: true, using: :btree
   end
 
-  create_table "especialidades", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "citas", force: :cascade do |t|
+    t.string   "tipo_servicio"
+    t.string   "especialidad"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "especialidades", force: :cascade do |t|
     t.string   "codigo"
     t.integer  "categoria_servicio_id"
     t.string   "nombre"
@@ -34,7 +44,7 @@ ActiveRecord::Schema.define(version: 20170219211634) do
     t.index ["slug"], name: "index_especialidades_on_slug", unique: true, using: :btree
   end
 
-  create_table "especialista_servicios", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "especialista_servicios", force: :cascade do |t|
     t.string   "codigo"
     t.integer  "servicio_id"
     t.integer  "especialista_id"
@@ -45,7 +55,7 @@ ActiveRecord::Schema.define(version: 20170219211634) do
     t.index ["servicio_id"], name: "index_especialista_servicios_on_servicio_id", using: :btree
   end
 
-  create_table "especialistas", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "especialistas", force: :cascade do |t|
     t.string   "codigo"
     t.string   "nombre"
     t.string   "descripcion"
@@ -54,7 +64,7 @@ ActiveRecord::Schema.define(version: 20170219211634) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "friendly_id_slugs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
     t.integer  "sluggable_id",              null: false
     t.string   "sluggable_type", limit: 50
@@ -66,7 +76,7 @@ ActiveRecord::Schema.define(version: 20170219211634) do
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
   end
 
-  create_table "servicios", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "servicios", force: :cascade do |t|
     t.string   "codigo"
     t.integer  "especialidad_id"
     t.string   "nombre"

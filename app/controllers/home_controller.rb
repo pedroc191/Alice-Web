@@ -38,6 +38,18 @@ class HomeController < ApplicationController
   def contacto
   end
 
+  def solicitar
+  end
+
+  def solicitar2
+  end
+
+  def solicitar3
+  end
+
+  def solicitar4
+  end
+
   private
 
     # Never trust parameters from the scary internet, only allow the white list through.

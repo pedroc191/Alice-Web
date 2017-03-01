@@ -56,7 +56,7 @@
 {
     position: relative;
     display: block;
-    width: 100%;
+    width: 135%;
 }
 
 .wizard.vertical > .steps
@@ -89,13 +89,13 @@
 {
     display: block;
     width: auto;
-    margin: 0 0.5em 0.5em;
-    padding: 8px;
+    margin: 0 0.1em 0.1em;
+    padding: 10px;
     text-decoration: none;
 
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
 }
 
 .wizard > .steps .disabled a,
@@ -137,7 +137,7 @@
     background: #eee;
     display: block;
     margin: 5px 5px 10px 5px;
-    min-height: 120px;
+    min-height: 500px;
     overflow: hidden;
     position: relative;
     width: auto;
