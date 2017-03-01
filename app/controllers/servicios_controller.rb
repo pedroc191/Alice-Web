@@ -10,6 +10,8 @@ class ServiciosController < ApplicationController
   # GET /servicios/1
   # GET /servicios/1.json
   def show
+    @especialistas = @servicio.especialistas.paginate(page: params[:page], per_page: 4)
+    
   end
 
   # GET /servicios/new

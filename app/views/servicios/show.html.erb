@@ -1,42 +1,73 @@
+<div class="content-servicio-background" style="background: transparent url('<%= image_path('carousel/alice-fondo-consulta-medica.jpg') %>')  50% 0 no-repeat; background-size: cover;">
+	<div class="container">
+		<div class="content-title">
+				 <h2 class="title-section"><%= @servicio.especialidad.nombre %></h2>
+				 <h3 class="title-section"><%= @servicio.nombre %></h3>
+		</div>
+	</div>	
+</div>
 <div class="row">
   	<div class="col-sidebar col-lg-2">
 		<%= render 'layouts/navigation-menu' %>  				
   	</div>
   	<div class="col-content col-lg-10">
-		<div class="content-servicio-background" style="background: transparent url('<%= image_path('carousel/alice-fondo-consulta-medica.jpg') %>')  50% 0 no-repeat; background-size: cover;">
-			<div class="container">
-				<div class="content-title">
-				  	<h2 class="title-section"><%= @servicio.especialidad.nombre %></h2>
-				  	<h3 class="title-section"><%= @servicio.nombre %></h3>
-				</div>
-			</div>	
-		</div>
 		<section id="servicio" class="white-section unique-section">
 		  	<div class="container">
-		  		<div class="row">
-		    	<% @servicio.especialistas.each do |especialista| %>
-			    	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-			       		<div class="contact-box">
-			        		<div class="col-sm-4">
-			                	<div class="text-center">
-			                    	<img alt="image" class="img-circle m-t-xs img-responsive" src="<%= image_url 'landing/default_profile.png' %>">
-			               		</div>
-			            	</div>
-			            	<div class="col-sm-8">
-			                	<h3><strong><%= especialista.nombre %></strong></h3>
-			                	<div class="m-t-xs font-bold">Especialidad: <%= @servicio.especialidad.nombre %></div>
-			                	<p class="m-t-xs font-bold">Pacientes a atender: <strong>Adultos y Niños</strong></p>
-			                	<p>Titulo: Especialidad - Postgrado - Universidad</p>
-			                	<p><i class="fa fa-map-marker"></i> Direccion: </p>
-		  						<%= link_to "Solicita una Cita", '#', class: "btn btn-lg btn-primary", type: "button" %>
-			                	<!--categoria_servicio_especialidad_servicio_especialista_path(@especialidad.categoria_servicio.slug, @especialidad.slug, @especialidad.servicios.find(1).slug, especialista.id)-->
-			            	</div>
-			            	<div class="clearfix"></div>
-			        	</div>
-			    	</div>
-		    	<% end %>
-		    	</div>
+		  		
+				<%= render 'especialistas'%>
 		  	</div>
 		</section>	
   	</div>
 </div>
+
+<% content_for :javascript do %>
+    <script type="text/javascript">
+
+    
+        $(function() {
+
+			$('.pagination a').attr('data-remote', 'true');
+
+            $('.radio input[name="Estudios"]').change(function() {
+                console.log($(this).val());
+            });
+            $('.radio input[name="Paciente"]').change(function() {
+                console.log($(this).val());
+            });
+            $('.radio input[name="Turno"]').change(function() {
+                console.log($(this).val());
+            });
+        });
+ 
+        /*$(function () {
+            $(".btn-filter").on('click',function () {
+                var val = $(this).val();
+                var subItems = "";
+
+                $("#Id_estado").prop("disabled", true);
+                $("#Id_estado").empty();
+                $("#Id_estado").html("<option value>Seleccione un Estado</option>");
+                if (val > 0){
+                    $("#Id_estado").prop("disabled", false);
+                }
+
+                $.getJSON("", { id: val }, function (data) {
+                    $.each(data, function (index, item) {
+                        subItems += "<option value='" + item.Value + "'>" + item.Text + "</option>"
+                    });
+
+                    $("#servicio .container .row").html(subItems)
+
+                    if (subItems === "") {
+                        
+                    }
+                    else{
+
+                    }
+
+                });
+
+            });
+        });*/
+    </script>
+<% end %>

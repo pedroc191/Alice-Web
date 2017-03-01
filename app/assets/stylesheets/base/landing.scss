@@ -39,6 +39,18 @@ body.landing-page {
 .landing-page{
   font-size: 14px;
   
+  .text-white{
+    color: #FFFFFF;
+  }
+  .text-blue{
+    color: $color-blue;
+  }
+  .text-blue-dark{
+    color: $color-darkblue;
+  }
+  .text-green{
+    color: $color-green;
+  }
 /*  CUSTOM LINK FLOTANTE  */
   .links-redes-app {
     position: fixed;

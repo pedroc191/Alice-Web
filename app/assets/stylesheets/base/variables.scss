@@ -1,10 +1,11 @@
 // Basic Colors
-$navy: #1ab394;       // Primary color
-$dark-gray: #c2c2c2;  // Default color
 
 $color-blue: #167ac6;		// Azul
 $color-darkblue: #354c9e;	// Azul Oscuro
 $color-green: #30bec2;		// Verde
+
+$navy: $color-blue;   //#1ab394;       // Primary color
+$dark-gray: #c2c2c2;  // Default color
 
 $blue: #1c84c6;       // Success color
 $lazur: #23c6c8;      // Info color

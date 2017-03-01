@@ -2,9 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+//= require awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css
+
 @import "base/variables";
 @import "base/skins";
-
+.radio-info input[type="radio"]:checked + label::after,
+.radio-info input[type="radio"] + label::after{
+    background-color: $color-blue;
+}
+.radio-info input[type="radio"]:checked + label::before{
+    border-color: $color-blue;
+}
 .landing-page{
     .col-sidebar{
         padding-right: 0px;
@@ -16,14 +24,24 @@
     }
     .sidebar-filtro{
         position: relative;
-        margin-top: 67px;
+
+        .content-btn-filtro{
+            margin-bottom: 20px;
+        }
+
+        .content-btn-filtro:last-child{
+            margin-top: 20px;
+        }
+        .content-filtro{
+            padding: 0px 0px 0px 20px;
+        }
     }
 
     .title-section{
       margin: 0px 0px 30px;
       font-size: 30px;
       font-weight: 400px;
-      color: $skin-1-color;
+      color: $color-darkblue;
     }
     .content-servicio-background{
         height: 230px;
@@ -37,7 +55,7 @@
             top: 90px;
             height: 120px;
             width: 550px;
-            color: $skin-1-color;
+            color: $color-darkblue;
             background-color: rgba(255, 255, 255, 0.9);
             margin: 10px 0px 20px;
             padding: 20px 10px;
