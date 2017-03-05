@@ -12,12 +12,86 @@
 				            	<div class="col-sm-8">
 				                	<h3><strong><%= especialista.nombre %></strong></h3>
 				                	<div class="m-t-xs font-bold">Especialidad: <%= @servicio.especialidad.nombre %></div>
-				                	<p>Titulo: Postgrado - Universidad</p>
 				                	<p class="m-t-xs font-bold">Pacientes a atender: <strong>Adultos</strong></p>
-				                	<p class="m-t-xs font-bold">Disponibilidad (Dias): <strong>L M M J V</strong></p>
-				                	
+				                	<p class="m-t-xs font-bold">Disponibilidad (Dias): 
+				                	<%= link_to "", '#modal-' + especialista.id.to_s, class: "fa fa-calendar-check-o fa-2x", style: "padding: 8px; margin-left: 10px;", data: {toggle: "modal"}, type: "button" %></p>
+						            <div id="<%= "modal-" + especialista.id.to_s %>" class="modal fade in" aria-hidden="true">
+		                                <div class="modal-dialog">
+		                                    <div class="modal-content">
+										      	<div class="modal-header">
+										        	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+										        	<h4 class="modal-title text-blue-dark"><%= @servicio.especialidad.nombre %> - <%= @servicio.especialidad.nombre %> infantil</h4>
+										      	</div>
+		                                        <div class="modal-body">
+		                                            <div class="row">
+		                                                <div class="col-sm-3 b-r">
+										                	<div class="text-center">
+										                    	<img alt="image" class="img-circle m-t-xs img-responsive" src="<%= image_url 'landing/default_profile.png' %>" style="width: 120px; margin: 0px auto;">
+										               		</div>
+					                						<div class="m-t-xs font-bold">
+					                							<p class="text-blue-dark" style="font-size:14px;">Nombre:</p> 
+					                							<%= especialista.nombre %>
+					                						</div>
+		                                                </div>
+		                                                <div class="col-sm-9">
+		                                                	<h3 class="text-blue-dark">Horario de Atencion</h3>
+
+		                                                	<table class="tabla-horarios table table-bordered table-hover" width="100%">
+		                                                		<thead>
+		                                                			<tr>
+		                                                				<th style="width:10%;" class="text-center">Turno</th>
+		                                                				<th style="width:18%;" class="text-center">Lunes</th>
+		                                                				<th style="width:18%;" class="text-center">Martes</th>
+		                                                				<th style="width:18%;" class="text-center">Miercoles</th>
+		                                                				<th style="width:18%;" class="text-center">Jueves</th>
+		                                                				<th style="width:18%;" class="text-center">Viernes</th>
+		                                                			</tr>
+		                                                		</thead>
+		                                                		<tbody>
+		                                                			<tr>
+		                                                				<td class= "text-center text-blue-dark">Mañana</td>
+		                                                				<td class= "text-center">00:00 - 00:00</td>
+		                                                				<td class= "text-center">00:00 - 00:00</td>
+		                                                				<td class= "text-center">00:00 - 00:00</td>
+		                                                				<td class= "text-center">00:00 - 00:00</td>
+		                                                				<td class= "text-center">00:00 - 00:00</td>
+		                                                			</tr>
+		                                                			<tr>
+		                                                				<td class= "text-center text-blue-dark">Tarde</td>
+		                                                				<td class= "text-center">00:00 - 00:00</td>
+		                                                				<td class= "text-center">00:00 - 00:00</td>
+		                                                				<td class= "text-center">00:00 - 00:00</td>
+		                                                				<td class= "text-center">00:00 - 00:00</td>
+		                                                				<td class= "text-center">00:00 - 00:00</td>
+		                                                			</tr>
+		                                                		</tbody>
+		                                                	</table>
+		                                            	</div>
+		                                        	</div>
+		                                        	<div class="row" style="margin-top: 20px;">
+		                                        		<div class="col-sm-4">
+					                						<div class="m-t-xs font-bold">
+					                							<p style="font-size:14px;"><strong class="text-blue-dark">Nro. de Pacientes (Por Turno):</strong> 20</p>
+					                						</div>
+		                                        		</div>
+		                                        		<div class="col-sm-4">
+					                						<div class="m-t-xs font-bold">
+					                							<p style="font-size:14px;">
+					                							<strong class="text-blue-dark">Tiempo por Consulta:</strong> 15 minutos</p>
+					                						</div>
+		                                        		</div>
+		                                        		<div class="col-sm-4">
+					                						<div class="m-t-xs font-bold text-center">
+					                							
+			  													<%= link_to "Solicita una Cita", '#', class: "btn btn-lg btn-dark-blue", type: "button" %>
+					                						</div>
+		                                        		</div>
+		                                        	</div>
+		                                    	</div>
+		                                    </div>
+		                                </div>
+		                        	</div>
 			  						<%= link_to "Solicita una Cita", '#', class: "btn btn-lg btn-dark-blue", type: "button" %>
-				                	<!--categoria_servicio_especialidad_servicio_especialista_path(@especialidad.categoria_servicio.slug, @especialidad.slug, @especialidad.servicios.find(1).slug, especialista.id)-->
 				            	</div>
 				            	<div class="clearfix"></div>
 				        	</div>
