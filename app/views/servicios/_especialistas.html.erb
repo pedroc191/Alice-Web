@@ -13,7 +13,7 @@
 				                	<h3><strong><%= especialista.nombre %></strong></h3>
 				                	<div class="m-t-xs font-bold">Especialidad: <%= @servicio.especialidad.nombre %></div>
 				                	<p class="m-t-xs font-bold">Pacientes a atender: <strong>Adultos</strong></p>
-				                	<p class="m-t-xs font-bold">Disponibilidad (Dias): 
+				                	<p class="m-t-xs font-bold">Ver Disponibilidad: 
 				                	<%= link_to "", '#modal-' + especialista.id.to_s, class: "fa fa-calendar-check-o fa-2x", style: "padding: 8px; margin-left: 10px;", data: {toggle: "modal"}, type: "button" %></p>
 						            <div id="<%= "modal-" + especialista.id.to_s %>" class="modal fade in" aria-hidden="true">
 		                                <div class="modal-dialog">

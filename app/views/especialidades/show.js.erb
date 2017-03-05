@@ -1,1 +1,19 @@
 $('#especialidades .container').html("<%= escape_javascript(render("servicios"))%>")
+$(document).ready(function() {
+    alturasIguales('.content-servicio');
+    alturasIguales('.col-sm-8');
+    $('.landing-page #especialidades .content-servicio .btn-dark-blue').css('position','inherit');
+    $('.landing-page #especialidades .content-servicio .btn-dark-blue').css('bottom','0px');
+});
+
+$(window).on('load', function() {
+    alturasIguales('.content-servicio');
+    alturasIguales('.col-sm-8');
+    $('.landing-page #especialidades .content-servicio .btn-dark-blue').css('position','inherit');
+    $('.landing-page #especialidades .content-servicio .btn-dark-blue').css('bottom','0px');
+});
+
+$(window).on('resize', function() {
+    alturasIguales('.content-servicio');
+    alturasIguales('.col-sm-8');
+});

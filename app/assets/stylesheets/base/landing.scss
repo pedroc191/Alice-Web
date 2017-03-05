@@ -179,7 +179,7 @@ body.landing-page {
     color: darken($skin-1-color, 5%);
   }
   section p {
-    color: #aeaeae;
+    color: $text-color; //#aeaeae;
     font-size: 13px;
   }
   address {
