@@ -22,7 +22,6 @@ Rails.application.routes.draw do
   get "home/solicitar"
   get "home/solicitar2"
   get "home/solicitar3"
-  get "home/solicitar4"
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

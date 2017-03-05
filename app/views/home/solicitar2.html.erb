@@ -5,19 +5,20 @@
         <div class="ibox float-e-margins">
             <div class="ibox-content">
                 <div id="wizard">
-                    <h1>Reserva tu Cita</h1>
+                <h1>Reserva tu Cita</h1>
                     <div class="step-content">
                         <div class="text">
                         <div class="col-lg-4">
                             <div class="contact-box">
                             <div class="col-sm-4">
                                 <div class="text-center">
-                                    <img alt="image" class="img-circle m-t-xs img-responsive" src="<%= image_path('a4.jpg') %>">
+                                    <img alt="image" class="img-circle m-t-xs img-responsive" src="eutanasia.jpg">
+                                    <img src="eutanasia.jpg" width="20" height="20">
                                     <div class="m-t-xs font-bold">Cardiologo</div>
                              </div>
                             </div>
                             <div class="col-sm-8">
-                                <h3><strong>John Smith</strong></h3>
+                                <h3><strong>Elias Jose Pastran Morelio</strong></h3>
                                 <address>
                                     <strong>Horario de Atencion</strong><br>
                                     Lunes: 8:00 - 12:00pm<br>
@@ -45,25 +46,25 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td>8:00am<input type="checkbox" value=""></td>
+                        <td>8:00am<input type="radio" name="horario1" id="horario1" value="1"></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td>9:00am<input type="checkbox" value=""></td>
+                        <td>9:00am<input type="radio" name="horario1" id="horario2" value="2"></td>
                     </tr>
                     <tr>
-                        <td>8:30am<input type="checkbox" value=""></td>
+                        <td>8:30am<input type="radio" name="horario1" id="horario3" value="3"></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td>9:30am<input type="checkbox" value=""></td>
+                        <td>9:30am<input type="radio" name="horario1" id="horario4" value="4"></td>
                     </tr>
                     <tr>
-                        <td>9:00am<input type="checkbox" value=""></td>
+                        <td>9:00am<input type="radio" name="horario1" id="horario5" value="5"></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td>10:00am<input type="checkbox" value=""></td>
+                        <td>10:00am<input type="radio" name="horario1" id="horario6" value="6"></td>
                     </tr>
                     </tbody>
                     <tfoot>
@@ -87,25 +88,25 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td>2:00pm<input type="checkbox" value=""></td>
+                        <td>2:00pm<input type="radio" name="horario1" id="horario7"  value="7"></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td>2:00pm<input type="checkbox" value=""></td>
+                        <td>2:00pm<input type="radio" name="horario1" id="horario8"  value="8"></td>
                     </tr>
                     <tr>
-                        <td>2:30pm<input type="checkbox" value=""></td>
+                        <td>2:30pm<input type="radio" name="horario1" id="horario9" value="9"></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td>2:30pm<input type="checkbox" value=""></td>
+                        <td>2:30pm<input type="radio" name="horario1" id="horario10" value="10"></td>
                     </tr>
                     <tr>
-                        <td>3:00pm<input type="checkbox" value=""></td>
+                        <td>3:00pm<input type="radio" name="horario1" id="horario11" value="11"></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td>3:00pm<input type="checkbox" value=""></td>
+                        <td>3:00pm<input type="radio" name="horario1" id="horario12" value="12"></td>
                     </tr>
                     </tbody>
                     <tfoot>
@@ -123,73 +124,52 @@
                         </div>
                     </div>
 
-                    <h1>Datos Basicos</h1>
+                    <h1>Datos Basicos Solicitante</h1>
                     <div class="step-content">
                         <div class="text">
-                            <div class="">
-                            <div class="col-lg-4">
+                        <div class="col-lg-6">
                                 <h3>¿Has usado el sistema de citas online?</h3>
                                     <div class="radio">
-                                        <input type="radio" name="radio21" id="radio1" value="option1" checked="">
-                                        <label for="radio1">
-                                            Soy Nuevo
-                                        </label>
+                                        <input type="radio" name="radiousuarionuevo" id="radio1" value="Usuarioviejo" onclick="mostrar(this.value)" checked="true">
+                                        <h2 for="radio1">Si</h2>
+                                        <input type="radio" name="radiousuarionuevo" id="radio2" value="Usuarionuevo" onclick="mostrar(this.value)">
+                                        <h2 for="radio1">No</h2>
                                     </div>
-                                    <div class="radio">
-                                        <input type="radio" name="radio21" id="radio2" value="option2">
-                                        <label for="radio2">
-                                            He utilizado el sistema de citas online anteriormente
-                                        </label>
-                                    </div>
-                                <h3>Crea una cuenta</h3>
-                                    <p>
-                                        Esto te permitira solicitar y administrar sus citas medicas
-                                    </p>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Cedula</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="">
-                                    </div>
+                        </div>
+                        <div class="col-lg-6" id="Usuarioviejo" style="display: block">
+                            <div class="form-group">
+                                <label id="emailusuario1" for="exampleInputEmail1">Email</label>
+                                <input type="email" class="form-control" hidden="false" id="InputEmail" placeholder="">
+                            </div>
+                            <div class="form-group"><label>Contraseña</label> <input type="password" placeholder="" class="form-control">
+                            </div>                         
+                        </div>
+                        </div>
+                        <div class="col-lg-6" id="Usuarionuevo" style="display: none">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Nombre y Apellido</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="">
+                                        <input type="email" class="form-control" id="InputNombre" placeholder="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Cedula</label>
+                                        <input type="email" class="form-control" id="InputCedula" placeholder="">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Email</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="">
+                                        <input type="email" class="form-control" id="InputEmail" placeholder="">
                                     </div>
-                            </div>
-                        </div>
-                        <div class="">
-                            <div class="col-lg-4">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Sexo</label>
-                                        <select class="selectpicker form-control">
-                                        <option>Masculino</option>
-                                        <option>Femenino</option>
-                                        <option>Indefinido</option>
-                                    </select>    
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">Telefono</label>
-                                        <input type="text" class="form-control" data-mask="(999) 999-9999" placeholder="">
-                                        <span class="help-block">(0251) 123-4567</span>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Direccion</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="">
-                                </div>
-                                <div class="form-group" id="data_1">
-                                    <label class="font-normal">Fecha de nacimiento</label>
+                                    <div class="form-group" id="data_1">
+                                    <label for="exampleInputEmail1">Fecha de nacimiento</label>
                                     <div class="input-group date">
-                                        <span class="input-group-addon"><i class="f fa-calendar"></i></span><input type="text" class="form-control" value="03/04/2014">
+                                        <span class="input-group-addon"><i class="f fa-calendar"></i></span><input type="text" class="form-control" value="03/03/2017">
                                     </div>
-                                </div>
+                                </div>                                
                             </div>
-                            
-                            
-                            
-                        </div>
-                        <div class="">
+                    </div>
+                    <h1>Datos Basicos Paciente</h1>
+                    <div class="step-content">
+                        <div class="text">
+                            <div class="">
                             <div class="col-lg-4">
                                 <h3>¿Quien es el Paciente?</h3>
                                     <div class="radio">
@@ -204,9 +184,7 @@
                                             Otra Persona
                                         </label>
                                     </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <h3>¿Como llegaste a nosotros?</h3>
+                                    <h3>¿Como llegaste a nosotros?</h3>
                                     <div class="radio">
                                         <input type="radio" name="radio2" id="radio1" value="option1" checked="">
                                         <label for="radio1">
@@ -232,11 +210,51 @@
                                         </label>
                                     </div>
                             </div>
+                            <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="exampleInputNombre">Nombre y Apellido</label>
+                                        <input type="email" class="form-control" id="InputNombre" placeholder="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputcedula">Cedula</label>
+                                        <input type="email" class="form-control" id="InputCedula" placeholder="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail">Email</label>
+                                        <input type="email" class="form-control" id="InputEmail" placeholder="">
+                                    </div>
+                                    <div class="form-group" id="data_1">
+                                    <label for="exampleInputEmail1">Fecha de nacimiento</label>
+                                    <div class="input-group date">
+                                        <span class="input-group-addon"><i class="f fa-calendar"></i></span><input type="text" class="form-control" value="03/03/2017">
+                                    </div>
+                                </div>                                
+                            </div>
                         </div>
+                        <div class="">
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="InputSexo">Sexo</label>
+                                        <select class="selectpicker form-control">
+                                        <option>Masculino</option>
+                                        <option>Femenino</option>
+                                    </select>    
+                                </div>
+                                <div class="form-group">
+                                    <label for="InputTelefono">Telefono</label>
+                                        <input type="text" id="InputTelefono" class="form-control" data-mask="(999) 999-9999" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="InputDireccion">Direccion</label>
+                                    <input type="text" class="form-control" id="InputDireccion" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                        
                         </div>
                     </div>
 
-                    <h1>Confirmar</h1>
+                    <h1>Confirmación</h1>
                     <div class="step-content">
                         <div class="text">
                 <h2>Comprobante N°03475631</h2>
@@ -254,10 +272,10 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td>Ana Victorio Mendoza Rivas</td>
-                        <td>V-19.727.013</td>
-                        <td>07/02/2017</td>
-                        <td>16/02/2017</td>
+                        <td>Daniel Rojas</td>
+                        <td>V-19.436.882</td>
+                        <td>03/03/2017</td>
+                        <td>16/03/2017</td>
                     </tr>
                     </tbody>
                     <tfoot>
@@ -268,24 +286,26 @@
                     </tr>
                     </tfoot>
                 </table>
-                <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="3">
+                <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="4">
                     <thead>
                     <tr>
                         <th>Nombre y Apellido del Especialista</th>
                         <th>Especialidad</th>
                         <th>Razon de Cita</th>
+                        <th>Hora</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
                         <td>Elias Jose Pastran Morelio</td>
-                        <td>Ginecologia</td>
+                        <td>Cardiologo</td>
                         <td>Chequeo</td>
+                        <td>9:00am</td>
                     </tr>
                     </tbody>
                     <tfoot>
                     <tr>
-                        <td colspan="3">
+                        <td colspan="4">
                             <ul class="pagination pull-right"></ul>
                         </td>
                     </tr>
@@ -304,7 +324,7 @@
                     </tbody>
                     <tfoot>
                     <tr>
-                        <td colspan="3">
+                        <td colspan="1">
                             <ul class="pagination pull-right"></ul>
                         </td>
                     </tr>
@@ -345,7 +365,7 @@ $(function() {
             }
 
             // Forbid suppressing "Warning" step if the user is to young
-            if (newIndex === 3 && Number($("#age").val()) < 18) {
+            if (newIndex === 3) {
                 return false;
             }
 
@@ -366,7 +386,7 @@ $(function() {
         },
         onStepChanged: function (event, currentIndex, priorIndex) {
             // Suppress (skip) "Warning" step if the user is old enough.
-            if (currentIndex === 2 && Number($("#age").val()) >= 18) {
+            if (currentIndex === 2) {
                 $(this).steps("next");
             }
 
@@ -404,6 +424,19 @@ $(function() {
 
 });
 
+var capas = ["Usuarioviejo", "Usuarionuevo"];
+function mostrar(capa) {
+for (i = 0, total = capas.length; i < total; i ++)
+document.getElementById(capas[i]).style.display = (capas[i] == capa) ? "block":"none";
+}
+
+$('#data_1 .input-group.date').datepicker({
+        todayBtn: "linked",
+        keyboardNavigation: false,
+        forceParse: false,
+        calendarWeeks: true,
+        autoclose: true
+    });
 
 </script>
 
