@@ -19,6 +19,9 @@ Rails.application.routes.draw do
   get "home/eventos"
   get "home/noticias"
   get "home/contacto"
+
+  #get "servicios/especialistas"
+
   get "home/solicitar"
   get "home/solicitar2"
   get "home/solicitar3"
@@ -30,6 +33,9 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   
   root to: 'home#index'
+
+  get '/especialistas', :to => 'servicios#especialistas'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
