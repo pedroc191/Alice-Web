@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :noticias
   resources :categoria_servicios, only: [:show, :index] do
     
     resources :especialidades, only: [:show, :index] do

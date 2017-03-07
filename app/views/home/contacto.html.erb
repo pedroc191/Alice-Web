@@ -1,0 +1,103 @@
+<section id="servicios-solicitar" class="white-section">
+    <div class="container">
+        <div class="row">
+        <h2 class="title-section"> </h2>
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                <div class="content-servicio">
+                    <h2 class="text-white text-center">¡Déjanos tu opinion!</h2>
+                    <h3 class="text-white">_______________________________________</h3>
+                    <p class="text-white">Nombre</p>
+                    <form id="form-nombre">
+                        <input type="text" placeholder="" class="form-control">
+                    </form>
+                     <p class="text-white">Correo</p>
+                    <form id="form-corre">
+                        <input type="text" placeholder="ejemplo@alice.net" class="form-control">
+                    </form>
+                    <p class="text-white">Tipo</p>
+                    <form id="form-servicio">
+                        <select class="select-box form-control">
+                            <option></option>
+                            <option value="Opinion">Opinion</option>
+                            <option value="Sugerencia">Sugerencia</option>
+                            <option value="Reclamo">Reclamo</option>
+                        </select>
+                    </form>                  
+                    <form id="form-consulta">
+                        <button class="btn btn-info" type="submit">Enviar</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-4 col-sm-6 col-xs-6">
+                <div class="content-servicio">
+                    <h1 class="text-white text-left">Visitanos en nuestra sede principal de Unidad Quirurgica La Trinidad</h1>
+                  <!--     <div class="content-image-slick">    
+                                    <img class="image-slick" src="<%= image_url 'logos/logo-alice-mini.png' %>">   
+                                </div> -->
+                    <h2 class="text-white text-center">_________________________________________________________________</h2>
+                    <h2 class="text-white text-center">Direccion: Carrera 28, entre calles 9 y 10, Nro 9-124</h2>
+                    <h2 class="text-white text-center">Concepcion, Barquisimeto</h2>
+                    <h2 class="text-white text-center">Telefonos:</h2>
+                    <h2 class="text-white text-center">(0251) 252.5284 - (0251) 251.4646</h2>
+                    <h2 class="text-white text-center"></h2>   
+                </div>
+            </div>
+            
+            <div class="header-back2" style="background: transparent url('<%= image_path('carousel/alice-fondo-consulta-medica.jpg') %>')  50% 0 no-repeat; background-size: cover;"></div>
+        </div>
+    </div>
+</section>
+<% content_for :javascript do %>
+    <script type="text/javascript">
+
+        $(function() {
+
+            $(".select-box").select2({
+                placeholder: "",
+                allowClear: true
+        |    });
+            $('.newsticker').newsTicker({
+                row_height: 46,
+                max_rows: 1,
+                speed: 600,
+                direction: 'up',
+                duration: 4000,
+                autostart: 1,
+                pauseOnHover: 0
+            });
+
+            $('.slick-eventos').slick({
+                infinite: true,
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                centerMode: true,
+                responsive: [
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3,
+                            infinite: true,
+                            dots: true
+                        }
+                    },
+                    {
+                        breakpoint: 600,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 2
+                        }
+                    },
+                    {
+                        breakpoint: 480,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                    }
+                ]
+            });
+        });
+
+    </script>
+<% end %>
