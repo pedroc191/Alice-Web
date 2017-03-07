@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :citas, only: [:solicitar]
+
   resources :categoria_servicios, only: [:show, :index] do
     
     resources :especialidades, only: [:show, :index] do
@@ -14,13 +16,10 @@ Rails.application.routes.draw do
 
   get "home/index"
   post "home/create"
-  get "home/empresa"
-  get "home/servicios"
-  get "home/eventos"
-  get "home/noticias"
-  get "home/contacto"
 
   #get "servicios/especialistas"
+
+  get "citas/solicitar"
 
   get "home/solicitar"
   get "home/solicitar2"
