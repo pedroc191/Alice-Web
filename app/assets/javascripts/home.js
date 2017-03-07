@@ -10,6 +10,12 @@
 /*	SLICK CAROUSEL	*/
 //= require slick/slick.min.js
 
+/* STEPS WIZARD */
+//= require steps/jquery.steps.min.js
+
+//= require datapicker/bootstrap-datepicker.js
+
 $(window).on('load', function() {
     $('#twitter-widget-0').addClass('embed-responsive-item');
 });
+
