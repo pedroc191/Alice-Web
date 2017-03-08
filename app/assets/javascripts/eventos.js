@@ -1,12 +1,12 @@
 
 $(document).ready(function() {
-    alturasIguales('.noticia');
+    alturasIguales('.evento');
 });
 
 $(window).on('load', function() {
-    alturasIguales('.noticia');
+    alturasIguales('.evento');
 });
 
 $(window).on('resize', function() {
-    alturasIguales('.noticia');
+    alturasIguales('.evento');
 });
