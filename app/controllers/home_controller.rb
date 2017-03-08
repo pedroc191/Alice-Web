@@ -5,6 +5,9 @@ class HomeController < ApplicationController
 
   def index
     #@response = HTTParty.get(Url_WebServices() + '/roles.json')
+    @url = Url_WebServices()
+    @noticias = HTTParty.get(Url_WebServices() + '/noticias.json')
+    @eventos = HTTParty.get(Url_WebServices() + '/eventos.json')
     #@tipo_servicio =  HTTParty.get(Url_WebServices() + '/tipo_servicios/1.json')
 
     #@foto = Url_WebServices() + @tipo_servicio['foto']
