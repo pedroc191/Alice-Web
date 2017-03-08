@@ -14,8 +14,8 @@ gem 'font-awesome-rails', '4.7.0.1'
 gem 'httparty', '~> 0.14.0'
 
 # Use mysql as the database for Active Record
-gem 'mysql2'
-#gem 'pg'
+#gem 'mysql2'
+gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -47,10 +47,7 @@ gem 'friendly_id', '~> 5.1.0'
 gem 'will_paginate', '~> 3.0'
 gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
 
-# ajax respond
-
 gem 'responders', '~> 2.3'
-
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -70,3 +67,7 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+
+
+gem 'rails-i18n', '~> 5.0.0' # For 5.0.x

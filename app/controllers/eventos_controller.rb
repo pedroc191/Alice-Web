@@ -4,12 +4,24 @@ class EventosController < ApplicationController
   # GET /eventos
   # GET /eventos.json
   def index
-    @eventos = Evento.all
+     @url = Url_WebServices()
+      @categorias = HTTParty.get(@url+'tipo_evento.json')
+    if params[:id].nil?
+      @eventos = HTTParty.get(@url+'eventos.json')
+    else
+      @eventos = HTTParty.get(@url+'eventos.json?id='+params[:id])
+    end
   end
 
   # GET /eventos/1
   # GET /eventos/1.json
   def show
+  end
+
+
+  def ver
+    @url = Url_WebServices()
+    @evento = HTTParty.get(@url+'eventos/'+params[:id].to_s+'.json')
   end
 
   # GET /eventos/new

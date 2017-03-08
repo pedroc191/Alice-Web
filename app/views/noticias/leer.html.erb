@@ -1,0 +1,27 @@
+<section id="detalle-noticia" class="gray-section article">
+	<div class="container">
+		<div class="row">
+	        <div class="col-lg-10 col-lg-offset-1">
+	            <div class="ibox">
+	                <div class="ibox-content">
+	                    <div class="text-center article-title">
+	                        <span class="text-muted"><i class="fa fa-clock-o"></i><%= @noticia["created_at"]%></span>
+	                        <h1>
+	                            <%= @noticia["titulo"] %>
+ 	                        </h1>
+	                    </div>
+	                    	                            <%= @noticia["descripcion"] %>
+
+	                    <hr>
+	                    <div class="row">
+	                        <div class="col-md-12">
+	                            <h5>Categoria:</h5>
+	                            <button class="btn btn-dark-blue btn-xs" type="button"><%= HTTParty.get(@url+'tipo_noticias/'+@noticia["tipo_noticia_id"].to_s+'.json')["descripcion"] %></button>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+    </div>
+</section>
