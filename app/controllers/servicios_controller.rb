@@ -1,6 +1,8 @@
 class ServiciosController < ApplicationController
   before_action :set_servicio, only: [:show, :edit, :update, :destroy]
-
+  protect_from_forgery except: :especialistas
+  respond_to  :js
+  
   # GET /servicios
   # GET /servicios.json
   def index
@@ -11,7 +13,17 @@ class ServiciosController < ApplicationController
   # GET /servicios/1.json
   def show
     @especialistas = @servicio.especialistas.paginate(page: params[:page], per_page: 4)
-    
+       
+  end
+
+  def especialistas
+    #@servicio = Servicio.friendly.find(params[:id])
+        @servicio = Servicio.where("id = ?", params[:id]).take
+           @especialistas = @servicio.especialistas.paginate(page: params[:page], per_page: 4)
+                 respond_to do |format|
+        #format.html { render partial: 'especialistas', locals: { :servicio => @servicio } }
+        format.js
+      end
   end
 
   # GET /servicios/new

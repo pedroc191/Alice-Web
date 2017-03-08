@@ -1,11 +1,11 @@
-jQuery(document).ready(function() {
+$(document).ready(function() {
     alturasIguales('.content-servicio');
 });
 
-jQuery(window).load(function() {
+$(window).on('load', function() {
     alturasIguales('.content-servicio');
 });
 
-jQuery(window).resize(function() {
+$(window).on('resize', function() {
     alturasIguales('.content-servicio');
 });

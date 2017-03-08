@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
+
   resources :noticias
+
+  resources :citas, only: [:solicitar]
+
   resources :categoria_servicios, only: [:show, :index] do
     
     resources :especialidades, only: [:show, :index] do
@@ -15,15 +19,14 @@ Rails.application.routes.draw do
 
   get "home/index"
   post "home/create"
-  get "home/empresa"
-  get "home/servicios"
-  get "home/eventos"
-  get "home/noticias"
-  get "home/contacto"
+
+  #get "servicios/especialistas"
+
+  get "citas/solicitar"
+
   get "home/solicitar"
   get "home/solicitar2"
   get "home/solicitar3"
-  get "home/solicitar4"
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -31,6 +34,9 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   
   root to: 'home#index'
+
+  get '/especialistas', :to => 'servicios#especialistas'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
