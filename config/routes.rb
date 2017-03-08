@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 
-  resources :eventos
+  resources :eventos, only: [:index]
   resources :noticias, only: [:index]
 
   resources :citas, only: [:solicitar]
@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
   get "citas/solicitar"
   get "noticias/leer"
+  get "eventos/ver"
   get "home/solicitar"
   get "home/solicitar2"
   get "home/solicitar3"
