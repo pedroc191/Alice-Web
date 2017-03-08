@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  resources :eventos
   resources :noticias
 
   resources :citas, only: [:solicitar]
