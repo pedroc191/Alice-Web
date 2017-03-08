@@ -1,0 +1,447 @@
+<section id="solicitud" class="white-section unique-section">
+    <div class="container">
+        <h1 class="title-section">Solicitar Cita</h1>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+
+                        <div id="wizard">
+                            <h1>Reserva tu Cita</h1>
+                            <div class="step-content">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="contact-box">
+                                            <div class="col-sm-12">
+                                                <div class="text-center">
+                                                    <img alt="image" class="img-circle m-t-xs img-responsive" src="<%= image_url 'landing/default_profile.png' %>" width= "100px" style="margin: 0px auto;">
+                                                    <div class="m-t-xs font-bold">Cardiologo infaltil</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <h3><strong>Elias Jose Pastran Morelio</strong></h3>
+                                                
+		                                        <div class="form-group" id="data_1">
+		                                            <label for="exampleInputEmail1">Fecha de la Cita</label>
+		                                            <div class="input-group date">
+		                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control">
+		                                            </div>
+		                                        </div>
+		                                        <div class="text-center">
+		                                        	<%= link_to "Buscar Horario", "#", remote: true, class: "btn btn-dark-blue" %>
+		                                        </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="ibox float-e-margins">
+                                            <div class="ibox-content">
+                                                <table class="tabla-horarios table table-bordered table-hover" width="100%">
+                                                    <thead>
+                                                    	<h2>Mañana</h2>
+                                                        <tr>
+                                                            <th style="width:18%;" class="text-center">Lunes</th>
+                                                            <th style="width:18%;" class="text-center">Martes</th>
+                                                            <th style="width:18%;" class="text-center">Miercoles</th>
+                                                            <th style="width:18%;" class="text-center">Jueves</th>
+                                                            <th style="width:18%;" class="text-center">Viernes</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class= "text-center">
+                                                            	<select class="selectpicker form-control">
+					                                                <option>00:00</option>
+					                                                <option>00:00</option>
+					                                            </select>  
+                                                            </td>
+                                                            <td class= "text-center">
+                                                            	<select class="selectpicker form-control">
+					                                                <option>00:00</option>
+					                                                <option>00:00</option>
+					                                            </select>  
+                                                            </td>
+                                                            <td class= "text-center">
+                                                            	<select class="selectpicker form-control">
+					                                                <option>00:00</option>
+					                                                <option>00:00</option>
+					                                            </select>  
+                                                            </td>
+                                                            <td class= "text-center">
+                                                            	<select class="selectpicker form-control">
+					                                                <option>00:00</option>
+					                                                <option>00:00</option>
+					                                            </select>  
+                                                            </td>
+                                                            <td class= "text-center">
+                                                            	<select class="selectpicker form-control">
+					                                                <option>00:00</option>
+					                                                <option>00:00</option>
+					                                            </select>  
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                                <table class="tabla-horarios table table-bordered table-hover" width="100%">
+                                                    <thead>
+                                                    	<h2>Tarde</h2>
+                                                        <tr>
+                                                            <th style="width:18%;" class="text-center">Lunes</th>
+                                                            <th style="width:18%;" class="text-center">Martes</th>
+                                                            <th style="width:18%;" class="text-center">Miercoles</th>
+                                                            <th style="width:18%;" class="text-center">Jueves</th>
+                                                            <th style="width:18%;" class="text-center">Viernes</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class= "text-center">
+                                                            	<select class="selectpicker form-control">
+					                                                <option>00:00</option>
+					                                                <option>00:00</option>
+					                                            </select>  
+                                                            </td>
+                                                            <td class= "text-center">
+                                                            	<select class="selectpicker form-control">
+					                                                <option>00:00</option>
+					                                                <option>00:00</option>
+					                                            </select>  
+                                                            </td>
+                                                            <td class= "text-center">
+                                                            	<select class="selectpicker form-control">
+					                                                <option>00:00</option>
+					                                                <option>00:00</option>
+					                                            </select>  
+                                                            </td>
+                                                            <td class= "text-center">
+                                                            	<select class="selectpicker form-control">
+					                                                <option>00:00</option>
+					                                                <option>00:00</option>
+					                                            </select>  
+                                                            </td>
+                                                            <td class= "text-center">
+                                                            	<select class="selectpicker form-control">
+					                                                <option>00:00</option>
+					                                                <option>00:00</option>
+					                                            </select>  
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <h1>Datos Basicos Solicitante</h1>
+                            <div class="step-content">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <h3>¿Has usado el sistema de citas online?</h3>
+                                        <div class="form-group radio">
+                                            <input type="radio" name="radiousuarionuevo" id="radio1" value="Usuarioviejo" onclick="mostrar(this.value)" checked="true">
+                                            <h2 for="radio1">Si</h2>
+                                            <input type="radio" name="radiousuarionuevo" id="radio2" value="Usuarionuevo" onclick="mostrar(this.value)">
+                                            <h2 for="radio1">No</h2>
+                                        </div>
+
+		                                <div class="form-group">
+		                                    <label for="RazonCita">Motivo de la Cita:</label>
+		                                    <select class="selectpicker form-control">
+		                                        <option>Chequeo</option>
+		                                        <option>Consulta de Rutina</option>
+		                                    </select>    
+		                                </div>
+                                    </div>
+                                    <div class="col-lg-6" id="Usuarioviejo" style="display: block">
+                                        <div class="form-group">
+                                            <label id="emailusuario1" for="exampleInputEmail1">Email</label>
+                                            <input type="email" class="form-control" hidden="false" id="InputEmail" placeholder="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Contraseña</label> 
+                                            <input type="password" placeholder="" class="form-control">
+                                        </div>                         
+                                    </div>
+                                </div>
+                                <div class="col-lg-6" id="Usuarionuevo" style="display: none">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Nombre y Apellido</label>
+                                        <input type="email" class="form-control" id="InputNombre" placeholder="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Cedula</label>
+                                        <input type="email" class="form-control" id="InputCedula" placeholder="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Email</label>
+                                        <input type="email" class="form-control" id="InputEmail" placeholder="">
+                                    </div>
+		                            <div class="form-group" id="data_2">
+		                                <label for="exampleInputEmail1">Fecha de nacimiento</label>
+		                                <div class="input-group date">
+		                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control">
+		                                </div>
+		                            </div>                             
+                                </div>
+                            </div>
+                            <h1>Datos Basicos Paciente</h1>
+                            <div class="step-content">
+                                <div class="text">
+                                    <div class="col-lg-4">
+                                        <h3>¿Quien es el Paciente?</h3>
+                                        <div class="radio">
+                                            <input type="radio" name="radio1" id="radio1" value="option1" checked="">
+                                            <label for="radio1">Yo</label>
+                                        </div>
+                                        <div class="radio">
+                                            <input type="radio" name="radio1" id="radio2" value="option2">
+                                            <label for="radio2">Otra Persona</label>
+                                        </div>
+                                        <h3>¿Como llegaste a nosotros?</h3>
+                                        <div class="radio">
+                                            <input type="radio" name="radio2" id="radio1" value="option1" checked="">
+                                            <label for="radio1">Redes Sociales</label>
+                                        </div>
+                                        <div class="radio">
+                                            <input type="radio" name="radio2" id="radio2" value="option2">
+                                            <label for="radio2">Familiar / Amigo</label>
+                                        </div>
+                                        <div class="radio">
+                                            <input type="radio" name="radio2" id="radio3" value="option2">
+                                            <label for="radio2">Doctor</label>
+                                        </div>
+                                        <div class="radio">
+                                            <input type="radio" name="radio2" id="radio4" value="option2">
+                                            <label for="radio2">Otros</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label for="exampleInputNombre">Nombre y Apellido</label>
+                                            <input type="email" class="form-control" id="InputNombre" placeholder="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputcedula">Cedula</label>
+                                            <input type="email" class="form-control" id="InputCedula" placeholder="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail">Email</label>
+                                            <input type="email" class="form-control" id="InputEmail" placeholder="">
+                                        </div>
+                                        <div class="form-group" id="data_3">
+                                            <label for="exampleInputEmail1">Fecha de nacimiento</label>
+                                            <div class="input-group date">
+                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="03/03/2017">
+                                            </div>
+                                        </div>                                
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label for="InputSexo">Sexo</label>
+                                            <select class="selectpicker form-control">
+                                                <option>Masculino</option>
+                                                <option>Femenino</option>
+                                            </select>    
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="InputTelefono">Telefono</label>
+                                            <input type="text" id="InputTelefono" class="form-control" data-mask="(999) 999-9999" placeholder="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="InputDireccion">Direccion</label>
+                                            <input type="text" class="form-control" id="InputDireccion" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <h1>Confirmación</h1>
+                            <div class="step-content">
+                                <div class="row">
+                                    <h3>Comprobante N°03475631</h3>
+                                    <div class="col-lg-12">
+                                        <div class="ibox float-e-margins">
+                                            <div class="ibox-content">
+                                                <table class="tabla-horarios table table-bordered table-hover" width="100%">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Nombre y Apellido del Paciente</th>
+                                                            <th>Cedula</th>
+                                                            <th>Fecha de Solicitud</th>
+                                                            <th>Fecha de la Cita</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Daniel Rojas</td>
+                                                            <td>V-19.436.882</td>
+                                                            <td>03/03/2017</td>
+                                                            <td>16/03/2017</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <table class="tabla-horarios table table-bordered table-hover" width="100%">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Nombre y Apellido del Especialista</th>
+                                                            <th>Especialidad</th>
+                                                            <th>Razon de Cita</th>
+                                                            <th>Hora</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Elias Jose Pastran Morelio</td>
+                                                            <td>Cardiologo</td>
+                                                            <td>Chequeo</td>
+                                                            <td>9:00am</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <table class="tabla-horarios table table-bordered table-hover" width="100%">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Direccion de la Clinica</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Carrera 28, entre calles 9 y 10, N° 9-124, Concepción, Barquisimeto</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<% content_for :javascript do %>
+
+<script type="text/javascript">
+
+
+$(function() {
+
+    $("#wizard").steps({
+    	labels: {
+    		cancel: "Cancelar",
+        	current: "Paso comun:",
+        	pagination: "Paginacion",
+        	finish: "Solicitar",
+        	next: "Siguiente",
+       		previous: "Anterior",
+        	loading: "Cargando ..."
+    	}
+    });
+    /*$("#form").steps({
+        bodyTag: "fieldset",
+        onStepChanging: function (event, currentIndex, newIndex) {
+            // Always allow going backward even if the current step contains invalid fields!
+            if (currentIndex > newIndex) {
+                return true;
+            }
+
+            // Forbid suppressing "Warning" step if the user is to young
+            if (newIndex === 3) {
+                return false;
+            }
+
+            var form = $(this);
+
+            // Clean up if user went backward before
+            if (currentIndex < newIndex) {
+                // To remove error styles
+                $(".body:eq(" + newIndex + ") label.error", form).remove();
+                $(".body:eq(" + newIndex + ") .error", form).removeClass("error");
+            }
+
+            // Disable validation on fields that are disabled or hidden.
+            form.validate().settings.ignore = ":disabled,:hidden";
+
+            // Start validation; Prevent going forward if false
+            return form.valid();
+        },
+        onStepChanged: function (event, currentIndex, priorIndex) {
+            // Suppress (skip) "Warning" step if the user is old enough.
+            if (currentIndex === 2) {
+                $(this).steps("next");
+            }
+
+            // Suppress (skip) "Warning" step if the user is old enough and wants to the previous step.
+            if (currentIndex === 2 && priorIndex === 3) {
+                $(this).steps("previous");
+            }
+        },
+        onFinishing: function (event, currentIndex) {
+            var form = $(this);
+
+            // Disable validation on fields that are disabled.
+            // At this point it's recommended to do an overall check (mean ignoring only disabled fields)
+            form.validate().settings.ignore = ":disabled";
+
+            // Start validation; Prevent form submission if false
+            return form.valid();
+        },
+        onFinished: function (event, currentIndex) {
+            var form = $(this);
+
+            // Submit form input
+            form.submit();
+        }
+    }).validate({
+                errorPlacement: function (error, element) {
+                    element.before(error);
+                },
+                rules: {
+                    confirm: {
+                        equalTo: "#password"
+                    }
+                }
+            });*/
+
+	$('#data_1 .input-group.date').datepicker({
+        todayBtn: "linked",
+        keyboardNavigation: false,
+        forceParse: false,
+        calendarWeeks: true,
+        autoclose: true
+    });
+
+	$('#data_2 .input-group.date').datepicker({
+        todayBtn: "linked",
+        keyboardNavigation: false,
+        forceParse: false,
+        calendarWeeks: true,
+        autoclose: true
+    });
+
+	$('#data_3 .input-group.date').datepicker({
+        todayBtn: "linked",
+        keyboardNavigation: false,
+        forceParse: false,
+        calendarWeeks: true,
+        autoclose: true
+    });
+});
+
+var capas = ["Usuarioviejo", "Usuarionuevo"];
+function mostrar(capa) {
+for (i = 0, total = capas.length; i < total; i ++)
+document.getElementById(capas[i]).style.display = (capas[i] == capa) ? "block":"none";
+}
+
+
+</script>
+
+<% end %>

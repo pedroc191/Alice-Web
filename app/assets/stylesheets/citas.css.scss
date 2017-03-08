@@ -1,0 +1,58 @@
+// Place all the styles related to the Citas controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*	STEPS WIZARD	*/
+//= require steps/jquery.steps.css
+
+//= require datapicker/datepicker3.css
+
+@import "base/variables";
+@import "base/skins";
+
+.landing-page{
+
+    .white-section{
+    
+        .title-section{
+          margin: 0px;
+          font-size: 30px;
+          font-weight: 400px;
+          color: $color-darkblue;
+        }
+    }
+    
+    .ibox-content{
+        border-width: 0px 0px;
+    }
+    .wizard > .content{
+      min-height: 400px;
+    }
+    #solicitud{
+    	margin-top: 80px;
+
+        table.tabla-horarios.table-bordered > thead > tr > th{
+            background-color: $color-darkblue;
+            color: #FFFFFF;
+        }
+    	.text-promo{
+    		width: 800px;
+    		margin: 20px 0px;
+    	}
+        @media (min-width: 768px) {
+          .container {
+            width: 630px;
+          }
+        }
+        @media (min-width: 992px) {
+          .container {
+            width: 850px;
+          }
+        }
+        @media (min-width: 1200px) {
+          .container {
+            width: 1050px;
+          }
+        }
+    }
+}
