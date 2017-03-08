@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 
-  resources :noticias
+  resources :noticias, only: [:index]
 
   resources :citas, only: [:solicitar]
 
@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   #get "servicios/especialistas"
 
   get "citas/solicitar"
-
+  get "noticias/leer"
   get "home/solicitar"
   get "home/solicitar2"
   get "home/solicitar3"
