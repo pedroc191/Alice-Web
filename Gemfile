@@ -14,7 +14,8 @@ gem 'font-awesome-rails', '4.7.0.1'
 gem 'httparty', '~> 0.14.0'
 
 # Use mysql as the database for Active Record
-gem 'pg'
+gem 'mysql2'
+#gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -45,6 +46,10 @@ gem 'friendly_id', '~> 5.1.0'
 
 gem 'will_paginate', '~> 3.0'
 gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
+
+# ajax respond
+
+gem 'responders', '~> 2.3'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

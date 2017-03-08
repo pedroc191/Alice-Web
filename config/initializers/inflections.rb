@@ -29,4 +29,5 @@ ActiveSupport::Inflector.inflections do |inflect|
 	inflect.irregular 'EspecialistaServicio', 'EspecialistaServicios'
 	inflect.irregular 'Cita', 'Citas'
 	inflect.irregular 'Evento', 'Eventos'
+	inflect.irregular 'PreguntaFrecuente', 'PreguntasFrecuentes'
 end

@@ -357,8 +357,8 @@ body.landing-page {
     height: auto;
     display: block;
     font-size: 14px;
-    background-color: $skin-1-color;
-    background-image: url('patterns/header-profile-skin-1.png');
+    //background-color: $skin-1-color;
+    //background-image: url('patterns/header-profile-skin-1.png');
     padding: 0px 15px;
     border-radius: 5px;
     font-weight: 700;
@@ -786,6 +786,10 @@ body.landing-page {
   #footer{
     background-color: #788292;
     padding-bottom: 20px;
+    background-image: image-url("footer/fondo-footer.jpg");
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
 
     .separador-footer{
       margin: 40px 80px 20px;
@@ -838,7 +842,8 @@ body.landing-page {
     .title-footer{
       font-size: 20px;
       padding-bottom: 10px;
-      border-bottom: 2px solid #FFFFFF;
+      border-bottom: 2px solid $color-darkblue;
+      color: $color-darkblue;
     }
     .list-menu-footer {
       
@@ -846,7 +851,7 @@ body.landing-page {
         padding: 10px 10px 10px 0px;
         font-size: 14px;
         text-transform: normal;
-        color: #FFFFFF;
+        color: $color-darkblue;
 
         i.fa-circle{
           font-size: 8px;
@@ -857,7 +862,7 @@ body.landing-page {
       }
       .nav > li > a:hover, .nav > li > a:focus {
         background-color: transparent;
-        color: $skin-1-color;
+        color: #000000;
       }
     }
     .tabs-container{
