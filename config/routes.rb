@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   #get "servicios/especialistas"
 
   get "citas/solicitar"
+  get "home/contacto"
+  get "home/preguntas_frecuentes"
   get "noticias/leer"
   get "eventos/ver"
   get "home/solicitar"

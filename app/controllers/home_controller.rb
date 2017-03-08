@@ -50,6 +50,9 @@ class HomeController < ApplicationController
   def solicitar3
   end
 
+  def preguntas_frecuentes
+  end
+
   private
 
     # Never trust parameters from the scary internet, only allow the white list through.
