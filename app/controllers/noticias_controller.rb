@@ -1,5 +1,5 @@
 class NoticiasController < ApplicationController
-  before_action :set_noticia, only: [:show, :edit, :update, :destroy]
+  before_action :set_noticia, only: [:edit, :update, :destroy]
 
   # GET /noticias
   # GET /noticias.json

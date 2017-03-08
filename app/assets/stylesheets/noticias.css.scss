@@ -1,0 +1,82 @@
+// Place all the styles related to the Noticias controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "base/variables";
+@import "base/skins";
+
+.landing-page{
+
+    .white-section{
+    
+        .title-section{
+          margin: 0px;
+          font-size: 30px;
+          font-weight: 400px;
+          color: $color-darkblue;
+        }
+    }
+    
+    .ibox-content{
+        border-width: 0px 0px;
+    }
+    #noticias{
+    	margin-top: 0px;
+
+    	#categoria{
+    		margin-top: 0px; 
+    		position: relative; 
+    		top: 80px;
+
+	        .container{
+		    	margin-top: 0px;
+		        .row{
+		        	margin-top: 0px;
+		        }
+	        }
+    	}
+        .container{
+	    	margin-top: 80px;
+	        .row{
+	        	margin-top: 20px;
+	        }
+        }
+    	.text-promo{
+    		width: 800px;
+    		margin: 20px 0px;
+    	}
+        @media (min-width: 768px) {
+          .container {
+            width: 720px;
+          }
+        }
+        @media (min-width: 992px) {
+          .container {
+            width: 950px;
+          }
+        }
+        @media (min-width: 1200px) {
+          .container {
+            width: 1100px;
+          }
+        }
+    }
+    #detalle-noticia{
+    	margin-top: 67px;
+
+    	.container > .row{
+    		margin-top: 30px;
+    	}
+    	.article-title{
+    		margin: 40px 0px 50px;
+    		
+    		h1{
+    			color: $color-darkblue;
+    			font-size: 40px;
+    		}
+    		.text-muted{
+    			font-size: 20px;
+    		}
+    	} 
+    }
+}
