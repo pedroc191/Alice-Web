@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+
+  resources :noticias
+
   resources :citas, only: [:solicitar]
 
   resources :categoria_servicios, only: [:show, :index] do

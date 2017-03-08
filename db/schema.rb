@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170227205228) do
+ActiveRecord::Schema.define(version: 20170304175525) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,13 +23,6 @@ ActiveRecord::Schema.define(version: 20170227205228) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["slug"], name: "index_categoria_servicios_on_slug", unique: true, using: :btree
-  end
-
-  create_table "citas", force: :cascade do |t|
-    t.string   "tipo_servicio"
-    t.string   "especialidad"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
   end
 
   create_table "especialidades", force: :cascade do |t|
@@ -74,6 +67,13 @@ ActiveRecord::Schema.define(version: 20170227205228) do
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
     t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+  end
+
+  create_table "noticias", force: :cascade do |t|
+    t.string   "titulo"
+    t.string   "descripcion"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "servicios", force: :cascade do |t|
