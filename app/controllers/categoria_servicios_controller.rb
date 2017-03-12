@@ -5,6 +5,8 @@ class CategoriaServiciosController < ApplicationController
   # GET /categoria_servicios.json
   def index
     @categoria_servicios = CategoriaServicio.all
+    @url = Url_WebServices()
+    @categorias = HTTParty.get(Url_WebServices() + '/categorias.json')
   end
 
   # GET /categoria_servicios/1
