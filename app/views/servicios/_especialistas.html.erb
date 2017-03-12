@@ -11,21 +11,41 @@
 				               		</div>
 				            	</div>
 				            	<div class="col-sm-8">
-				                	<h3><strong><%= especialista.nombre %></strong></h3>
-				                	<div class="m-t-xs font-bold">Especialidad: <%= @servicio.especialidad.nombre %></div>
-				                	<p class="m-t-xs font-bold">Pacientes a atender: <strong>Adultos</strong></p>
-				                	<p class="m-t-xs font-bold">Ver Disponibilidad: 
-				                	<%= link_to "", '#modal-' + especialista.id.to_s, class: "fa fa-calendar-check-o fa-2x", style: "padding: 8px; margin-left: 10px;", data: {toggle: "modal"}, type: "button" %></p>
+				            		<% #if comparacion con tipo atencion %>
+					                	<!-- ESPECIALISTA -->
+					                	<h3><strong><%= especialista.nombre %></strong></h3>
+					                	<div class="m-t-xs font-bold">Especialidad: <%= @servicio.especialidad.nombre %></div>
+					                	<p class="m-t-xs font-bold">Pacientes a atender: <strong>Adultos</strong></p>
+					                	
+					                <% #else %>
+					                	<!-- SERVICIO -->
+					                	<h3><strong><%= especialista.nombre %></strong></h3>
+					                	<div class="m-t-xs font-bold">Especialidad: <%= @servicio.especialidad.nombre %></div>
+					                	<p class="m-t-xs font-bold">Pacientes a atender: <strong>Adultos</strong></p>
+					                	
+						            <% #end %>
+
+					                <p class="m-t-xs font-bold">Ver Disponibilidad: 
+					                <%= link_to "", '#modal-' + especialista.id.to_s, class: "fa fa-calendar-check-o fa-2x", style: "padding: 8px; margin-left: 10px;", data: {toggle: "modal"}, type: "button" %></p>
 						            <div id="<%= "modal-" + especialista.id.to_s %>" class="modal fade in" aria-hidden="true">
 		                                <div class="modal-dialog">
 		                                    <div class="modal-content">
 										      	<div class="modal-header">
 										        	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-										        	<h4 class="modal-title text-blue-dark"><%= @servicio.especialidad.nombre %> - <%= @servicio.especialidad.nombre %> infantil</h4>
+										        <% #if comparacion con tipo atencion %>
+											        <h4 class="modal-title text-blue-dark">
+											        	<%= @servicio.especialidad.nombre %> - <%= @servicio.especialidad.nombre %> infantil
+											        </h4>
+											    <% #else %>
+											        <h4 class="modal-title text-blue-dark">
+											        	<%= @servicio.especialidad.nombre %> - <%= @servicio.especialidad.nombre %> infantil
+											        </h4>
+											    <% #end %>
 										      	</div>
 		                                        <div class="modal-body">
 		                                            <div class="row">
 		                                                <div class="col-sm-3 b-r">
+		                                                <% #if comparacion con tipo atencion %>
 										                	<div class="text-center">
 										                    	<img alt="image" class="img-circle m-t-xs img-responsive" src="<%= image_url 'landing/default_profile.png' %>" style="width: 120px; margin: 0px auto;">
 										               		</div>
@@ -33,6 +53,15 @@
 					                							<p class="text-blue-dark" style="font-size:14px;">Nombre:</p> 
 					                							<%= especialista.nombre %>
 					                						</div>
+					                					<% #else %>
+					                						<div class="text-center">
+										                    	<img alt="image" class="img-circle m-t-xs img-responsive" src="<%= image_url 'landing/default_profile.png' %>" style="width: 120px; margin: 0px auto;">
+										               		</div>
+					                						<div class="m-t-xs font-bold">
+					                							<p class="text-blue-dark" style="font-size:14px;">Nombre:</p> 
+					                							<%= especialista.nombre %>
+					                						</div>
+					                					<% #end %>
 		                                                </div>
 		                                                <div class="col-sm-9">
 		                                                	<h3 class="text-blue-dark">Horario de Atencion</h3>
@@ -51,6 +80,7 @@
 		                                                		<tbody>
 		                                                			<tr>
 		                                                				<td class= "text-center text-blue-dark">Mañana</td>
+		                                                				<% #Comparacion de Hora inicio y fin %>
 		                                                				<td class= "text-center">00:00 - 00:00</td>
 		                                                				<td class= "text-center">00:00 - 00:00</td>
 		                                                				<td class= "text-center">00:00 - 00:00</td>
@@ -59,6 +89,7 @@
 		                                                			</tr>
 		                                                			<tr>
 		                                                				<td class= "text-center text-blue-dark">Tarde</td>
+		                                                				<% #Comparacion de Hora inicio y fin %>
 		                                                				<td class= "text-center">00:00 - 00:00</td>
 		                                                				<td class= "text-center">00:00 - 00:00</td>
 		                                                				<td class= "text-center">00:00 - 00:00</td>
@@ -71,15 +102,27 @@
 		                                        	</div>
 		                                        	<div class="row" style="margin-top: 20px;">
 		                                        		<div class="col-sm-4">
-					                						<div class="m-t-xs font-bold">
-					                							<p style="font-size:14px;"><strong class="text-blue-dark">Nro. de Pacientes (Por Turno):</strong> 20</p>
-					                						</div>
-		                                        		</div>
-		                                        		<div class="col-sm-4">
+					                					<% #if comparacion con tipo_horario_id: %>
 					                						<div class="m-t-xs font-bold">
 					                							<p style="font-size:14px;">
-					                							<strong class="text-blue-dark">Tiempo por Consulta:</strong> 15 minutos</p>
+					                								<strong class="text-blue-dark">Atencion por Orden de llegada: </strong> Cupos Limitados
+					                							</p>
 					                						</div>
+					                					<% #else %>
+					                						<div class="m-t-xs font-bold">
+					                							<p style="font-size:14px;">
+					                							<strong class="text-blue-dark">Tiempo Estimado por Consulta:</strong> 15 minutos</p>
+					                						</div>
+					                					<% #end %>
+		                                        		</div>
+		                                        		<div class="col-sm-4">
+		                                        		<% #if comparacion con tipo_horario_id: %>
+					                						<div class="m-t-xs font-bold">
+					                							<p style="font-size:14px;">
+					                								<strong class="text-blue-dark">Tiempo Estimado por Consulta:</strong> 15 minutos
+					                							</p>
+					                						</div>
+					                					<% #end %>
 		                                        		</div>
 		                                        		<div class="col-sm-4">
 					                						<div class="m-t-xs font-bold text-center">
