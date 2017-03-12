@@ -2,30 +2,31 @@
   <div class="container">
     <h2 class="title-section">Servicios</h2>
     <div class="row">
-    <% @categoria_servicios.each do |categoria_servicio| %>
+    <% @categorias.each do |categoria_servicio| %>
       <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6" style="margin: 30px 0px;">
         <div class="content-categoria-servicio">
           <div class="image-content-categoria-servicio">
             <img class="img-categoria-servicio" height="120" src="<%= image_path('carousel/alice-fondo-consulta-medica.jpg') %>">
           </div>
           <div class="title-categoria-servicio">
-            <h2 class="text-white"><strong><%= categoria_servicio.nombre %></strong></h2>
+            <h2 class="text-white"><strong><%= categoria_servicio["descripcion"] %></strong></h2>
           </div>
+          
           <div class="content-list-especialidades">
             <ul class="list-especialidades">
-            <% categoria_servicio.especialidades.first(5).each do |especialidad| %>
-              <% if categoria_servicio.id == 1 %>
+            <% categoria_servicio["tipo_servicios"].take(2).each do |tipo| %>
+              <% if categoria_servicio["slug"] == "atencion-medico-primaria" %>
                 <li>
-                  <%= link_to especialidad.nombre, categoria_servicio_especialidad_servicio_path( categoria_servicio.slug, especialidad.slug, especialidad.servicios.first(1)) %>
+                  <%= link_to tipo["descripcion"], categoria_servicio_especialidad_servicio_path( categoria_servicio["slug"], tipo["slug"], tipo["servicios"].first["descripcion"]) %>
                 </li>
               <% else %>
                 <li>
-                  <%= link_to especialidad.nombre, categoria_servicio_especialidad_path(categoria_servicio.slug, especialidad.slug) %>
+                  <%= link_to tipo["descripcion"], categoria_servicio_especialidad_path(categoria_servicio["slug"], tipo["slug"]) %>
                 </li>
               <% end %>
             <% end %>
               <li class="ver-mas">
-                <%= link_to categoria_servicio_path(categoria_servicio.slug), class: "link-ver" do %>
+                <%= link_to categoria_servicio_path(categoria_servicio["slug"]), class: "link-ver" do %>
                   <i class="fa fa-plus"></i> Servicios
                 <% end %>
               </li>

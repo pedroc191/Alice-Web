@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   get "home/index"
   post "home/create"
+  get "home/suscribirse"
 
   #get "servicios/especialistas"
 

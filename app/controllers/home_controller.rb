@@ -41,6 +41,9 @@ class HomeController < ApplicationController
   def contacto
   end
 
+  def suscribirse
+  end
+
   def solicitar
   end
 
