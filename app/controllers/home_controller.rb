@@ -39,6 +39,7 @@ class HomeController < ApplicationController
   end
 
   def contacto
+    
   end
 
   def solicitar

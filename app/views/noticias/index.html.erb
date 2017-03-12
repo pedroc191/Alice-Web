@@ -27,7 +27,7 @@
                         <div class="small m-b-xs">
                             <span class="text-muted"><i class="fa fa-clock-o"></i><%= noticia['created_at'] %></span>
                         </div>
-                        <p><%= noticia["descripcion"] %></p>
+                        <p><%= noticia["descripcion"].html_safe.truncate_html(120, separator: '...') %></p>
                         <div class="row">
                             <div class="col-md-12">
                                 <h5>Categoria:</h5>
