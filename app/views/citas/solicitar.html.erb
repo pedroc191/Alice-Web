@@ -10,7 +10,7 @@
                             <h1>Reserva tu Cita</h1>
                             <div class="step-content">
                                 <div class="row">
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-4 col-md-4 col-sm-4">
                                         <div class="contact-box">
                                             <div class="col-sm-12">
                                                 <div class="text-center">
@@ -34,7 +34,7 @@
                                             <div class="clearfix"></div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-8">
+                                    <div class="col-lg-8 col-md-8 col-sm-8">
                                         <div class="ibox float-e-margins">
                                             <div class="ibox-content">
                                                 <table class="tabla-horarios table table-bordered table-hover" width="100%">
@@ -138,7 +138,7 @@
                             <h1>Datos Básicos Solicitante</h1>
                             <div class="step-content">
                                 <div class="row">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
                                         <h3>¿Has usado el sistema de citas online?</h3>
                                         <div class="form-group radio">
                                             <input type="radio" name="radiousuarionuevo" id="radio1" value="Usuarioviejo" onclick="mostrar(this.value)" checked="true">
@@ -155,36 +155,41 @@
 		                                    </select>    
 		                                </div>
                                     </div>
-                                    <div class="col-lg-6" id="Usuarioviejo" style="display: block">
-                                        <div class="form-group">
-                                            <label id="emailusuario1" for="exampleInputEmail1">Email</label>
-                                            <input type="email" class="form-control" hidden="false" id="InputEmail" placeholder="">
+                                    <div class="col-lg-6 col-md-6 col-sm-6" style="display: block">
+                                        
+                                        <div id="Usuarioviejo" style="display: block">
+                                            <div class="form-group">
+                                                <label id="emailusuario1" for="exampleInputEmail1">Email</label>
+                                                <input type="email" class="form-control" hidden="false" id="InputEmail" placeholder="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Contraseña</label> 
+                                                <input type="password" placeholder="" class="form-control">
+                                            </div>                         
                                         </div>
-                                        <div class="form-group">
-                                            <label>Contraseña</label> 
-                                            <input type="password" placeholder="" class="form-control">
-                                        </div>                         
+
+                                        <div id="Usuarionuevo" style="display: none">
+                                            
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Nombre y Apellido</label>
+                                                <input type="email" class="form-control" id="InputNombre" placeholder="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Cédula</label>
+                                                <input type="email" class="form-control" id="InputCedula" placeholder="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Email</label>
+                                                <input type="email" class="form-control" id="InputEmail" placeholder="">
+                                            </div>
+                                            <div class="form-group" id="data_2">
+                                                <label for="exampleInputEmail1">Fecha de nacimiento</label>
+                                                <div class="input-group date">
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control">
+                                                </div>
+                                            </div>                             
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-6" id="Usuarionuevo" style="display: none">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Nombre y Apellido</label>
-                                        <input type="email" class="form-control" id="InputNombre" placeholder="">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Cédula</label>
-                                        <input type="email" class="form-control" id="InputCedula" placeholder="">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Email</label>
-                                        <input type="email" class="form-control" id="InputEmail" placeholder="">
-                                    </div>
-		                            <div class="form-group" id="data_2">
-		                                <label for="exampleInputEmail1">Fecha de nacimiento</label>
-		                                <div class="input-group date">
-		                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control">
-		                                </div>
-		                            </div>                             
                                 </div>
                             </div>
                             <h1>Datos Básicos Paciente</h1>

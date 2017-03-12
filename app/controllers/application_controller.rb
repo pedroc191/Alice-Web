@@ -17,9 +17,9 @@ class ApplicationController < ActionController::Base
     			puts "All good!"
   			when 404
     			puts "O noes not found!"
- 			when 500...600
+ 			  when 500...600
     			puts "ZOMG ERROR #{response.code}"
-		end
+		  end
   		
   	end
 end

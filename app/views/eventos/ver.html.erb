@@ -24,7 +24,8 @@
 	                    <div class="row">
 	                        <div class="col-md-12">
 	                            <h5>Categorias:</h5>
-	                            <button class="btn btn-dark-blue btn-xs" type="button"><%= HTTParty.get(@url+'tipo_eventos/'+@evento["tipo_evento_id"].to_s+'.json')["descripcion"] %></button>
+	                            <button class="btn btn-dark-blue btn-xs" type="button">
+	                            <%= @evento["tipo_evento"]["descripcion"] %></button>
 	                        </div>
 	                    </div>
 	                </div>
