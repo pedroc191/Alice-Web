@@ -42,6 +42,9 @@ class HomeController < ApplicationController
     
   end
 
+  def suscribirse
+  end
+
   def solicitar
   end
 
@@ -52,6 +55,13 @@ class HomeController < ApplicationController
   end
 
   def preguntas_frecuentes
+     @url = Url_WebServices()
+      @categorias = HTTParty.get(@url+'tipo_preguntas.json')
+    if params[:id].nil?
+      @preguntas = HTTParty.get(@url+'preguntas.json')
+    else
+      @preguntas = HTTParty.get(@url+'preguntas.json?id='+params[:id])
+    end
   end
 
   private

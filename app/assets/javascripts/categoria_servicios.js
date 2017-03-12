@@ -1,14 +1,17 @@
-jQuery(document).ready(function() {
+$(document).ready(function() {
     alturasIguales('.content-list-servicios');
     alturasIguales('.content-especialidades');
+    alturasIguales('.content-list-especialidades');
 });
 
-jQuery(window).load(function() {
+$(window).on('load',function() {
     alturasIguales('.content-list-servicios');
     alturasIguales('.content-especialidades');
+    alturasIguales('.content-list-especialidades');
 });
 
-jQuery(window).resize(function() {
+$(window).on('resize',function() {
     alturasIguales('.content-list-servicios');
     alturasIguales('.content-especialidades');
+    alturasIguales('.content-list-especialidades');
 });

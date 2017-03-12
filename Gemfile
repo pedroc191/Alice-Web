@@ -15,7 +15,8 @@ gem 'httparty', '~> 0.14.0'
 
 # Use mysql as the database for Active Record
 #gem 'mysql2'
-gem 'pg'
+#gem 'pg'
+gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
