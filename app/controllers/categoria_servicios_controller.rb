@@ -37,7 +37,7 @@ class CategoriaServiciosController < ApplicationController
      #@categoria_servicio.especialidades.paginate(page: params[:page], per_page: 4)
   end
 
-  def mas
+  def mas_servicios
     @categorias = HTTParty.get(Url_WebServices() + '/categorias.json')
     @categorias.each do |categoria|
       if categoria["slug"] = params[:id]

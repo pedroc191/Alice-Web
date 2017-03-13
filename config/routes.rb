@@ -38,7 +38,7 @@ Rails.application.routes.draw do
   get "eventos/ver"
 
   get "categoria_servicios/ver/:slug", to: "categoria_servicios#ver", as: "categoria_servicios_ver"
-  get "categoria_servicios/ver/:slug", to: "categoria_servicios#ver", as: "categoria_servicios_ver"
+  get "categoria_servicios/mas_servicios/:slug", to: "categoria_servicios#mas_servicios", as: "categoria_servicios_mas_servicios"
   get "servicios/ver/:slug", to: "servicios#ver", as: "servicios_ver"
   
   # The priority is based upon order of creation: first created -> highest priority.
