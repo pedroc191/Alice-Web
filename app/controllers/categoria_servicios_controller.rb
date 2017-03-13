@@ -1,5 +1,6 @@
 class CategoriaServiciosController < ApplicationController
   before_action :set_categoria_servicio, only: [:show, :edit, :update, :destroy]
+    require 'will_paginate/array'
 
   # GET /categoria_servicios
   # GET /categoria_servicios.json
@@ -12,7 +13,42 @@ class CategoriaServiciosController < ApplicationController
   # GET /categoria_servicios/1
   # GET /categoria_servicios/1.json
   def show
-    @especialidades = @categoria_servicio.especialidades.paginate(page: params[:page], per_page: 4)
+    #@especialidades = @categoria_servicio.especialidades.paginate(page: params[:page], per_page: 4)
+    @categorias = HTTParty.get(Url_WebServices() + '/categorias.json')
+    @categorias.each do |categoria|
+      if categoria["slug"] = params[:id]
+        @tipo_servicios = categoria["tipo_servicios"]
+        break
+      end
+    end
+    #@especialidades = Willpaginate::Collection.create(page: params[:page], per_page: 4) do |pager|
+     # pager.replace(@tipo_servicios)
+    #end
+
+    @per_page = params[:per_page] || 2
+    @especialidades= @tipo_servicios.paginate(:per_page => @per_page, :page => params[:page])
+
+  end
+
+  def ver
+    @url = Url_WebServices()
+
+    @especialidades = HTTParty.get(@url+'tipo_servicios.json?slug='+params[:slug])
+     #@categoria_servicio.especialidades.paginate(page: params[:page], per_page: 4)
+  end
+
+  def mas_servicios
+    @categorias = HTTParty.get(Url_WebServices() + '/categorias.json')
+    @categorias.each do |categoria|
+      if categoria["slug"] = params[:id]
+        @tipo_servicios = categoria["tipo_servicios"]
+        break
+      end
+    end
+
+    @per_page = params[:per_page] || 2
+    @especialidades= @tipo_servicios.paginate(:per_page => @per_page, :page => params[:page])
+    
   end
 
   # GET /categoria_servicios/new

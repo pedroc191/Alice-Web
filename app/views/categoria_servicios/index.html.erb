@@ -14,16 +14,11 @@
           
           <div class="content-list-especialidades">
             <ul class="list-especialidades">
-            <% categoria_servicio["tipo_servicios"].take(2).each do |tipo| %>
-              <% if categoria_servicio["slug"] == "atencion-medico-primaria" %>
+            <% categoria_servicio["tipo_servicios"].take(5).each do |tipo| %>
                 <li>
-                  <%= link_to tipo["descripcion"], categoria_servicio_especialidad_servicio_path( categoria_servicio["slug"], tipo["slug"], tipo["servicios"].first["descripcion"]) %>
+                  <%= link_to tipo["descripcion"], categoria_servicios_ver_path(slug: tipo["slug"]) %>
+                  <%#= link_to tipo["descripcion"], categoria_servicios_ver_path( categoria_servicio["slug"], tipo["slug"], tipo["servicios"].first["descripcion"]) %>
                 </li>
-              <% else %>
-                <li>
-                  <%= link_to tipo["descripcion"], categoria_servicio_especialidad_path(categoria_servicio["slug"], tipo["slug"]) %>
-                </li>
-              <% end %>
             <% end %>
               <li class="ver-mas">
                 <%= link_to categoria_servicio_path(categoria_servicio["slug"]), class: "link-ver" do %>
