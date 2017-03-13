@@ -1,3 +1,4 @@
+
 <div id="inSlider" class="carousel carousel-fade" data-ride="carousel">
     <ol class="carousel-indicators">
         <li data-target="#inSlider" data-slide-to="0" class="active"></li>
@@ -76,7 +77,7 @@
                 <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11">
                     <ul id="tira-noticias" class="nt-title newsticker">
                         <% @noticias.each do |noticia| %>
-                            <li><a href="#"><i class="fa fa-"></i><%= noticia["titulo"] %></a></li>
+                            <li><a href="<%= noticias_ver_path(noticia['slug']) %>"><i class="fa fa-"></i><%= noticia["titulo"] %></a></li>
                         <% end %>
                     </ul>
                 </div>
@@ -127,9 +128,9 @@
                     <% @eventos.each do |evento| %>
                     <div>
                         <div class="ibox-content">
-                            <a href="#">
+                            <a href="<%= eventos_ver_path(evento['slug']) %>">
                                 <div class="content-image-slick">    
-                                    <img class="image-slick" src='<%= @url + evento["foto_url"]%>'>   
+                                    <img class="image-slick" src='<%= evento["foto_url"] %>'>   
                                 </div>
                             
                                 <h3><%= evento["descripcion"] %></h3>

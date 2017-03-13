@@ -1,13 +1,12 @@
 
 class HomeController < ApplicationController
   
-  include HTTParty
-
   def index
-    #@response = HTTParty.get(Url_WebServices() + '/roles.json')
-    @url = Url_WebServices()
-    @noticias = HTTParty.get(Url_WebServices() + '/noticias.json')
-    @eventos = HTTParty.get(Url_WebServices() + '/eventos.json')
+    
+    @noticias = self.class.get('/noticias.json')
+    
+    @eventos = self.class.get('/eventos.json')
+    
     #@tipo_servicio =  HTTParty.get(Url_WebServices() + '/tipo_servicios/1.json')
 
     #@foto = Url_WebServices() + @tipo_servicio['foto']
@@ -39,7 +38,7 @@ class HomeController < ApplicationController
   end
 
   def contacto
-    
+    @info_contacto = self.class.get('/informacion_generals.json')    
   end
 
   def suscribirse
@@ -55,19 +54,19 @@ class HomeController < ApplicationController
   end
 
   def preguntas_frecuentes
-     @url = Url_WebServices()
-      @categorias = HTTParty.get(@url+'tipo_preguntas.json')
+
+    @categorias = self.class.get('/tipo_preguntas.json')
+    
     if params[:id].nil?
-      @preguntas = HTTParty.get(@url+'preguntas.json')
+    
+      @preguntas = self.class.get('/preguntas.json')
+    
     else
-      @preguntas = HTTParty.get(@url+'preguntas.json?id='+params[:id])
+      
+      @preguntas = self.class.get(self.class.base_uri + '/preguntas.json?id=' + params[:id])
     end
   end
 
   private
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def roles_params
-      params.require(:roles).permit(:descripcion)
-    end
 end

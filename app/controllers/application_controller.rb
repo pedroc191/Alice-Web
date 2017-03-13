@@ -3,13 +3,11 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   	protect_from_forgery with: :exception
 
-
-  	def Url_WebServices
-
-  		return 'http://192.168.2.14:3001/'
-  		
-  	end
-
+    
+    include HTTParty
+  
+    base_uri 'http://192.168.0.105:3000/'
+  
   	def Respond_notice(response)
 
   		case response.code

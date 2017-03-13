@@ -25,11 +25,21 @@ Rails.application.routes.draw do
   #get "servicios/especialistas"
 
   get "citas/solicitar"
+  
   get "home/contacto"
+  
   get "home/preguntas_frecuentes"
-  get "noticias/leer"
-  get "eventos/ver"
+
+  get "noticias/ver/:slug", to: "noticias#ver", as: "noticias_ver"
+
+  get "noticias/categoria/:slug", to: "noticias#categoria", as: "noticias_categoria"
+  
+  get "eventos/ver/:slug", to: "eventos#ver", as: "eventos_ver"
+  
+  get "eventos/categoria/:slug", to: "eventos#categoria", as: "eventos_categoria"
+  
   get "home/solicitar"
+  
   get "home/solicitar2"
   get "home/solicitar3"
   

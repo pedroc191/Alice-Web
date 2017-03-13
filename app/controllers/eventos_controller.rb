@@ -4,15 +4,30 @@ class EventosController < ApplicationController
   # GET /eventos
   # GET /eventos.json
   def index
-     @url = Url_WebServices()
-      @categorias = HTTParty.get(@url+'tipo_evento.json')
-    if params[:id].nil?
-      @eventos = HTTParty.get(@url+'eventos.json')
-    else
-      @eventos = HTTParty.get(@url+'eventos.json?id='+params[:id])
-    end
+    
+    @categorias = self.class.get('/tipo_eventos.json')
+    
+    @eventos = self.class.get('/eventos.json')
+
   end
 
+  def categoria
+    
+    @categorias = self.class.get('/tipo_eventos.json')
+    
+    @categorias.each do |categoria|
+
+      if params[:slug] == categoria["slug"]
+      
+        @eventos = categoria["eventos"]
+        
+        break
+      
+      end
+    
+    end
+
+  end
   # GET /eventos/1
   # GET /eventos/1.json
   def show
@@ -20,8 +35,7 @@ class EventosController < ApplicationController
 
 
   def ver
-    @url = Url_WebServices()
-    @evento = HTTParty.get(@url+'eventos/'+params[:id].to_s+'.json')
+    @evento = self.class.get('/eventos/'+params[:slug]+'.json')
   end
 
   # GET /eventos/new
