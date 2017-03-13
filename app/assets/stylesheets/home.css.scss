@@ -50,94 +50,6 @@
     height: 480px;
     weight: 480px;
   }
-/*	CUSTOM LINK FLOTANTE  */
-	.links-redes-app {
-		position: fixed;
-		float: right;
-		left: 97%;
-		top: 90px;
-		margin: 0;
-		z-index: 10000;
-		list-style: none;
-
-		li {
-			margin: 0px 0px 10px;
-			width: 250px;
-			height: 55px;
-			float: left;
-			position: relative;
-			display: block;
-			border-color: #000000;
-			border-width: 0px;
-			border-radius: 10px;
-			box-shadow: 0 0 5px rgba(0,0,0,.2);
-			background-color: #FFFFFF;
-		}
-		li:hover {
-			transform: translateX(-110px);
-			transition: transform .3s;
-		}
-		li a {
-			display: block;
-			position: relative;
-			line-height: 18px;
-			margin-left: 15px;
-			color: $skin-1-color;
-			text-decoration: none;
-		}
-		.facebook:hover a {
-			color: $color-facebook;
-		}
-		.twitter:hover a {
-			color: $color-twitter;
-		}
-		.instagram:hover a {
-			color: $color-instagram;
-		}
-		.android:hover{
-			transform: translateX(-170px);
-			transition: transform .3s;
-		}
-		.android:hover a{
-			color: $color-android;
-		}
-		li a span i {
-			font-size: 35px;
-		}
-		li a .icon-telf,li a .text-telf {
-			position: relative;
-		}
-		li a .icon-telf {
-			top: 10px;
-			margin-right: 5px;
-		}
-		li a .text-telf {
-			font-size: 20px;
-			padding: 0px 0px 0px 15px;
-			top: 5px;
-		}
-
-		@media (max-width:1600px){
-			
-			left: 96%;
-		}
-		@media (max-width:1366px) {
-		
-			left: 93%;
-		}
-		@media (max-width:1100px){
-			
-			left: 95%;
-		}
-		@media (max-width:870px){
-			
-			left: 93%;
-		}
-		@media (max-width:767px){
-			
-			display: none;
-		}
-	}
 
 /*	CUSTOM CAROUSEL	*/
 	.carousel{
@@ -379,8 +291,7 @@
 						}
 					}
 					h3{
-						position:fixed;
-						bottom: 0px;
+						top: 0px;
 						font-size: 24px;
 						font-weight: 100;
 					}
@@ -389,6 +300,7 @@
 		}
 	}
 
+/*	CUSTOM PREGUNTAS y RESPUESTAS	*/
     #preguntas_respuestas{
     	margin-top: 67px;
 
@@ -450,5 +362,86 @@
           }
         }
     }
+
+/*	CUSTOM CONTACTO	*/
+	#contacto{
+		height: 550px;
+
+		.content-contacto{
+			border-radius: 20px;
+			background-color: rgba(255,255,255,0.7);
+			padding: 20px;
+			//height: 400px;
+			
+			.title-content{    
+				padding: 0px 0px 20px;
+    			border-bottom: 4px solid $color-darkblue;
+    			margin: 10px 30px 20px;
+    			font-weight: 600;
+			}
+
+			.title-content-solo{    
+				padding: 0px 20px;
+    			font-weight: 600;
+    			margin: 0px 0px 10px;
+			}
+			.text-content-solo{
+				padding: 0px 20px;
+				font-size: 16px;
+			}
+			.row-content{
+				margin-top: 20px;
+			}
+			#form-contacto{
+
+				.btn-dark-blue{
+					margin-top: 10px;
+					width: 100%;
+				}
+			}
+
+		    .col-redsocial{
+		      margin-bottom: 30px;
+
+		      .btn-circle{
+		        width: 40px;
+		        height: 40px;
+		        border-radius: 25px;
+		        padding: 7px 0px;
+		      }
+		      a.facebook {
+		        background-color: $color-facebook;
+		      }
+		      a.twitter {
+		        background-color: $color-twitter;
+		      }
+		      a.instagram {
+		        background-color: $color-instagram;
+		      }
+		      a.youtube {
+		        background-color: $color-youtube;
+		      }
+		    }
+		}
+
+		.content-contacto.blue{
+			background-color: rgba(14,154,239, 0.7);
+
+			.title-content{    
+				padding: 0px 0px 20px;
+    			border-bottom: 3px solid #FFFFFF;
+    			margin: 10px 30px 20px;
+    			font-weight: 600;
+			}
+		}
+	}
+/*	CUSTOM MAPS	*/
+	#maps{
+		margin: 0px 0px;
+
+		.google-map{
+			height: 400px;
+		}
+	}
 }
 

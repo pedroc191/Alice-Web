@@ -1,105 +1,169 @@
-<section id="servicios-solicitar" class="white-section">
+<section id="contacto" style="background: transparent url('<%= image_path('carousel/alice-fondo-consulta-medica.jpg') %>')  50% 0 no-repeat; background-size: cover;" class="white-section">
     <div class="container">
         <div class="row">
         <h2 class="title-section"> </h2>
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
-                <div class="content-servicio">
-                    <h2 class="text-white text-center">¡Déjanos tu opinion!</h2>
-                    <h3 class="text-white">_______________________________________</h3>
-                    <p class="text-white">Nombre</p>
-                    <form id="form-nombre">
-                        <input type="text" placeholder="" class="form-control">
-                    </form>
-                     <p class="text-white">Correo</p>
-                    <form id="form-corre">
-                        <input type="text" placeholder="ejemplo@alice.net" class="form-control">
-                    </form>
-                    <p class="text-white">Tipo</p>
-                    <form id="form-servicio">
-                        <select class="select-box form-control">
-                            <option></option>
-                            <option value="Opinion">Opinion</option>
-                            <option value="Sugerencia">Sugerencia</option>
-                            <option value="Reclamo">Reclamo</option>
-                        </select>
-                    </form>                  
-                    <form id="form-consulta">
-                        <button class="btn btn-info" type="submit">Enviar</button>
+                <div class="content-contacto blue">
+                    <h2 class="text-white text-center title-content">¡Déjanos tu opinion!</h2>
+                    
+                    <form id="form-contacto">
+                        <div class="form-group">
+                            <label class="control-label">Nombre</label>
+                            <input type="text" name="Nombre" placeholder="" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Correo</label>
+                            <input type="email" name="email" placeholder="ejemplo@alice.net" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Tipo</label>
+                            <select name="tipo_opinion" class="select-box form-control">
+                                <option value= ""></option>
+                                <option value= "Opinion">Opinion</option>
+                                <option value= "Sugerencia">Sugerencia</option>
+                                <option value= "Reclamo">Reclamo</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Mensaje</label>
+                            <textarea name="mensaje" class="form-control"></textarea>
+                        </div>
+                        <button class="btn btn-dark-blue" type="submit">Enviar</button>
                     </form>
                 </div>
             </div>
             <div class="col-lg-8 col-md-4 col-sm-6 col-xs-6">
-                <div class="content-servicio" style="height: 470px;">
-                    <h1 class="text-white text-left">Visitanos en nuestra sede principal de Unidad Quirurgica La Trinidad</h1>
-                  <!--     <div class="content-image-slick">    
-                                    <img class="image-slick" src="<%= image_url 'logos/logo-alice-mini.png' %>">   
-                                </div> -->
-                    <h2 class="text-white text-center">_________________________________________________________________</h2>
-                    <h2 class="text-white text-center">Direccion: Carrera 28, entre calles 9 y 10, Nro 9-124</h2>
-                    <h2 class="text-white text-center">Concepcion, Barquisimeto</h2>
-                    <h2 class="text-white text-center">Telefonos:</h2>
-                    <h2 class="text-white text-center">(0251) 252.5284 - (0251) 251.4646</h2>  
-
-                    <h2 class="text-white text-center" style="font-weight: 400; margin-top: 80px;">Te invitamos a nuestra seccion de: <a class="text-white" href="/home/preguntas_frecuentes"><strong>Preguntas Frecuentes</strong></a></h2> 
+                <div class="content-contacto">
+                    <h2 class="text-blue-dark text-center title-content-solo">Visitanos en nuestra sede principal</h2>
+                    <h2 class="text-blue-dark text-center title-content-solo"><%= @]info_contacto["nombre"] %></h2>
+                    <div class="row row-content">
+                        <div class="col-sm-6">
+                            <p class="font-bold text-blue-dark text-content-solo">Direccion:</p>
+                            <p class="text-blue-dark text-content-solo"><%= @info_contacto[direccion] %></p>
+                            <p class="font-bold text-blue-dark text-content-solo">Telefonos:</p>
+                            <p class="text-blue-dark text-content-solo"><%= @info_contacto["tlf1"] %></p>
+                            <p class="text-blue-dark text-content-solo"><%= @info_contacto["tlf2"] %></p>  
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="row">
+                                        <h2 class="text-blue-dark text-center title-content-solo">Siguenos en</h2>         
+                                        <div class="col-redsocial col-lg-3 col-md-3 col-sm-3 col-xs-3 text-white text-center">
+                                            <a class="btn btn-circle facebook" href="<%= @info_contacto["]url_fb" %>">
+                                                <i class="fa fa-facebook fa-2x text-white"></i>
+                                            </a>
+                                        </div>
+                                        <div class="col-redsocial col-lg-3 col-md-3 col-sm-3 col-xs-3 text-white text-center">
+                                            <a class="btn btn-circle twitter" href="<%= @info_contacto["url_tw"] %>">
+                                                <i class="fa fa-twitter fa-2x text-white"></i>
+                                            </a>
+                                        </div>
+                                        <div class="col-redsocial col-lg-3 col-md-3 col-sm-3 col-xs-3 text-white text-center">
+                                            <a class="btn btn-circle instagram" href="<%= @info_contacto["url_ins"] %>">
+                                                <i class="fa fa-instagram fa-2x text-white"></i>
+                                            </a>
+                                        </div>
+                                        <div class="col-redsocial col-lg-3 col-md-3 col-sm-3 col-xs-3 text-white text-center">
+                                            <a class="btn btn-circle youtube" href="<%= <%= @info_contacto["url_you"] %>">
+                                                <i class="fa fa-youtube-play fa-2x text-white"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h2 class="text-blue-dark text-center" style="font-weight: 400; margin-top: 30px;">Para informacion especifica, entra en: <a class="text-blue-dark" href="/home/preguntas_frecuentes"><strong>Preguntas Frecuentes</strong></a></h2> 
                 </div>
-
             </div>
-            
-            <div class="header-back2" style="background: transparent url('<%= image_path('carousel/alice-fondo-consulta-medica.jpg') %>')  50% 0 no-repeat; background-size: cover;"></div>
         </div>
     </div>
 </section>
+<section id="maps" class="white-section">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="google-map" id="map2"></div>
+        </div>
+    </div>
+</section>
+
 <% content_for :javascript do %>
+
     <script type="text/javascript">
 
         $(function() {
-
             $(".select-box").select2({
                 placeholder: "",
                 allowClear: true
-        |    });
-            $('.newsticker').newsTicker({
-                row_height: 46,
-                max_rows: 1,
-                speed: 600,
-                direction: 'up',
-                duration: 4000,
-                autostart: 1,
-                pauseOnHover: 0
-            });
-
-            $('.slick-eventos').slick({
-                infinite: true,
-                slidesToShow: 3,
-                slidesToScroll: 1,
-                centerMode: true,
-                responsive: [
-                    {
-                        breakpoint: 1024,
-                        settings: {
-                            slidesToShow: 3,
-                            slidesToScroll: 3,
-                            infinite: true,
-                            dots: true
-                        }
-                    },
-                    {
-                        breakpoint: 600,
-                        settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 2
-                        }
-                    },
-                    {
-                        breakpoint: 480,
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1
-                        }
-                    }
-                ]
             });
         });
 
     </script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWBQqC8B1NbZcMKYTnJf197wrBLMC3f5A"></script>
+
+    <script type="text/javascript">
+
+    function initialize() {
+
+        var position_trinidad = new google.maps.LatLng(parseFloat(<%= @info_contacto['latitud'] %>), parseFloat(<%= @info_contacto['longitud'] %>));
+        var mapOptions2 = {
+            zoom: 15,
+            center: position_trinidad,
+            // Style for Google Maps
+            styles: [
+                { "featureType": "all", "elementType": "all", "stylers": [
+                        { "invert_lightness": true }, 
+                        { "saturation": 10 }, 
+                        { "lightness": 30 }, 
+                        { "gamma": 0.5 }, 
+                        { "hue": "#435158" }
+                    ] 
+                }
+            ]
+        };
+
+        var mapElement2 = document.getElementById('map2');
+
+        // Create the Google Map using elements
+        var map2 = new google.maps.Map(mapElement2, mapOptions2);
+      
+        var contentString = 
+            '<div id="content">' +
+                '<div id="siteNotice">' +
+                '</div>' +
+                '<h2 id="firstHeading" class="firstHeading text-blue-dark text-center"><img src="<%= Url_WebServices() + @info_contacto["logo"] %>" width="350" height="100"></h2>' +
+                '<div id="bodyContent">' +
+                    '<p><br><b><%= @info_contacto["slogan"] %></b></p>' +
+                    '<p><b>Direccion: </b><%= @info_contacto["direccion"] %></p>' +
+                    '<p><b>Telefonos: </b><%= @info_contacto.["@telf1"]  - <%= @info_contacto.["@telf2"] %></p>'+
+                '</div>' +
+            '</div>';
+
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+
+        var marker = new google.maps.Marker({
+            position: position_trinidad,
+            animation: google.maps.Animation.BOUNCE,
+            icon: { 
+                url: "<%= image_path('logos/logo-alice-mini-x64.png') %>",
+                size: new google.maps.Size(64, 64),
+                origin: new google.maps.Point(0, 0),
+                anchor: new google.maps.Point(0, 64)
+            },
+            title: "<%= @info_contacto['nombre'] %>"
+        });
+        marker.setMap(map2);
+
+        google.maps.event.addListener(marker, 'click', function() {
+            infowindow.open(map2, marker);
+        });
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+    
+</script>
+
 <% end %>
