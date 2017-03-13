@@ -8,7 +8,11 @@
 .landing-page{
 
     .white-section{
-    
+        margin-top: 0px;
+        margin-bottom: 30px;
+        top: 30px;
+        position: relative;
+
         .title-section{
           margin: 0px;
           font-size: 30px;
@@ -19,7 +23,7 @@
 
     .content-evento-background{
         height: 230px;
-        margin: 66px 0px 30px;
+        margin: 66px 0px 0px;
 
         .container{
             height: inherit;
@@ -52,7 +56,15 @@
 	        	margin-top: 20px;
 	        }
         }
+        #categoria{
 
+            .container{
+                margin-top: 0px;
+                .row{
+                    margin-top: 0px;
+                }
+            }
+        }
 	    .ibox-content{
 	        border-width: 0px 0px;
 	        min-height: 300px;

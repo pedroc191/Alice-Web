@@ -4,30 +4,43 @@ class NoticiasController < ApplicationController
   # GET /noticias
   # GET /noticias.json
   def index
-    @url = Url_WebServices()
-      @categorias = HTTParty.get(@url+'tipo_noticias.json')
-    if params[:id].nil?
-      @noticias = HTTParty.get(@url+'noticias.json')
-    else
-      @noticias = HTTParty.get(@url+'noticias.json?id='+params[:id])
+    @categorias = self.class.get('/tipo_noticias.json')
+    
+    @noticias = self.class.get('/noticias.json')
+  end
+
+  def categoria
+    
+    @categorias = self.class.get('/tipo_noticias.json')
+    puts @categorias
+    
+    @categorias.each do |categoria|
+
+      if params[:slug] == categoria["slug"]
+      
+        @noticias = categoria["noticias"]
+        break
+      
+      end
+    
     end
+
   end
 
   def categorias
-    @url = Url_WebServices()
-    @categorias = HTTParty.get(@url+'tipo_servicios/filtrada.json?id='+params["id"])
+    @categorias = self.class.get('tipo_servicios/filtrada.json?id='+params["id"])
   end
 
   # GET /noticias/1
   # GET /noticias/1.json
   def show
+
   end
 
   #noticias/leer
-  def leer
-        @url = Url_WebServices()
-        @noticia = HTTParty.get(@url+'noticias/'+params[:id].to_s+'.json')
-        
+  def ver
+    @noticia = self.class.get('/noticias/' + params[:slug] + '.json') 
+
   end
 
   # GET /noticias/new
@@ -82,7 +95,8 @@ class NoticiasController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_noticia
-      @noticia = Noticia.find(params[:id])
+
+      @noticia = Noticia.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

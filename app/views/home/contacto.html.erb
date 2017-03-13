@@ -9,7 +9,7 @@
                     <form id="form-contacto">
                         <div class="form-group">
                             <label class="control-label">Nombre</label>
-                            <input type="text" name="Nombre" placeholder="" class="form-control">
+                            <input type="text" name="nombre" placeholder="" class="form-control">
                         </div>
                         <div class="form-group">
                             <label class="control-label">Correo</label>
@@ -39,7 +39,7 @@
                     <div class="row row-content">
                         <div class="col-sm-6">
                             <p class="font-bold text-blue-dark text-content-solo">Direccion:</p>
-                            <p class="text-blue-dark text-content-solo"><%= @info_contacto[direccion] %></p>
+                            <p class="text-blue-dark text-content-solo"><%= @info_contacto["direccion"] %></p>
                             <p class="font-bold text-blue-dark text-content-solo">Telefonos:</p>
                             <p class="text-blue-dark text-content-solo"><%= @info_contacto["tlf1"] %></p>
                             <p class="text-blue-dark text-content-solo"><%= @info_contacto["tlf2"] %></p>  
@@ -136,7 +136,7 @@
                 '<div id="bodyContent">' +
                     '<p><br><b><%= @info_contacto["slogan"] %></b></p>' +
                     '<p><b>Direccion: </b><%= @info_contacto["direccion"] %></p>' +
-                    '<p><b>Telefonos: </b><%= @info_contacto.["@telf1"]  - <%= @info_contacto.["@telf2"] %></p>'+
+                    '<p><b>Telefonos: </b><%= @info_contacto.["@tlf1"]  - <%= @info_contacto.["@tlf2"] %></p>'+
                 '</div>' +
             '</div>';
 
