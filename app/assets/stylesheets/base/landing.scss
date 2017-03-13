@@ -782,6 +782,48 @@ body.landing-page {
     border-color: #354789;
   }
   
+/* CUSTOM BTN DARKBLUE */
+  .btn-blue {
+    background-color: $color-blue;
+    border-color: $color-blue;
+    color: #FFFFFF;
+    font-size: 14px;
+    padding: 10px 20px;
+    font-weight: 600;
+  }
+  .btn-blue:hover,
+  .btn-blue:focus,
+  .btn-blue:active,
+  .btn-blue.active,
+  .open .dropdown-toggle.btn-blue {
+    background-color: darken($color-blue, 5%);
+    border-color: darken($color-blue, 5%);
+    color: #FFFFFF;
+  }
+  .btn-blue:active,
+  .btn-blue.active,
+  .open .dropdown-toggle.btn-blue {
+    background-image: none;
+  }
+  .btn-blue.disabled,
+  .btn-blue.disabled:hover,
+  .btn-blue.disabled:focus,
+  .btn-blue.disabled:active,
+  .btn-blue.disabled.active,
+  .btn-blue[disabled],
+  .btn-blue[disabled]:hover,
+  .btn-blue[disabled]:focus,
+  .btn-blue[disabled]:active,
+  .btn-blue.active[disabled],
+  fieldset[disabled] .btn-blue,
+  fieldset[disabled] .btn-blue:hover,
+  fieldset[disabled] .btn-blue:focus,
+  fieldset[disabled] .btn-blue:active,
+  fieldset[disabled] .btn-blue.active {
+    background-color: #354789;
+    border-color: #354789;
+  }
+
 /*  CUSTOM FOOTER */
   #footer{
     background-color: #788292;

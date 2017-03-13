@@ -7,7 +7,7 @@ class CategoriaServiciosController < ApplicationController
   def index
     @categoria_servicios = CategoriaServicio.all
     @url = Url_WebServices()
-    @categorias = HTTParty.get(Url_WebServices() + '/categorias.json')
+    @categorias = self.class.get('/categorias.json')
   end
 
   # GET /categoria_servicios/1

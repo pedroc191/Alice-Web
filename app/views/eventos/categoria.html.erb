@@ -16,11 +16,15 @@
                     <div class="row">
                         <ul class="nav navbar-nav">
                             <li style="margin: 10px 10px;">
-                                <%= link_to "General", eventos_path, class: "btn btn-blue btn-lg", style: "padding: 10px;" %>    
+                                <%= link_to "General", noticias_path, class: "btn btn-dark-blue btn-lg", style: "padding: 10px;" %>    
                             </li>
                         <% @categorias.each do |categoria| %>
                             <li style="margin: 10px 10px;">
+                                <% if categoria["slug"] == params[:slug] %>
+                                <%= link_to categoria["descripcion"], eventos_categoria_path(categoria["slug"]), class: "btn btn-blue btn-lg", style: "padding: 10px;" %>
+                                <% else %>
                                 <%= link_to categoria["descripcion"], eventos_categoria_path(categoria["slug"]), class: "btn btn-dark-blue btn-lg", style: "padding: 10px;" %>
+                                <% end %>
                             </li>
                         <% end %> 
                         </ul>
@@ -40,13 +44,13 @@
                             <img class="img-responsive" src="<%= evento["foto_url"]%>">
                         <% end %>
                         <div class="small m-b-xs">
-                            <span class="text-muted"><i class="fa fa-clock-o"></i><%= evento['created_at'].to_date.strftime("%d/%m/%Y") %></span>
+                            <span class="text-muted"><i class="fa fa-clock-o"></i> <%= evento['created_at'].to_date.strftime("%d/%m/%Y") %></span>
                         </div>
-                        
-                        <div class="row row-tipo-evento">
+                        <p><%= evento["descripcion"] %></p>
+                        <div class="row">
                             <div class="col-md-12">
-                                <h5>Categoria:</h5>
-                                <a class="btn btn-dark-blue btn-xs" style="padding: 0px 20px;" type="button" href="<%= eventos_categoria_path(evento["tipo_evento"]["slug"]) %>"><%= evento["tipo_evento"]['descripcion'] %></a>
+                                <h3>Categoria:</h3>
+                                <label class="btn-dark-blue btn-xs" style="padding: 0px 20px;" type="button"><%= evento["tipo_evento"]['descripcion'] %></label>
                             </div>
                         </div>
                     </div>
