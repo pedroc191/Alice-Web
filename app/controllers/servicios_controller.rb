@@ -13,8 +13,15 @@ class ServiciosController < ApplicationController
   # GET /servicios/1.json
   def show
     @especialistas = @servicio.especialistas.paginate(page: params[:page], per_page: 4)
-       
+     @url = Url_WebServices()
+    @noticias = HTTParty.get(Url_WebServices() + '/categoria.json')  
   end
+
+  def ver
+     @url = Url_WebServices()
+    @tipo_servicio = HTTParty.get(Url_WebServices() + '/tipo_servicios/'+params["id"]'.json')   
+  end
+
 
   def especialistas
     #@servicio = Servicio.friendly.find(params[:id])

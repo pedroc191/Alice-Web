@@ -1,0 +1,20 @@
+<div class="content-servicio-background" style="background: transparent url('<%= image_path('carousel/alice-fondo-consulta-medica.jpg') %>')  50% 0 no-repeat; background-size: cover;">
+  <div class="container">
+    <div class="content-title">
+        <h2 class="title-section"><%= @categoria_servicio.nombre %></h2>
+    </div>
+  </div>  
+</div>
+<div class="row">
+    <div class="col-sidebar col-lg-2 col-md-2 col-sm-12">
+      <%= render 'layouts/sidebar-especialidad' %>         
+    </div>
+    <div class="col-content col-lg-10 col-md-10 col-sm-12">
+      <section id="categoria-servicios" class="white-section">
+        <div class="container">
+          
+          <%= render 'especialidades'%>
+        </div>
+      </section>  
+    </div>
+</div>

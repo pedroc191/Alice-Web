@@ -1,14 +1,13 @@
 class EventosController < ApplicationController
   before_action :set_evento, only: [ :edit, :update, :destroy]
+  before_action :eventos, only: [:index]
 
   # GET /eventos
   # GET /eventos.json
   def index
-    
     @categorias = self.class.get('/tipo_eventos.json')
     
     @eventos = self.class.get('/eventos.json')
-
   end
 
   def categoria
@@ -90,7 +89,7 @@ class EventosController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_evento
-      @evento = Evento.find(params[:id])
+      @evento = Evento.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

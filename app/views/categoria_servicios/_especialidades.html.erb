@@ -7,13 +7,14 @@
                   <img class="img-categoria-servicio" width="inherit" height="120" src="<%= image_path('carousel/alice-fondo-consulta-medica.jpg') %>">
                 </div>
                 <div class="title-categoria-servicio">
-                  <h2><%= especialidad.nombre %></h2>
+                  <h2><%= especialidad["descripcion"] %></h2>
                 </div>
                 <div class="content-list-especialidades">
                   <ul class="list-especialidades">
-                  <% especialidad.servicios.each do |servicio| %>
+                  <% especialidad["servicios"].each do |servicio| %>
                       <li>
-                      	<%= link_to servicio.nombre, 
+                      <%= link_to servicio['descripcion'], servicios_ver_path(servicio["slug"]) %>
+                      	<%#= link_to servicio.nombre, 
                       	categoria_servicio_especialidad_servicio_path( @categoria_servicio.slug, especialidad.slug, servicio.slug) %>
                      	</li>
                   <% end %>
