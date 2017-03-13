@@ -12,7 +12,7 @@
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <div class="evento ibox">
                     <div class="ibox-content">
-                        <%= link_to eventos_ver_path(id: evento["id"]) do %>
+                        <%= link_to eventos_ver_path(slug: evento["slug"]) do %>
                             <h2 class= "btn-link"><%= evento['descripcion']%></h2>
                             <img class="img-responsive" src="<%= @url + evento["foto_url"]%>">
                         <% end %>

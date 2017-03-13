@@ -1,0 +1,82 @@
+<div class="content-servicio-background" style="background: transparent url('<%= image_path('carousel/alice-fondo-consulta-medica.jpg') %>')  50% 0 no-repeat; background-size: cover;">
+	<div class="container">
+		<div class="content-title">
+				 <h2 class="title-section"><%= @servicio.especialidad.nombre %></h2>
+				 <h3 class="title-section"><%= @servicio.nombre %></h3>
+		</div>
+	</div>	
+</div>
+<div class="row">
+  	<div class="col-sidebar col-lg-2 col-md-2 col-sm-12">
+        <nav class="navbar-default sidebar-filtro">
+             
+            <div class="content-btn-filtro text-center">
+                <%= link_to "Buscar Especialistas", especialistas_path(:id => @servicio.id), remote: true, class: "btn-filter btn btn-dark-blue", id: "boton_especialidad" %>
+            </div>
+
+        		<%= render 'layouts/sidebar-especialistas' %>  	
+            
+            <div class="content-btn-filtro text-center">
+                <a class="btn-filter btn btn-dark-blue" onclick="">Buscar Especialistas</a>
+            </div>
+        </nav>	
+  	</div>
+  	<div class="col-content col-lg-10 col-md-10 col-sm-12">
+		<section id="servicio" class="white-section unique-section">
+		  	<div class="container" id="prueba">
+		  		
+				<%= render 'especialistas'%>
+		  	</div>
+		</section>	
+  	</div>
+</div>
+
+<% content_for :javascript do %>
+    <script type="text/javascript">
+
+    
+        $(function() {
+
+            $('.radio input[name="Estudios"]').change(function() {
+                console.log($(this).val());
+            });
+            $('.radio input[name="Paciente"]').change(function() {
+                console.log($(this).val());
+            });
+            $('.radio input[name="Turno"]').change(function() {
+                console.log($(this).val());
+            });
+        });
+ 
+        /*$(function () {
+            $(".btn-filter").on('click',function () {
+                var val = $(this).val();
+                var subItems = "";
+
+                $("#Id_estado").prop("disabled", true);
+                $("#Id_estado").empty();
+                $("#Id_estado").html("<option value>Seleccione un Estado</option>");
+                if (val > 0){
+                    $("#Id_estado").prop("disabled", false);
+                }
+
+                $.getJSON("", { id: val }, function (data) {
+                    $.each(data, function (index, item) {
+                        subItems += "<option value='" + item.Value + "'>" + item.Text + "</option>"
+                    });
+
+                    $("#servicio .container .row").html(subItems)
+
+                    if (subItems === "") {
+                        
+                    }
+                    else{
+
+                    }
+
+                });
+
+            });
+        });*/
+    </script>
+<% end %>

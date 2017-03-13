@@ -1,16 +1,20 @@
 class EventosController < ApplicationController
   before_action :set_evento, only: [ :edit, :update, :destroy]
+  before_action :eventos, only: [:index]
 
   # GET /eventos
   # GET /eventos.json
   def index
-     @url = Url_WebServices()
-      @categorias = HTTParty.get(@url+'tipo_evento.json')
-    if params[:id].nil?
-      @eventos = HTTParty.get(@url+'eventos.json')
-    else
-      @eventos = HTTParty.get(@url+'eventos.json?id='+params[:id])
-    end
+
+   #  @url = Url_WebServices()
+   #   @categorias = HTTParty.get(@url+'tipo_evento.json')
+   # if params[:id].nil?
+   #   @eventos = HTTParty.get(@url+'eventos.json')
+   # else
+   #   @eventos = HTTParty.get(@url+'eventos.json?id='+params[:id])
+   # end
+   @eventos = @eventos1
+   @categorias = @categorias1
   end
 
   # GET /eventos/1
@@ -21,7 +25,16 @@ class EventosController < ApplicationController
 
   def ver
     @url = Url_WebServices()
-    @evento = HTTParty.get(@url+'eventos/'+params[:id].to_s+'.json')
+    @evento = HTTParty.get(@url+'eventos/'+params[:slug].to_s+'.json')
+    
+    #@eventos.each do |evento|
+
+     # if evento["slug"] == params[:slug]
+        
+      #  @evento = evento
+     # end
+    #end
+    #@evento = $eventos.find_by(index_by params[:id])
   end
 
   # GET /eventos/new
@@ -76,7 +89,7 @@ class EventosController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_evento
-      @evento = Evento.find(params[:id])
+      @evento = Evento.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

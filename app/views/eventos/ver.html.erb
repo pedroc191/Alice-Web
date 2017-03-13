@@ -9,7 +9,7 @@
 	                        <h1>
 	                            <%= @evento["descripcion"] %>
 	                        </h1>
-                          	<img src="<%=  @url + @evento["foto_url"]%>">
+                          	<img src="<%#=  @url + @evento["foto_url"]%>">
 	                    </div>
 	                    <p>
 	                        Many desktop publishing packages and web page editors now use <strong>Lorem Ipsum as their default model text</strong>, and a search for 'lorem ipsum' will uncover many web
@@ -24,7 +24,7 @@
 	                    <div class="row">
 	                        <div class="col-md-12">
 	                            <h5>Categorias:</h5>
-	                            <button class="btn btn-dark-blue btn-xs" type="button"><%= HTTParty.get(@url+'tipo_eventos/'+@evento["tipo_evento_id"].to_s+'.json')["descripcion"] %></button>
+	                            <button class="btn btn-dark-blue btn-xs" type="button"><%#= HTTParty.get(@url+'tipo_eventos/'+@evento["tipo_evento_id"].to_s+'.json')["descripcion"] %></button>
 	                        </div>
 	                    </div>
 	                </div>
