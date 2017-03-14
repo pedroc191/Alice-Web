@@ -40,7 +40,32 @@ class HomeController < ApplicationController
   def contacto
     @info_contacto = self.class.get('/informacion_generals.json')    
   end
+  def contactar
+  
+    @contacto.nombre = params[:nombre]
+    @contacto.email = params[:email]
+    @contacto.tipo_opinion = params[:tipo_opinion]
+    @contacto.mensaje = params[:mensaje]
 
+    contacto = {
+      body:
+        {
+          contacto:{
+            nombre: @contacto.nombre,
+            email: @contacto.email,
+            tipo_opinion: @contacto.tipo_opinion,
+            descripcion: @contacto.mensaje
+          }
+        }
+    }
+
+    respuesta = selef.class.post('/opinion.json', contacto)
+
+    Respond_notice(Get_respuesta)
+
+    redirect_to contactos_path
+  
+  end
   def suscribirse
   end
 

@@ -1,7 +1,6 @@
 class EventosController < ApplicationController
   before_action :set_evento, only: [ :edit, :update, :destroy]
-  before_action :eventos, only: [:index]
-
+  
   # GET /eventos
   # GET /eventos.json
   def index

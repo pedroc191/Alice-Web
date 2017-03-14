@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   
   get "home/contacto"
   
+  post "home/contactar"
+
   get "home/preguntas_frecuentes"
 
   get "noticias/ver/:slug", to: "noticias#ver", as: "noticias_ver"

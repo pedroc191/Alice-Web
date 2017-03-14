@@ -6,7 +6,8 @@
                 <div class="content-contacto blue">
                     <h2 class="text-white text-center title-content">¡Déjanos tu opinion!</h2>
                     
-                    <form id="form-contacto">
+                    <%= form_tag(home_contactar_path , method: :post, id: "form-contacto") do %>
+                      
                         <div class="form-group">
                             <label class="control-label">Nombre</label>
                             <input type="text" name="nombre" placeholder="" class="form-control">
@@ -29,13 +30,14 @@
                             <textarea name="mensaje" class="form-control"></textarea>
                         </div>
                         <button class="btn btn-dark-blue" type="submit">Enviar</button>
-                    </form>
+
+                    <% end %>
                 </div>
             </div>
             <div class="col-lg-8 col-md-4 col-sm-6 col-xs-6">
                 <div class="content-contacto">
                     <h2 class="text-blue-dark text-center title-content-solo">Visitanos en nuestra sede principal</h2>
-                    <h2 class="text-blue-dark text-center title-content-solo"><%= @]info_contacto["nombre"] %></h2>
+                    <h2 class="text-blue-dark text-center title-content-solo"><%= @info_contacto["nombre"] %></h2>
                     <div class="row row-content">
                         <div class="col-sm-6">
                             <p class="font-bold text-blue-dark text-content-solo">Direccion:</p>
@@ -50,7 +52,7 @@
                                     <div class="row">
                                         <h2 class="text-blue-dark text-center title-content-solo">Siguenos en</h2>         
                                         <div class="col-redsocial col-lg-3 col-md-3 col-sm-3 col-xs-3 text-white text-center">
-                                            <a class="btn btn-circle facebook" href="<%= @info_contacto["]url_fb" %>">
+                                            <a class="btn btn-circle facebook" href="<%= @info_contacto["url_fb"] %>">
                                                 <i class="fa fa-facebook fa-2x text-white"></i>
                                             </a>
                                         </div>
@@ -65,7 +67,7 @@
                                             </a>
                                         </div>
                                         <div class="col-redsocial col-lg-3 col-md-3 col-sm-3 col-xs-3 text-white text-center">
-                                            <a class="btn btn-circle youtube" href="<%= <%= @info_contacto["url_you"] %>">
+                                            <a class="btn btn-circle youtube" href="<%= @info_contacto["url_you"] %>">
                                                 <i class="fa fa-youtube-play fa-2x text-white"></i>
                                             </a>
                                         </div>
@@ -132,11 +134,11 @@
             '<div id="content">' +
                 '<div id="siteNotice">' +
                 '</div>' +
-                '<h2 id="firstHeading" class="firstHeading text-blue-dark text-center"><img src="<%= Url_WebServices() + @info_contacto["logo"] %>" width="350" height="100"></h2>' +
+                '<h2 id="firstHeading" class="firstHeading text-blue-dark text-center"><img src="<%= @info_contacto["logo"] %>" width="350" height="100"></h2>' +
                 '<div id="bodyContent">' +
                     '<p><br><b><%= @info_contacto["slogan"] %></b></p>' +
                     '<p><b>Direccion: </b><%= @info_contacto["direccion"] %></p>' +
-                    '<p><b>Telefonos: </b><%= @info_contacto.["@tlf1"]  - <%= @info_contacto.["@tlf2"] %></p>'+
+                    '<p><b>Telefonos: </b><%= @info_contacto["@tlf1"] %> - <%= @info_contacto["@tlf2"] %></p>'+
                 '</div>' +
             '</div>';
 
