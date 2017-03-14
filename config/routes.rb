@@ -19,8 +19,10 @@ Rails.application.routes.draw do
   end
 
   get "home/index"
-  post "home/create"
-  get "home/suscribirse"
+  
+  get "home/suscripcion"
+
+  post "home/suscribirse"
 
   #get "servicios/especialistas"
 

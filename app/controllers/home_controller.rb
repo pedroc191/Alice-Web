@@ -38,35 +38,71 @@ class HomeController < ApplicationController
   end
 
   def contacto
-    @info_contacto = self.class.get('/informacion_generals.json')    
+    @info_contacto = self.class.get('/informacion_generals.json')
+    @tipo_opinion = self.class.get('/tipo_opiniones.json')    
   end
   def contactar
   
-    @contacto.nombre = params[:nombre]
-    @contacto.email = params[:email]
-    @contacto.tipo_opinion = params[:tipo_opinion]
-    @contacto.mensaje = params[:mensaje]
+    @nombre = params[:nombre]
+    @email = params[:email]
+    @tipo_opinion = params[:tipo_opinion]
+    @mensaje = params[:mensaje]
 
     contacto = {
       body:
         {
-          contacto:{
-            nombre: @contacto.nombre,
-            email: @contacto.email,
-            tipo_opinion: @contacto.tipo_opinion,
-            descripcion: @contacto.mensaje
+          opinion:{
+            nombre: @nombre,
+            correo: @email,
+            tipo_opinion_id: @tipo_opinion,
+            descripcion: @mensaje
           }
         }
     }
 
-    respuesta = selef.class.post('/opinion.json', contacto)
+    respuesta = self.class.post('/opiniones.json', contacto)
 
-    Respond_notice(Get_respuesta)
+    Respond_notice(respuesta)
 
-    redirect_to contactos_path
+    redirect_to '/home/contacto'
   
   end
+
+  def suscripcion
+    @especialidades = self.class.get('/especialidades.json')
+    @tipo_noticias = self.class.get('/tipo_noticias.json')
+    @tipo_eventos = self.class.get('/tipo_eventos.json')
+  end
+
   def suscribirse
+
+    @nombre = params[:nombre]
+    @apellido = params[:apellido]
+    @correo = params[:correo]
+    @especialidades = params[:especialidades]
+    @tipo_noticias = params[:tipo_noticias]
+    @tipo_eventos = params[:tipo_eventos]
+
+    json = {
+            body: {
+                  suscriptor: {
+                          nombre: @nombre,
+                          apellidos: @apellido,
+                          correo: @correo,
+                          especialidades: @especialidades,
+                          tipo_noticias:  @tipo_noticias,
+                          tipo_eventos: @tipo_eventos
+                        }
+                  }
+          }
+    puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+    puts json
+    #@servicio = HTTParty.post(Url_WebServices() + '/suscriptores.json', json)
+
+    #Respond_notice( @servicio )
+
+    #redirect_to root_path#
+
   end
 
   def solicitar
