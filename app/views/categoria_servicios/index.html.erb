@@ -16,12 +16,12 @@
             <ul class="list-especialidades">
             <% categoria_servicio["tipo_servicios"].take(5).each do |tipo| %>
                 <li>
-                  <%= link_to tipo["descripcion"], categoria_servicios_ver_path(slug: tipo["slug"]) %>
+                  <%= link_to tipo["descripcion"], servicios_ver_path(slug: tipo["slug"]) %>
                   <%#= link_to tipo["descripcion"], categoria_servicios_ver_path( categoria_servicio["slug"], tipo["slug"], tipo["servicios"].first["descripcion"]) %>
                 </li>
             <% end %>
               <li class="ver-mas">
-                <%= link_to categoria_servicio_path(categoria_servicio["slug"]), class: "link-ver" do %>
+                <%= link_to categoria_servicios_mas_servicios_path(categoria_servicio["slug"]), class: "link-ver" do %>
                   <i class="fa fa-plus"></i> Servicios
                 <% end %>
               </li>

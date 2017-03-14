@@ -6,7 +6,7 @@ class CategoriaServiciosController < ApplicationController
   # GET /categoria_servicios.json
   def index
     @categoria_servicios = CategoriaServicio.all
-    @url = Url_WebServices()
+
     @categorias = self.class.get('/categorias.json')
   end
 
@@ -31,16 +31,29 @@ class CategoriaServiciosController < ApplicationController
   end
 
   def ver
-    @url = Url_WebServices()
+    @tipo_servicios = self.class.get('/tipo_servicios/'+params[:slug]+'.json')
+    @servicios = self.class.get('/servicios.json?slug='+params[:slug])
 
-    @especialidades = HTTParty.get(@url+'tipo_servicios.json?slug='+params[:slug])
+    @tipo_servicios["servicios"].each do |servicio|
+      if servicio['tipo_servicio']["slug"] = params[:slug]
+        @categoria = categoria
+        @tipo_servicios = categoria["tipo_servicios"]
+        break
+      end
+    end
+    @per_page = params[:per_page] || 2
+    @especialidades= @servicios.paginate(:per_page => @per_page, :page => params[:page])
+    
+
+
      #@categoria_servicio.especialidades.paginate(page: params[:page], per_page: 4)
   end
 
   def mas_servicios
-    @categorias = HTTParty.get(Url_WebServices() + '/categorias.json')
+    @categorias = self.class.get('/categorias.json')
     @categorias.each do |categoria|
-      if categoria["slug"] = params[:id]
+      if categoria["slug"] = params[:slug]
+        @categoria = categoria
         @tipo_servicios = categoria["tipo_servicios"]
         break
       end
