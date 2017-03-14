@@ -1,8 +1,8 @@
 <div class="content-servicio-background" style="background: transparent url('<%= image_path('carousel/alice-fondo-consulta-medica.jpg') %>')  50% 0 no-repeat; background-size: cover;">
 	<div class="container">
 		<div class="content-title">
-				 <h2 class="title-section"><%= @servicio.especialidad.nombre %></h2>
-				 <h3 class="title-section"><%= @servicio.nombre %></h3>
+				 <h2 class="title-section"><%= @tipo_servicios["especialidad"] %></h2>
+				 <h3 class="title-section"><%= @tipo_servicios["descripcion"] %></h3>
 		</div>
 	</div>	
 </div>
@@ -11,7 +11,7 @@
         <nav class="navbar-default sidebar-filtro">
              
             <div class="content-btn-filtro text-center">
-                <%= link_to "Buscar Especialistas", especialistas_path(:id => @servicio.id), remote: true, class: "btn-filter btn btn-dark-blue", id: "boton_especialidad" %>
+                <%#= link_to "Buscar Especialistas", especialistas_path(:id => @servicio.id), remote: true, class: "btn-filter btn btn-dark-blue", id: "boton_especialidad" %>
             </div>
 
         		<%= render 'layouts/sidebar-especialistas' %>  	
