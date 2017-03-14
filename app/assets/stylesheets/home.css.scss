@@ -435,6 +435,57 @@
 			}
 		}
 	}
+
+/*	CUSTOM SUSCRIPCION	*/
+	#suscripcion{
+
+		.content-suscripcion{
+			border-radius: 20px;
+			background-color: rgba(255,255,255,0.7);
+			padding: 20px;
+			//height: 400px;
+			
+			.title-content{    
+				padding: 0px 0px 20px;
+    			border-bottom: 4px solid $color-darkblue;
+    			margin: 10px 30px 20px;
+    			font-weight: 600;
+			}
+
+			.title-content-solo{    
+				padding: 0px 20px;
+    			font-weight: 600;
+    			margin: 0px 0px 10px;
+			}
+			.text-content-solo{
+				padding: 0px 20px;
+				font-size: 16px;
+			}
+			.row-content{
+				margin-top: 20px;
+			}
+			#form-suscripcion{
+
+				.btn-dark-blue{
+					margin-top: 10px;
+					width: 100%;
+				}
+			}
+		}
+
+		.content-suscripcion.blue{
+			background-color: rgba(14,154,239, 0.7);
+			margin: 50px 0px;
+			.title-content{    
+				padding: 0px 0px 20px;
+    			border-bottom: 3px solid #FFFFFF;
+    			margin: 10px 30px 20px;
+    			font-weight: 600;
+    			width: 440px;
+    			margin: 0px auto 20px;
+			}
+		}
+	}
 /*	CUSTOM MAPS	*/
 	#maps{
 		margin: 0px 0px;

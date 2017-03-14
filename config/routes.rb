@@ -19,8 +19,10 @@ Rails.application.routes.draw do
   end
 
   get "home/index"
-  post "home/create"
-  get "home/suscribirse"
+  
+  get "home/suscripcion"
+
+  post "home/suscribirse"
 
   #get "servicios/especialistas"
 
@@ -28,6 +30,8 @@ Rails.application.routes.draw do
   
   get "home/contacto"
   
+  post "home/contactar"
+
   get "home/preguntas_frecuentes"
 
   get "noticias/ver/:slug", to: "noticias#ver", as: "noticias_ver"
