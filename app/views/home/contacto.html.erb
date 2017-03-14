@@ -6,7 +6,7 @@
                 <div class="content-contacto blue">
                     <h2 class="text-white text-center title-content">¡Déjanos tu opinion!</h2>
                     
-                    <%= form_tag(home_contactar_path , method: :post, id: "form-contacto") do %>
+                    <%= form_tag(home_contactar_path, method: :post, id: "form-contacto") do %>
                       
                         <div class="form-group">
                             <label class="control-label">Nombre</label>
@@ -20,9 +20,9 @@
                             <label class="control-label">Tipo</label>
                             <select name="tipo_opinion" class="select-box form-control">
                                 <option value= ""></option>
-                                <option value= "Opinion">Opinion</option>
-                                <option value= "Sugerencia">Sugerencia</option>
-                                <option value= "Reclamo">Reclamo</option>
+                                <% @tipo_opinion.each do |tipo_opinion| %>
+                                <option value= "<%= tipo_opinion['id']%>"><%= tipo_opinion['descripcion']%></option>    
+                                <% end %>
                             </select>
                         </div>
                         <div class="form-group">
