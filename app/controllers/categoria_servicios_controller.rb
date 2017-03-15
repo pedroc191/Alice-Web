@@ -16,7 +16,7 @@ class CategoriaServiciosController < ApplicationController
     #@especialidades = @categoria_servicio.especialidades.paginate(page: params[:page], per_page: 4)
     @categorias = HTTParty.get(Url_WebServices() + '/categorias.json')
     @categorias.each do |categoria|
-      if categoria["slug"] = params[:id]
+      if categoria["slug"] == params[:id]
         @tipo_servicios = categoria["tipo_servicios"]
         break
       end
@@ -35,7 +35,7 @@ class CategoriaServiciosController < ApplicationController
     @servicios = self.class.get('/servicios.json?slug='+params[:slug])
 
     @tipo_servicios["servicios"].each do |servicio|
-      if servicio['tipo_servicio']["slug"] = params[:slug]
+      if servicio['tipo_servicio']["slug"] == params[:slug]
         @categoria = categoria
         @tipo_servicios = categoria["tipo_servicios"]
         break
@@ -52,7 +52,7 @@ class CategoriaServiciosController < ApplicationController
   def mas_servicios
     @categorias = self.class.get('/categorias.json')
     @categorias.each do |categoria|
-      if categoria["slug"] = params[:slug]
+      if categoria["slug"] == params[:slug]
         @categoria = categoria
         @tipo_servicios = categoria["tipo_servicios"]
         break

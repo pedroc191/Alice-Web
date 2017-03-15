@@ -1,4 +1,9 @@
 
+/* STEPS WIZARD */
+//= require steps/jquery.steps.min.js
+
+//= require datapicker/bootstrap-datepicker.js
+
 $(document).ready(function() {
     alturasIguales('.content-especialista');
     alturasIguales('.col-sm-8');
@@ -14,6 +19,6 @@ $(window).on('load', function() {
 });
 
 $(window).on('resize', function() {
-    alturasIguales('.content-especialista');
+    alturasIguales('.content-especialista');    
     alturasIguales('.col-sm-8');
 });
