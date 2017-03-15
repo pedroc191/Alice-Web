@@ -19,25 +19,13 @@ class ServiciosController < ApplicationController
   def ver
  @tipo_servicios = self.class.get('/tipo_servicios/'+params[:slug]+'.json')
     @servicios = self.class.get('/servicios.json?slug='+params[:slug])
-
-    
     @per_page = params[:per_page] || 2
     @servicios = @servicios.paginate(:per_page => @per_page, :page => params[:page])
-    
+  end
 
-=begin    
-    @tipo_servicios = self.class.get('/servicios/'+params[:slug]+'.json')
-     @tipo_servicios.each do |tipo|
-      puts '22222222222222222222222222'
-      puts tipo
-      if tipo["slug"] = params[:slug]
-        @servicios = tipo["servicio"]
-        break
-      end
-    end
-    @per_page = params[:per_page] || 2
-    @servicios = @servicios.paginate(:per_page => @per_page, :page => params[:page])
-=end
+  def solicitar_cita
+     @servicio = self.class.get('/servicios/'+params[:slug]+'.json')
+    
   end
 
 

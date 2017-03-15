@@ -2,6 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/*  STEPS WIZARD    */
+//= require steps/jquery.steps.css
+
+//= require datapicker/datepicker3.css
+
 //= require awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css
 
 @import "base/variables";
