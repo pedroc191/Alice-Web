@@ -64,7 +64,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-sm-12">
-                                                <h3><strong>Elias Jose Pastran Morelio</strong></h3>
+                                                <h3><strong><%= @servicio["especialista"]["persona"]["nombre"]+' '+@servicio["especialista"]["persona"]["apellido"]%></strong></h3>
                                                 
                                             </div>
                                             <div class="clearfix"></div>
@@ -93,7 +93,7 @@
                                                                 <select class="selectpicker form-control">
                                                                     <option></option> 
                                                             <% turno["turno"].each do |hora| %>
-                                                                <option><%= hora["hora"].to_date.strftime("%H:%M%p") %><br></option>
+                                                                <option><%= hora["hora"].to_datetime.strftime("%H:%M%p") %><br></option>
                                                             <% end %>
                                                             </select>  
                                                             </td>
@@ -122,7 +122,7 @@
                                                                 <select class="selectpicker form-control">
                                                                     <option></option> 
                                                             <% turno["turno"].each do |hora| %>
-                                                                <option><%= hora["hora"].to_date.strftime("%H:%M%p") %><br></option>
+                                                                <option><%= hora["hora"].to_datetime.strftime('%H:%M%p' ) %><br></option>
                                                             <% end %>
                                                             </select>  
                                                             </td>
