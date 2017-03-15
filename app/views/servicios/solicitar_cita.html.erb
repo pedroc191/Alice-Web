@@ -1,89 +1,137 @@
 <section id="solicitud" class="white-section unique-section">
     <div class="container">
-        <h1 class="title-section">Solicitar Cita</h1>
         <div class="row">
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-content">
-
                         <div id="wizard">
                             <h1>Reserva tu Cita</h1>
                             <div class="step-content">
+                                <div class="row" style="margin-top: -10px;">
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <div class="contact-box" style="padding: 10px 20px; margin: 0px 0px 10px;">
+                                            <div class="row">
+                                                <div class="col-lg-4 col-md-3 col-sm-12">
+                                                    
+                                                    <div class="for-group" id="select-week" style="width: 100%;">
+                                                        <h2 class="col-sm-10" style="font-size: 18px; margin: 10px 0px;">Seleccione su horario: </h2>                
+                                                        <div class="input-group date" style="cursor: pointer; width: 30px;">
+                                                            <span class="input-group-addon" style="border: 0px;">
+                                                                <i class="fa fa-calendar fa-2x"></i>
+                                                            </span>
+                                                            <input name="week" type="text" style="display: none;" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-8 col-md-9 col-sm-12">
+                                                    <div class="row">
+                                                        
+                                                        <div class=" col-sm-12 for-group">
+                                                            <div class="row">
+                                                                <div class="col-sm-4" id="week-star">
+                                                                    <input type="text" class="form-control text-center" disabled>
+                                                                </div>
+                                                                <div class="col-sm-4" id="week-end">
+                                                                    <input type="text" class="form-control text-center" disabled>
+                                                                </div>
+                                                                <div class="btn-content col-sm-4 text-center">
+                                                                    <%= link_to "Buscar Horario", "#", remote: true, class: "btn btn-dark-blue btn-buscar-horario" %>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="row">
-                                    <div class="col-lg-4 col-md-4 col-sm-4">
+                                    <div class="col-lg-3 col-md-4 col-sm-4">
                                         <div class="contact-box">
                                             <div class="col-sm-12">
                                                 <div class="text-center">
                                                     <img alt="image" class="img-circle m-t-xs img-responsive" src="<%= image_url 'landing/default_profile.png' %>" width= "100px" style="margin: 0px auto;">
-                                                    <div class="m-t-xs font-bold">
-                                                    <% @servicio["especialista"]["especialidades"].each do |especialidad| %>
-                                                        <%= ' - '+especialidad['descripcion'] %>
-                                                    <% end %>
-                                                        
-                                                    </div>
+                                                    <div class="m-t-xs font-bold">Ver Especialidades</div>
+                                                    <select class="selectpicker form-control">
+                                                        <option></option>
+                                                        <option>00:00</option>
+                                                        <option>00:00</option>
+                                                    </select> 
                                                 </div>
                                             </div>
                                             <div class="col-sm-12">
-                                                <h3><strong><%= @servicio["especialista"]["persona"]["nombre"]+' '+@servicio["especialista"]["persona"]["apellido"] %></strong></h3>
+                                                <h3><strong>Elias Jose Pastran Morelio</strong></h3>
                                                 
-		                                        <div class="form-group" id="data_1">
-		                                            <label for="exampleInputEmail1">Fecha de la Cita</label>
-		                                            <div class="input-group date">
-		                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control">
-		                                            </div>
-		                                        </div>
-		                                        <div class="text-center">
-		                                        	<%= link_to "Buscar Horario", "#", remote: true, class: "btn btn-dark-blue" %>
-		                                        </div>
                                             </div>
                                             <div class="clearfix"></div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-8 col-md-8 col-sm-8">
+                                    <div class="col-lg-9 col-md-8 col-sm-8">
                                         <div class="ibox float-e-margins">
                                             <div class="ibox-content">
                                                 <table class="tabla-horarios table table-bordered table-hover" width="100%">
                                                     <thead>
-                                                    	<h2>Mañana</h2>
+                                                        <h3>Mañana</h3>
                                                         <tr>
-                                                            <th style="width:18%;" class="text-center">Lunes</th>
-                                                            <th style="width:18%;" class="text-center">Martes</th>
-                                                            <th style="width:18%;" class="text-center">Miércoles</th>
-                                                            <th style="width:18%;" class="text-center">Jueves</th>
-                                                            <th style="width:18%;" class="text-center">Viernes</th>
+                                                            <th style="width:14%;" class="text-center">Lunes</th>
+                                                            <th style="width:14%;" class="text-center">Martes</th>
+                                                            <th style="width:14%;" class="text-center">Miércoles</th>
+                                                            <th style="width:14%;" class="text-center">Jueves</th>
+                                                            <th style="width:14%;" class="text-center">Viernes</th>
+                                                            <th style="width:14%;" class="text-center">Sabado</th>
+                                                            <th style="width:14%;" class="text-center">Domingo</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         <tr>
                                                             <td class= "text-center">
-                                                            	<select class="selectpicker form-control">
-					                                                <option>00:00</option>
-					                                                <option>00:00</option>
-					                                            </select>  
+                                                                <select class="selectpicker form-control">
+                                                                    <option></option>
+                                                                    <option>00:00</option>
+                                                                    <option>00:00</option>
+                                                                </select>  
                                                             </td>
                                                             <td class= "text-center">
-                                                            	<select class="selectpicker form-control">
-					                                                <option>00:00</option>
-					                                                <option>00:00</option>
-					                                            </select>  
+                                                                <select class="selectpicker form-control">
+                                                                    <option></option>
+                                                                    <option>00:00</option>
+                                                                    <option>00:00</option>
+                                                                </select>  
                                                             </td>
                                                             <td class= "text-center">
-                                                            	<select class="selectpicker form-control">
-					                                                <option>00:00</option>
-					                                                <option>00:00</option>
-					                                            </select>  
+                                                                <select class="selectpicker form-control">
+                                                                    <option></option>
+                                                                    <option>00:00</option>
+                                                                    <option>00:00</option>
+                                                                </select>  
                                                             </td>
                                                             <td class= "text-center">
-                                                            	<select class="selectpicker form-control">
-					                                                <option>00:00</option>
-					                                                <option>00:00</option>
-					                                            </select>  
+                                                                <select class="selectpicker form-control">
+                                                                    <option></option>
+                                                                    <option>00:00</option>
+                                                                    <option>00:00</option>
+                                                                </select>  
                                                             </td>
                                                             <td class= "text-center">
-                                                            	<select class="selectpicker form-control">
-					                                                <option>00:00</option>
-					                                                <option>00:00</option>
-					                                            </select>  
+                                                                <select class="selectpicker form-control">
+                                                                    <option></option>
+                                                                    <option>00:00</option>
+                                                                    <option>00:00</option>
+                                                                </select>  
+                                                            </td>
+                                                            <td class= "text-center">
+                                                                <select class="selectpicker form-control">
+                                                                    <option></option>
+                                                                    <option>00:00</option>
+                                                                    <option>00:00</option>
+                                                                </select>  
+                                                            </td>
+                                                            <td class= "text-center">
+                                                                <select class="selectpicker form-control">
+                                                                    <option></option>
+                                                                    <option>00:00</option>
+                                                                    <option>00:00</option>
+                                                                </select>  
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -91,46 +139,67 @@
 
                                                 <table class="tabla-horarios table table-bordered table-hover" width="100%">
                                                     <thead>
-                                                    	<h2>Tarde</h2>
+                                                        <h3>Tarde</h3>
                                                         <tr>
-                                                            <th style="width:18%;" class="text-center">Lunes</th>
-                                                            <th style="width:18%;" class="text-center">Martes</th>
-                                                            <th style="width:18%;" class="text-center">Miércoles</th>
-                                                            <th style="width:18%;" class="text-center">Jueves</th>
-                                                            <th style="width:18%;" class="text-center">Viernes</th>
+                                                            <th style="width:14%;" class="text-center">Lunes</th>
+                                                            <th style="width:14%;" class="text-center">Martes</th>
+                                                            <th style="width:14%;" class="text-center">Miércoles</th>
+                                                            <th style="width:14%;" class="text-center">Jueves</th>
+                                                            <th style="width:14%;" class="text-center">Viernes</th>
+                                                            <th style="width:14%;" class="text-center">Sabado</th>
+                                                            <th style="width:14%;" class="text-center">Domingo</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         <tr>
                                                             <td class= "text-center">
-                                                            	<select class="selectpicker form-control">
-					                                                <option>00:00</option>
-					                                                <option>00:00</option>
-					                                            </select>  
+                                                                <select class="selectpicker form-control">
+                                                                    <option></option>
+                                                                    <option>00:00</option>
+                                                                    <option>00:00</option>
+                                                                </select>  
                                                             </td>
                                                             <td class= "text-center">
-                                                            	<select class="selectpicker form-control">
-					                                                <option>00:00</option>
-					                                                <option>00:00</option>
-					                                            </select>  
+                                                                <select class="selectpicker form-control">
+                                                                    <option></option>
+                                                                    <option>00:00</option>
+                                                                    <option>00:00</option>
+                                                                </select>  
                                                             </td>
                                                             <td class= "text-center">
-                                                            	<select class="selectpicker form-control">
-					                                                <option>00:00</option>
-					                                                <option>00:00</option>
-					                                            </select>  
+                                                                <select class="selectpicker form-control">
+                                                                    <option></option>
+                                                                    <option>00:00</option>
+                                                                    <option>00:00</option>
+                                                                </select>  
                                                             </td>
                                                             <td class= "text-center">
-                                                            	<select class="selectpicker form-control">
-					                                                <option>00:00</option>
-					                                                <option>00:00</option>
-					                                            </select>  
+                                                                <select class="selectpicker form-control">
+                                                                    <option></option>
+                                                                    <option>00:00</option>
+                                                                    <option>00:00</option>
+                                                                </select>  
                                                             </td>
                                                             <td class= "text-center">
-                                                            	<select class="selectpicker form-control">
-					                                                <option>00:00</option>
-					                                                <option>00:00</option>
-					                                            </select>  
+                                                                <select class="selectpicker form-control">
+                                                                    <option></option>
+                                                                    <option>00:00</option>
+                                                                    <option>00:00</option>
+                                                                </select>  
+                                                            </td>
+                                                            <td class= "text-center">
+                                                                <select class="selectpicker form-control">
+                                                                    <option></option>
+                                                                    <option>00:00</option>
+                                                                    <option>00:00</option>
+                                                                </select>  
+                                                            </td>
+                                                            <td class= "text-center">
+                                                                <select class="selectpicker form-control">
+                                                                    <option></option>
+                                                                    <option>00:00</option>
+                                                                    <option>00:00</option>
+                                                                </select>  
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -152,19 +221,19 @@
                                             <h2 for="radio1">No</h2>
                                         </div>
 
-		                                <div class="form-group">
-		                                    <label for="RazonCita">Motivo de la Cita:</label>
-		                                    <select class="selectpicker form-control">
-		                                        <option>Chequeo</option>
-		                                        <option>Consulta de Rutina</option>
-		                                    </select>    
-		                                </div>
+                                        <div class="form-group">
+                                            <label for="RazonCita">Motivo de la Cita:</label>
+                                            <select class="selectpicker form-control">
+                                                <option>Chequeo</option>
+                                                <option>Consulta de Rutina</option>
+                                            </select>    
+                                        </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6" style="display: block">
                                         
                                         <div id="Usuarioviejo" style="display: block">
                                             <div class="form-group">
-                                                <label id="emailusuario1" for="exampleInputEmail1">Email</label>
+                                                <label >Email</label>
                                                 <input type="email" class="form-control" hidden="false" id="InputEmail" placeholder="">
                                             </div>
                                             <div class="form-group">
@@ -176,19 +245,19 @@
                                         <div id="Usuarionuevo" style="display: none">
                                             
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Nombre y Apellido</label>
-                                                <input type="email" class="form-control" id="InputNombre" placeholder="">
+                                                <label>Nombre y Apellido</label>
+                                                <input type="email" class="form-control" placeholder="">
                                             </div>
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Cédula</label>
-                                                <input type="email" class="form-control" id="InputCedula" placeholder="">
+                                                <label>Cédula</label>
+                                                <input type="email" class="form-control" placeholder="">
                                             </div>
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Email</label>
+                                                <label>Email</label>
                                                 <input type="email" class="form-control" id="InputEmail" placeholder="">
                                             </div>
                                             <div class="form-group" id="data_2">
-                                                <label for="exampleInputEmail1">Fecha de nacimiento</label>
+                                                <label>Fecha de nacimiento</label>
                                                 <div class="input-group date">
                                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control">
                                                 </div>
@@ -231,18 +300,18 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="exampleInputNombre">Nombre y Apellido</label>
-                                            <input type="email" class="form-control" id="InputNombre" placeholder="">
+                                            <input type="email" class="form-control" placeholder="">
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputcedula">Cédula</label>
-                                            <input type="email" class="form-control" id="InputCedula" placeholder="">
+                                            <input type="email" class="form-control" placeholder="">
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail">Email</label>
                                             <input type="email" class="form-control" id="InputEmail" placeholder="">
                                         </div>
                                         <div class="form-group" id="data_3">
-                                            <label for="exampleInputEmail1">Fecha de nacimiento</label>
+                                            <label>Fecha de nacimiento</label>
                                             <div class="input-group date">
                                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="03/03/2017">
                                             </div>
@@ -335,121 +404,9 @@
     </div>
 </section>
 
-
 <% content_for :javascript do %>
 
 <script type="text/javascript">
-
-
-$(function() {
-
-    $("#wizard").steps({
-    	labels: {
-    		cancel: "Cancelar",
-        	current: "Paso comun:",
-        	pagination: "Paginacion",
-        	finish: "Solicitar",
-        	next: "Siguiente",
-       		previous: "Anterior",
-        	loading: "Cargando ..."
-    	}
-    });
-    /*$("#form").steps({
-        bodyTag: "fieldset",
-        onStepChanging: function (event, currentIndex, newIndex) {
-            // Always allow going backward even if the current step contains invalid fields!
-            if (currentIndex > newIndex) {
-                return true;
-            }
-
-            // Forbid suppressing "Warning" step if the user is to young
-            if (newIndex === 3) {
-                return false;
-            }
-
-            var form = $(this);
-
-            // Clean up if user went backward before
-            if (currentIndex < newIndex) {
-                // To remove error styles
-                $(".body:eq(" + newIndex + ") label.error", form).remove();
-                $(".body:eq(" + newIndex + ") .error", form).removeClass("error");
-            }
-
-            // Disable validation on fields that are disabled or hidden.
-            form.validate().settings.ignore = ":disabled,:hidden";
-
-            // Start validation; Prevent going forward if false
-            return form.valid();
-        },
-        onStepChanged: function (event, currentIndex, priorIndex) {
-            // Suppress (skip) "Warning" step if the user is old enough.
-            if (currentIndex === 2) {
-                $(this).steps("next");
-            }
-
-            // Suppress (skip) "Warning" step if the user is old enough and wants to the previous step.
-            if (currentIndex === 2 && priorIndex === 3) {
-                $(this).steps("previous");
-            }
-        },
-        onFinishing: function (event, currentIndex) {
-            var form = $(this);
-
-            // Disable validation on fields that are disabled.
-            // At this point it's recommended to do an overall check (mean ignoring only disabled fields)
-            form.validate().settings.ignore = ":disabled";
-
-            // Start validation; Prevent form submission if false
-            return form.valid();
-        },
-        onFinished: function (event, currentIndex) {
-            var form = $(this);
-
-            // Submit form input
-            form.submit();
-        }
-    }).validate({
-                errorPlacement: function (error, element) {
-                    element.before(error);
-                },
-                rules: {
-                    confirm: {
-                        equalTo: "#password"
-                    }
-                }
-            });*/
-
-	$('#data_1 .input-group.date').datepicker({
-        todayBtn: "linked",
-        keyboardNavigation: false,
-        forceParse: false,
-        calendarWeeks: true,
-        autoclose: true
-    });
-
-	$('#data_2 .input-group.date').datepicker({
-        todayBtn: "linked",
-        keyboardNavigation: false,
-        forceParse: false,
-        calendarWeeks: true,
-        autoclose: true
-    });
-
-	$('#data_3 .input-group.date').datepicker({
-        todayBtn: "linked",
-        keyboardNavigation: false,
-        forceParse: false,
-        calendarWeeks: true,
-        autoclose: true
-    });
-});
-
-var capas = ["Usuarioviejo", "Usuarionuevo"];
-function mostrar(capa) {
-for (i = 0, total = capas.length; i < total; i ++)
-document.getElementById(capas[i]).style.display = (capas[i] == capa) ? "block":"none";
-}
 
 
 </script>
