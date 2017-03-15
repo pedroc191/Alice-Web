@@ -25,7 +25,8 @@ class ServiciosController < ApplicationController
 
   def solicitar_cita
      @servicio = self.class.get('/servicios/'+params[:slug]+'.json')
-    
+    @disponibilidad = self.class.get('/disponibilidad.json')
+    @bloques = @disponibilidad
   end
 
 
