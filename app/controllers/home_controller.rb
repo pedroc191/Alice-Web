@@ -89,19 +89,20 @@ class HomeController < ApplicationController
                           nombre: @nombre,
                           apellidos: @apellido,
                           correo: @correo,
-                          especialidades: @especialidades,
-                          tipo_noticias:  @tipo_noticias,
-                          tipo_eventos: @tipo_eventos
+                          persona_id: 5
+                          #especialidades: @especialidades,
+                          #tipo_noticias:  @tipo_noticias,
+                          #tipo_eventos: @tipo_eventos
                         }
                   }
           }
     puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
     puts json
-    #@servicio = HTTParty.post(Url_WebServices() + '/suscriptores.json', json)
+    @servicio = self.class.post('/suscriptores.json', json)
 
-    #Respond_notice( @servicio )
+    Respond_notice( @servicio )
 
-    #redirect_to root_path#
+    redirect_to root_path#
 
   end
 

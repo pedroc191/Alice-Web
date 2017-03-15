@@ -77,7 +77,7 @@
 		                                                				<% servicio["horarios"].first["turnos"].each do |turno| %>
 		                                                				<% if turno["tipo_turno_id"]==1 %>
 
-		                                                				<td class= "text-center"><%= turno["hora_inicio"].to_date.strftime("%H:%M %p")+" - "+turno["hora_fin"].to_date.strftime("%H:%M %p") %></td>
+		                                                				<td class= "text-center"><%= turno["hora_inicio"].to_datetime.strftime("%H:%M %p")+" - "+turno["hora_fin"].to_datetime.strftime("%H:%M %p") %></td>
 		                                                				<% end %>
 		                                                				<% end %>
 		                                                			</tr>
@@ -86,7 +86,7 @@
 		                                                				<% servicio["horarios"].first["turnos"].each do |turno| %>
 		                                                				<% if turno["tipo_turno_id"]==2 %>
 
-		                                                				<td class= "text-center"><%= turno["hora_inicio"].to_date.strftime("%H:%M %p")+" - "+turno["hora_fin"].to_date.strftime("%H:%M %p") %></td>
+		                                                				<td class= "text-center"><%= turno["hora_inicio"].to_datetime.strftime("%H:%M %p")+" - "+turno["hora_fin"].to_datetime.strftime("%H:%M %p") %></td>
 		                                                				<% end %>
 		                                                				<% end %>
 		                                                				</tr>
@@ -129,8 +129,8 @@
 		                                    </div>
 		                                </div>
 		                        	</div>
-			  						<%= link_to "Solicita una Cita", citas_solicitar_path, class: "btn btn-lg btn-dark-blue", type: "button" %>
-			  						<%= link_to "Solicitar una Cita", servicios_solicitar_cita_path(slug: servicio["slug"]) %>
+			  						<%= link_to "Solicita una Cita", servicios_solicitar_cita_path(slug: servicio["slug"]), class: "btn btn-lg btn-dark-blue", type: "button" %>
+			  						<%#= link_to "Solicitar una Cita", servicios_solicitar_cita_path(slug: servicio["slug"]) %>
 				            	</div>
 				            	<div class="clearfix"></div>
 				        	</div>
