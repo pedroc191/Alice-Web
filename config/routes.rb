@@ -63,7 +63,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   
   root to: 'home#index'
-
+  get "/buscar_semana", to: "servicios#buscar_semana"#, as: "servicios_buscar_semana"
   get '/especialistas', :to => 'servicios#especialistas'
 
 

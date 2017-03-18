@@ -28,10 +28,10 @@ $(window).on('resize', function() {
 //= require steps/jquery.steps.min.js
 //= require datapicker/bootstrap-datepicker.js
 //= require datapicker/bootstrap-datepicker-es.js
+//= require datapicker/locales/bootstrap-datepicker.es.js
 
-    $(function() {
-
-
+    
+$(function() {
     var form = $("#wizard").show();
      
     form.steps({
@@ -101,7 +101,7 @@ if ($('input[name="tipo_paciente"]').val() === 'paciente_solicita')
                     $('input[name="telefono_paciente"]').prop( "disabled", true);
                     $('input[name="direccion_paciente"]').prop( "disabled", true );
 
-                }
+             
                 $('input[name="nombre_paciente"]').val('');
                 $('input[name="cedula_paciente"]').val('');
                 $('input[name="email_paciente"]').val('');
@@ -259,12 +259,15 @@ if ($('input[name="tipo_paciente"]').val() === 'paciente_solicita')
             
             $('#boton_horario').attr('href', new_link);
         }
+
         function Inicializar_fecha () {
                     
             var date = new Date();
 
             var start_date = new Date(date.getFullYear(), date.getMonth(), date.getDate() - date.getDay());
             var end_date = new Date(date.getFullYear(), date.getMonth(), date.getDate() - date.getDay() + 6);
+
+            // make a friendly string
 
             var text_date_inicio = start_date.getDate() + '/' + (start_date.getMonth() + 1) + '/' + start_date.getFullYear();
 

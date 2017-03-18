@@ -11,6 +11,8 @@
         <nav class="navbar-default sidebar-filtro">
              
             <div class="content-btn-filtro text-center">
+                            <%= link_to "Buscar Especialistas", especialistas_path(:id => 1), remote: true, class: "btn-filter btn btn-dark-blue", id: "boton_especialidad" %>
+
                 <%#= link_to "Buscar Especialistas", especialistas_path(:id => @servicio.id), remote: true, class: "btn-filter btn btn-dark-blue", id: "boton_especialidad" %>
             </div>
 

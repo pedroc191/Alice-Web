@@ -25,10 +25,20 @@ class ServiciosController < ApplicationController
 
   def solicitar_cita
     @servicio = self.class.get('/servicios/'+params[:slug]+'.json')
-    @disponibilidad = self.class.get('/disponibilidad.json?fecha='+ Date.today.to_s + '&servicio_id='+@servicio["id"].to_s)
+    @disponibilidad = self.class.get('/disponibilidad.json?servicio_id='+@servicio["id"].to_s+'&fecha='+Date.today.to_s)
     @bloques = @disponibilidad
   end
 
+  def buscar_semana
+    @fecha = params[:week_star]
+    
+    @servicio = self.class.get('/servicios/'+params[:slug]+'.json')
+    @disponibilidad = self.class.get('/disponibilidad.json?servicio_id='+@servicio["id"].to_s+'&fecha='+@fecha.to_s)
+    @bloques = @disponibilidad
+    respond_to do |format|
+      format.js
+    end
+  end
 
   def especialistas
     #@servicio = Servicio.friendly.find(params[:id])

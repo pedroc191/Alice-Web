@@ -66,68 +66,9 @@
                                             <div class="clearfix"></div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-9 col-md-8 col-sm-8">
-                                        <div class="ibox float-e-margins">
-                                            <div class="ibox-content">
-                                                <table class="tabla-horarios table table-bordered table-hover" width="100%">
-                                                    <thead>
-                                                        <h3>Mañana</h3>
-                                                        <tr>
-                                                            <th style="width:14%;" class="text-center">Lunes</th>
-                                                            <th style="width:14%;" class="text-center">Martes</th>
-                                                            <th style="width:14%;" class="text-center">Miércoles</th>
-                                                            <th style="width:14%;" class="text-center">Jueves</th>
-                                                            <th style="width:14%;" class="text-center">Viernes</th>
-                                                            <th style="width:14%;" class="text-center">Sabado</th>
-                                                            <th style="width:14%;" class="text-center">Domingo</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                        <% @disponibilidad.first[1][0]["manana"].each do |turno| %>
-                                                            <td class= "text-center">
-                                                                <select class="selectpicker form-control">
-                                                                    <option></option> 
-                                                            <% turno["turno"].each do |hora| %>
-                                                                <option><%= hora["hora"].to_datetime.strftime("%H:%M%p") %><br></option>
-                                                            <% end %>
-                                                            </select>  
-                                                            </td>
-                                                         <% end %>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-
-                                                <table class="tabla-horarios table table-bordered table-hover" width="100%">
-                                                    <thead>
-                                                        <h3>Tarde</h3>
-                                                        <tr>
-                                                            <th style="width:14%;" class="text-center">Lunes</th>
-                                                            <th style="width:14%;" class="text-center">Martes</th>
-                                                            <th style="width:14%;" class="text-center">Miércoles</th>
-                                                            <th style="width:14%;" class="text-center">Jueves</th>
-                                                            <th style="width:14%;" class="text-center">Viernes</th>
-                                                            <th style="width:14%;" class="text-center">Sabado</th>
-                                                            <th style="width:14%;" class="text-center">Domingo</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                         <tr>
-                                                        <% @disponibilidad.first[1][1]["tarde"].each do |turno| %>
-                                                            <td class= "text-center">
-                                                                <select class="selectpicker form-control">
-                                                                    <option></option> 
-                                                            <% turno["turno"].each do |hora| %>
-                                                                <option><%= hora["hora"].to_datetime.strftime('%H:%M%p' ) %><br></option>
-                                                            <% end %>
-                                                            </select>  
-                                                            </td>
-                                                         <% end %>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
+                                   <div      id="prueba2">
+                
+                                        <%= render 'buscar_semana'%>
                                     </div>
                                 </div>
                             </fieldset>
