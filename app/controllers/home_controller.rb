@@ -39,7 +39,8 @@ class HomeController < ApplicationController
 
   def contacto
     @info_contacto = self.class.get('/informacion_generals.json')
-    @tipo_opinion = self.class.get('/tipo_opiniones.json')    
+    @tipo_opinion = self.class.get('/tipo_opiniones.json')  
+    puts @info_contacto  
   end
   def contactar
   

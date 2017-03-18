@@ -144,7 +144,8 @@ $(window).on('resize', function() {
 
         }).on('hide', function(e){
             calculate_week_range(e);
-        }).on('changeDate', function(e) {
+
+        }).on('click', function(e) {
             
         });
 
@@ -176,6 +177,40 @@ $(window).on('resize', function() {
             var text_date_fin = end_date.getDate() + '/' + (end_date.getMonth() + 1) + '/' + end_date.getFullYear();
             $('#week-star input').val(text_date_inicio);
             $('#week-end input').val(text_date_fin);
+
+            validar_link(start_date);
+
+        }
+
+        function validar_link(start_date) {
+    
+            var link = $('#boton_horario').attr('href');
+            console.log(link)
+            var link = link.substring(0, link.length - 10)
+            console.log(link)
+
+            var dia = '';
+            var mes = '';
+            
+            if ((start_date.getMonth() + 1) <= 9)
+            {
+                mes = '0'+ (start_date.getMonth() + 1);
+            }
+            else{
+                mes = (start_date.getMonth() + 1);
+            }
+            
+            if (start_date.getDate() <= 9)
+            {
+                dia = '0' + start_date.getDate();
+            }
+            else{
+                dia = start_date.getDate();
+            }        
+            var new_link = link + start_date.getFullYear() + '-' + mes + '-' + dia;
+            console.log(new_link);
+            
+            $('#boton_horario').attr('href', new_link);
         }
 
         function Inicializar_fecha () {
@@ -192,6 +227,7 @@ $(window).on('resize', function() {
             var text_date_fin = end_date.getDate() + '/' + (end_date.getMonth() + 1) + '/' + end_date.getFullYear();
             $('#week-star input').val(text_date_inicio);
             $('#week-end input').val(text_date_fin);
+
         }
         Inicializar_fecha();
         

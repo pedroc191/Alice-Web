@@ -31,15 +31,21 @@
                                                         
                                                         <div class=" col-sm-12 for-group">
                                                             <div class="row">
-                                                                <div class="col-sm-4" id="week-star">
-                                                                    Desde: <input type="text" class="form-control text-center" disabled>
+                                                            <%= form_tag( method: "get") do %>
+                                                                  <div class="col-sm-4" id="week-star" >
+                                                                    Desde: 
+                                                                    <input name="week-star" type="text" class="form-control text-center" onchange="change_link();" disabled>
                                                                 </div>
+                                                                <%= hidden_field_tag :slug, @servicio["slug"] %>
                                                                 <div class="col-sm-4" id="week-end">
                                                                     Hasta: <input type="text" class="form-control text-center" disabled>
                                                                 </div>
                                                                 <div class="btn-content col-sm-4 text-center">
-                                                                    <%= link_to "Buscar Horario", "#", remote: true, class: "btn btn-dark-blue btn-buscar-horario" %>
+                                                                 
+                <%= link_to "Buscar horario", buscar_semana_path(:slug => @servicio["slug"], :week_star => Date.today), remote: true, class: "btn-filter btn btn-dark-blue", id: "boton_horario" %>
+                                                                    <%#= link_to "Buscar Horario", servicios_buscar_semana_path(:slug => @servicio["slug"]), class: "btn btn-dark-blue btn-buscar-horario" %>
                                                                 </div>
+                                                            <% end -%>                                                
                                                             </div>
                                                         </div>
                                                     </div>
@@ -70,68 +76,9 @@
                                             <div class="clearfix"></div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-9 col-md-8 col-sm-8">
-                                        <div class="ibox float-e-margins">
-                                            <div class="ibox-content">
-                                                <table class="tabla-horarios table table-bordered table-hover" width="100%">
-                                                    <thead>
-                                                        <h3>Mañana</h3>
-                                                        <tr>
-                                                            <th style="width:14%;" class="text-center">Lunes</th>
-                                                            <th style="width:14%;" class="text-center">Martes</th>
-                                                            <th style="width:14%;" class="text-center">Miércoles</th>
-                                                            <th style="width:14%;" class="text-center">Jueves</th>
-                                                            <th style="width:14%;" class="text-center">Viernes</th>
-                                                            <th style="width:14%;" class="text-center">Sabado</th>
-                                                            <th style="width:14%;" class="text-center">Domingo</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                        <% @disponibilidad.first[1][0]["manana"].each do |turno| %>
-                                                            <td class= "text-center">
-                                                                <select class="selectpicker form-control">
-                                                                    <option></option> 
-                                                            <% turno["turno"].each do |hora| %>
-                                                                <option><%= hora["hora"].to_datetime.strftime("%H:%M%p") %><br></option>
-                                                            <% end %>
-                                                            </select>  
-                                                            </td>
-                                                         <% end %>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-
-                                                <table class="tabla-horarios table table-bordered table-hover" width="100%">
-                                                    <thead>
-                                                        <h3>Tarde</h3>
-                                                        <tr>
-                                                            <th style="width:14%;" class="text-center">Lunes</th>
-                                                            <th style="width:14%;" class="text-center">Martes</th>
-                                                            <th style="width:14%;" class="text-center">Miércoles</th>
-                                                            <th style="width:14%;" class="text-center">Jueves</th>
-                                                            <th style="width:14%;" class="text-center">Viernes</th>
-                                                            <th style="width:14%;" class="text-center">Sabado</th>
-                                                            <th style="width:14%;" class="text-center">Domingo</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                         <tr>
-                                                        <% @disponibilidad.first[1][1]["tarde"].each do |turno| %>
-                                                            <td class= "text-center">
-                                                                <select class="selectpicker form-control">
-                                                                    <option></option> 
-                                                            <% turno["turno"].each do |hora| %>
-                                                                <option><%= hora["hora"].to_datetime.strftime('%H:%M%p' ) %><br></option>
-                                                            <% end %>
-                                                            </select>  
-                                                            </td>
-                                                         <% end %>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
+                                   <div      id="prueba2">
+                
+                                        <%= render 'buscar_semana'%>
                                     </div>
                                 </div>
                             </div>
