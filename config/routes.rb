@@ -52,9 +52,11 @@ Rails.application.routes.draw do
 
   get "categoria_servicios/ver/:slug", to: "categoria_servicios#ver", as: "categoria_servicios_ver"
   get "categoria_servicios/mas_servicios/:slug", to: "categoria_servicios#mas_servicios", as: "categoria_servicios_mas_servicios"
+  
   get "servicios/ver/:slug", to: "servicios#ver", as: "servicios_ver"
   get "servicios/solicitar_cita/:slug", to: "servicios#solicitar_cita", as: "servicios_solicitar_cita"
   
+  get "/buscar_semana", to: "servicios#buscar_semana", as: "buscar_semana"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
