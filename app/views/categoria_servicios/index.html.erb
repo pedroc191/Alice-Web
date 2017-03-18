@@ -1,6 +1,6 @@
 <section id="categoria-servicios" class="white-section unique-section">
   <div class="container">
-    <h2 class="title-section">Servicios</h2>
+    <h2 class="title-section">Catalogo de Servicios</h2>
     <div class="row">
     <% @categorias.each do |categoria_servicio| %>
       <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6" style="margin: 30px 0px;">
@@ -20,11 +20,15 @@
                   <%#= link_to tipo["descripcion"], categoria_servicios_ver_path( categoria_servicio["slug"], tipo["slug"], tipo["servicios"].first["descripcion"]) %>
                 </li>
             <% end %>
+            </ul>
+            <ul class="list-especialidades">
+            <% #if categoria_servicio["tipo_servicios"].size > 5 %>
               <li class="ver-mas">
                 <%= link_to categoria_servicios_mas_servicios_path(categoria_servicio["slug"]), class: "link-ver" do %>
                   <i class="fa fa-plus"></i> Servicios
                 <% end %>
               </li>
+              <% #end %>
             </ul>
           </div>
           <div class="content-btn-categoria-servicio">

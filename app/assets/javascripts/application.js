@@ -14,6 +14,9 @@
 //= require peity/jquery.peity.min.js
 //= require slimscroll/jquery.slimscroll.min.js
 //= require inspinia.js
+//= require jquery.validate
+//= require jquery.validate.additional-methods
+//= require jquery.validate.localization/messages_es
 
 /*=============================================================================
             Funcion para Igualar el Tamanio de 2 o mas Elementos

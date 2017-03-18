@@ -26,95 +26,143 @@ $(window).on('resize', function() {
 
 /* STEPS WIZARD */
 //= require steps/jquery.steps.min.js
-
 //= require datapicker/bootstrap-datepicker.js
-
+//= require datapicker/bootstrap-datepicker-es.js
 //= require datapicker/locales/bootstrap-datepicker.es.js
 
-
-    $(function() {
-
-        $("#wizard").steps({
-            labels: {
-                cancel: "Cancelar",
-                current: "Paso comun:",
-                pagination: "Paginacion",
-                finish: "Solicitar",
-                next: "Siguiente",
-                previous: "Anterior",
-                loading: "Cargando ..."
+    
+$(function() {
+    var form = $("#wizard").show();
+     
+    form.steps({
+        headerTag: "h3",
+        bodyTag: "fieldset",
+        transitionEffect: "slideLeft",
+        labels: {
+            cancel: "Cancelar",
+            current: "Paso comun:",
+            pagination: "Paginacion",
+            finish: "Solicitar",
+            next: "Siguiente",
+            previous: "Anterior",
+            loading: "Cargando ..."
+        },
+        onStepChanging: function (event, currentIndex, newIndex)
+        {
+            // Allways allow previous action even if the current form is not valid!
+            if (currentIndex > newIndex)
+            {
+                return true;
             }
-        });
-        /*$("#form").steps({
-            bodyTag: "fieldset",
-            onStepChanging: function (event, currentIndex, newIndex) {
-                // Always allow going backward even if the current step contains invalid fields!
-                if (currentIndex > newIndex) {
-                    return true;
-                }
-
-                // Forbid suppressing "Warning" step if the user is to young
-                if (newIndex === 3) {
-                    return false;
-                }
-
-                var form = $(this);
-
-                // Clean up if user went backward before
-                if (currentIndex < newIndex) {
-                    // To remove error styles
-                    $(".body:eq(" + newIndex + ") label.error", form).remove();
-                    $(".body:eq(" + newIndex + ") .error", form).removeClass("error");
-                }
-
-                // Disable validation on fields that are disabled or hidden.
-                form.validate().settings.ignore = ":disabled,:hidden";
-
-                // Start validation; Prevent going forward if false
-                return form.valid();
-            },
-            onStepChanged: function (event, currentIndex, priorIndex) {
-                // Suppress (skip) "Warning" step if the user is old enough.
-                if (currentIndex === 2) {
-                    $(this).steps("next");
-                }
-
-                // Suppress (skip) "Warning" step if the user is old enough and wants to the previous step.
-                if (currentIndex === 2 && priorIndex === 3) {
-                    $(this).steps("previous");
-                }
-            },
-            onFinishing: function (event, currentIndex) {
-                var form = $(this);
-
-                // Disable validation on fields that are disabled.
-                // At this point it's recommended to do an overall check (mean ignoring only disabled fields)
-                form.validate().settings.ignore = ":disabled";
-
-                // Start validation; Prevent form submission if false
-                return form.valid();
-            },
-            onFinished: function (event, currentIndex) {
-                var form = $(this);
-
-                // Submit form input
-                form.submit();
+            // Forbid next action on "Warning" step if the user is to young
+            if (newIndex === 3 && Number($("#age-2").val()) < 18)
+            {
+                return false;
             }
-            }).validate({
-                    errorPlacement: function (error, element) {
-                        element.before(error);
-                    },
-                    rules: {
-                        confirm: {
-                            equalTo: "#password"
-                        }
-                    }
-                });
-        */
+            
+            
+            // Needed in some cases if the user went back (clean up)
+            if (currentIndex < newIndex)
+            {
+                // To remove error styles
+                form.find(".body:eq(" + newIndex + ") label.error").remove();
+                form.find(".body:eq(" + newIndex + ") .error").removeClass("error");
+            }
+            form.validate().settings.ignore = ":disabled,:hidden";
+            return form.valid();
+        },
+        onStepChanged: function (event, currentIndex, priorIndex)
+        {
+            console.log($('input[name="tipo_paciente"]').val());
+            // Used to skip the "Warning" step if the user is old enough.
+            
+if ($('input[name="tipo_paciente"]').val() === 'paciente_solicita')
+            {
+                $('input[name="nombre_paciente"]').prop( "disabled", true );
+                $('input[name="cedula_paciente"]').prop( "disabled", true );
+                $('input[name="email_paciente"]').prop( "disabled", true );
+                $('input[name="fecha_nacimiento_paciente"]').prop( "disabled", true );
+
+                if ($('input[name="tipo_usuario"]').val() === 'Usuario_nuevo')
+                {
+                    // Nuevo Usuario y Solicita una cita para Si mismo
+                    $('input[name="sexo_paciente"]').prop( "disabled", false );
+                    $('input[name="telefono_paciente"]').prop( "disabled", false);
+                    $('input[name="direccion_paciente"]').prop( "disabled", false );
+
+                    $('input[name="sexo_paciente"]').val('');
+                    $('input[name="telefono_paciente"]').val('');
+                    $('input[name="direccion_paciente"]').val('');
+                }
+                else{
+
+                    // Usuario Registrado y Solicita una cita para si mismo
+                    $('input[name="sexo_paciente"]').prop( "disabled", true );
+                    $('input[name="telefono_paciente"]').prop( "disabled", true);
+                    $('input[name="direccion_paciente"]').prop( "disabled", true );
+
+             
+                $('input[name="nombre_paciente"]').val('');
+                $('input[name="cedula_paciente"]').val('');
+                $('input[name="email_paciente"]').val('');
+                $('input[name="fecha_nacimiento_paciente"]').val('');
+            }
+            if ($('input[name="tipo_paciente"]').val() === 'paciente_diferente')
+            {
+                $('input[name="nombre_paciente"]').prop( "disabled", false );
+                $('input[name="cedula_paciente"]').prop( "disabled", false );
+                $('input[name="email_paciente"]').prop( "disabled", false );
+                $('input[name="fecha_nacimiento_paciente"]').prop( "disabled", false );
+
+                $('input[name="sexo_paciente"]').prop( "disabled", false);
+                $('input[name="telefono_paciente"]').prop( "disabled", false);
+                $('input[name="direccion_paciente"]').prop( "disabled", false);                    
+
+                $('input[name="nombre_paciente"]').val('');
+                $('input[name="cedula_paciente"]').val('');
+                $('input[name="email_paciente"]').val('');
+            }
+            // Used to skip the "Warning" step if the user is old enough and wants to the previous step.
+            if (currentIndex === 2 && priorIndex === 3)
+            {
+                form.steps("previous");
+            }
+        },
+        onFinishing: function (event, currentIndex)
+        {
+            form.validate().settings.ignore = ":disabled";
+            return form.valid();
+        },
+        onFinished: function (event, currentIndex)
+        {
+            alert("Submitted!");
+        }
+    }).validate({
+        errorPlacement: function errorPlacement(error, element) { element.before(error); }
+    });
 
         var fecha_inicio = new Date();
         var fecha_fin = new Date(fecha_inicio.getFullYear(), 11, 31);
         
+        $('#data_2 .input-group.date').datepicker({
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            autoclose: true,
+            format: "dd/mm/yyyy",
+            endDate: fecha_inicio,
+            language: "es"
+        });
+
+        $('#data_3 .input-group.date').datepicker({
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            autoclose: true,
+            format: "dd/mm/yyyy",
+            endDate: fecha_inicio,
+            language: "es"
+        });
 
         $('#select-week .input-group.date').datepicker({
             todayBtn: "linked",
@@ -144,8 +192,7 @@ $(window).on('resize', function() {
 
         }).on('hide', function(e){
             calculate_week_range(e);
-
-        }).on('click', function(e) {
+        }).on('changeDate', function(e) {
             
         });
 
@@ -177,11 +224,11 @@ $(window).on('resize', function() {
             var text_date_fin = end_date.getDate() + '/' + (end_date.getMonth() + 1) + '/' + end_date.getFullYear();
             $('#week-star input').val(text_date_inicio);
             $('#week-end input').val(text_date_fin);
-
+            
             validar_link(start_date);
 
         }
-
+        
         function validar_link(start_date) {
     
             var link = $('#boton_horario').attr('href');
@@ -228,27 +275,14 @@ $(window).on('resize', function() {
             $('#week-star input').val(text_date_inicio);
             $('#week-end input').val(text_date_fin);
 
+            validar_link(start_date);
+
         }
         Inicializar_fecha();
         
-        $('#data_2 .input-group.date').datepicker({
-            todayBtn: "linked",
-            keyboardNavigation: false,
-            forceParse: false,
-            calendarWeeks: true,
-            autoclose: true
-        });
-
-        $('#data_3 .input-group.date').datepicker({
-            todayBtn: "linked",
-            keyboardNavigation: false,
-            forceParse: false,
-            calendarWeeks: true,
-            autoclose: true
-        });
     });
 
-    var capas = ["Usuarioviejo", "Usuarionuevo"];
+    var capas = ["Usuario_viejo", "Usuario_nuevo"];
     function mostrar(capa) {
         for (i = 0, total = capas.length; i < total; i ++)
             document.getElementById(capas[i]).style.display = (capas[i] == capa) ? "block":"none";

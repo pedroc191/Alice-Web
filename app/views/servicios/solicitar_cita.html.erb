@@ -4,12 +4,10 @@
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-content">
-                        <div id="wizard">
-                            <h1>Reserva tu Cita</h1>
-                        
-
-
-                            <div class="step-content">
+                        <form id="wizard" action="#">
+                          
+                            <h3>Reserva tu Cita</h3>
+                            <fieldset class="step-content">
                                 <div class="row" style="margin-top: -10px;">
                                     <div class="col-lg-12 col-md-12 col-sm-12">
                                         <div class="contact-box" style="padding: 10px 20px; margin: 0px 0px 10px;">
@@ -28,26 +26,18 @@
                                                 </div>
                                                 <div class="col-lg-8 col-md-9 col-sm-12">
                                                     <div class="row">
-                                                        
-                                                        <div class=" col-sm-12 for-group">
-                                                            <div class="row">
-                                                            <%= form_tag( method: "get") do %>
-                                                                  <div class="col-sm-4" id="week-star" >
-                                                                    Desde: 
-                                                                    <input name="week-star" type="text" class="form-control text-center" onchange="change_link();" disabled>
-                                                                </div>
-                                                                <%= hidden_field_tag :slug, @servicio["slug"] %>
-                                                                <div class="col-sm-4" id="week-end">
-                                                                    Hasta: <input type="text" class="form-control text-center" disabled>
-                                                                </div>
-                                                                <div class="btn-content col-sm-4 text-center">
-                                                                 
-                <%= link_to "Buscar horario", buscar_semana_path(:slug => @servicio["slug"], :week_star => Date.today), remote: true, class: "btn-filter btn btn-dark-blue", id: "boton_horario" %>
-                                                                    <%#= link_to "Buscar Horario", servicios_buscar_semana_path(:slug => @servicio["slug"]), class: "btn btn-dark-blue btn-buscar-horario" %>
-                                                                </div>
-                                                            <% end -%>                                                
+                                                        <label class="col-sm-1" style="margin: 10px 0px;">Desde</label>
+                                                            <div class="col-sm-3" id="week-star">
+                                                                <input type="text" class="form-control text-center" disabled>
                                                             </div>
-                                                        </div>
+                                                            <label class="col-sm-1" style="margin: 10px 0px;">Hasta</label>
+                                                            <div class="col-sm-3" id="week-end">
+                                                                <input type="text" class="form-control text-center" disabled>
+                                                            </div>
+                                                            <%= hidden_field_tag :slug, @servicio["slug"] %>
+                                                            <div class="btn-content col-sm-4 text-center">
+                                                            <%= link_to "Buscar horario", buscar_semana_path(:slug => @servicio["slug"], :week_star => Date.today), remote: true, class: "btn btn-dark-blue btn-buscar-horario", id: "boton_horario" %>
+                                                            </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -81,19 +71,22 @@
                                         <%= render 'buscar_semana'%>
                                     </div>
                                 </div>
-                            </div>
-                            <h1>Datos Básicos Solicitante</h1>
-                            <div class="step-content">
+                            </fieldset>
+                            <h3>Datos Básicos Solicitante</h3>
+                            <fieldset class="step-content">
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6">
                                         <h3>¿Has usado el sistema de citas online?</h3>
-                                        <div class="form-group radio">
-                                            <input type="radio" name="radiousuarionuevo" id="radio1" value="Usuarioviejo" onclick="mostrar(this.value)" checked="true">
-                                            <h2 for="radio1">Si</h2>
-                                            <input type="radio" name="radiousuarionuevo" id="radio2" value="Usuarionuevo" onclick="mostrar(this.value)">
-                                            <h2 for="radio1">No</h2>
+
+                                        <div class="radio">
+                                            <input type="radio" name="tipo_usuario" id="radio_usuario" value="Usuario_viejo"  onclick="mostrar(this.value)" checked="">
+                                            <label for="radio_usuario">Si</label>
                                         </div>
 
+                                        <div class="radio">
+                                            <input type="radio" name="tipo_usuario" id="radio_nuevo" value="Usuario_nuevo"  onclick="mostrar(this.value)">
+                                            <label for="radio_nuevo">No</label>
+                                        </div>
                                         <div class="form-group">
                                             <label for="RazonCita">Motivo de la Cita:</label>
                                             <select class="selectpicker form-control">
@@ -104,113 +97,116 @@
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6" style="display: block">
                                         
-                                        <div id="Usuarioviejo" style="display: block">
+                                        <div id="Usuario_viejo" style="display: block">
                                             <div class="form-group">
-                                                <label >Email</label>
-                                                <input type="email" class="form-control" hidden="false" id="InputEmail" placeholder="">
+                                                <label >Email (*)</label>
+                                                <input type="email" class="form-control" required="true" name="email" hidden="false" placeholder="">
                                             </div>
                                             <div class="form-group">
-                                                <label>Contraseña</label> 
-                                                <input type="password" placeholder="" class="form-control">
+                                                <label>Contraseña (*)</label> 
+                                                <input type="password" name="password" required="true" placeholder="" class="form-control">
                                             </div>                         
                                         </div>
 
-                                        <div id="Usuarionuevo" style="display: none">
+                                        <div id="Usuario_nuevo" style="display: none">
                                             
                                             <div class="form-group">
-                                                <label>Nombre y Apellido</label>
-                                                <input type="email" class="form-control" placeholder="">
+                                                <label>Nombre y Apellido (*)</label>
+                                                <input type="email" name="nombre_solicitante" required="true" class="form-control" placeholder="">
                                             </div>
                                             <div class="form-group">
-                                                <label>Cédula</label>
-                                                <input type="email" class="form-control" placeholder="">
+                                                <label>Cédula (*)</label>
+                                                <input type="email" name="cedula_solicitante" required="true" class="form-control" placeholder="">
                                             </div>
                                             <div class="form-group">
-                                                <label>Email</label>
-                                                <input type="email" class="form-control" id="InputEmail" placeholder="">
+                                                <label>Email (*)</label>
+                                                <input type="email" name="email_solicitante" required="true" class="form-control" placeholder="">
                                             </div>
                                             <div class="form-group" id="data_2">
-                                                <label>Fecha de nacimiento</label>
+                                                <label>Fecha de nacimiento (*)</label>
                                                 <div class="input-group date">
-                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-calendar"></i>
+                                                    </span>
+                                                    <input type="text" name="fecha_nacimiento_solicitante" required="true" class="form-control">
                                                 </div>
                                             </div>                             
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <h1>Datos Básicos Paciente</h1>
-                            <div class="step-content">
+                            </fieldset>
+                            <h3>Datos Básicos Paciente</h3>
+                            <fieldset class="step-content">
                                 <div class="text">
                                     <div class="col-lg-4">
                                         <h3>¿Quién es el Paciente?</h3>
                                         <div class="radio">
-                                            <input type="radio" name="radio1" id="radio1" value="option1" checked="">
-                                            <label for="radio1">Yo</label>
+                                            <input type="radio" name="tipo_paciente" id="paciente_solicita" value="paciente_solicita" checked="">
+                                            <label for="paciente_solicita">Yo</label>
                                         </div>
                                         <div class="radio">
-                                            <input type="radio" name="radio1" id="radio2" value="option2">
-                                            <label for="radio2">Otra Persona</label>
+                                            <input type="radio" name="tipo_paciente" id="paciente_diferente" value="paciente_diferente">
+                                            <label for="paciente_diferente">Otra Persona</label>
                                         </div>
                                         <h3>¿Como llegaste a nosotros?</h3>
                                         <div class="radio">
-                                            <input type="radio" name="radio2" id="radio1" value="option1" checked="">
-                                            <label for="radio1">Redes Sociales</label>
+                                            <input type="radio" name="forma_contacto" id="fc_redes" value="Redes Sociales">
+                                            <label for="fc_redes">Redes Sociales</label>
                                         </div>
                                         <div class="radio">
-                                            <input type="radio" name="radio2" id="radio2" value="option2">
-                                            <label for="radio2">Familiar / Amigo</label>
+                                            <input type="radio" name="forma_contacto" id="fc_familiar" value="Familiar / Amigo">
+                                            <label for="fc_familiar">Familiar / Amigo</label>
                                         </div>
                                         <div class="radio">
-                                            <input type="radio" name="radio2" id="radio3" value="option2">
-                                            <label for="radio2">Doctor</label>
+                                            <input type="radio" name="forma_contacto" id="fc_doctor" value="Doctor">
+                                            <label for="fc_doctor">Doctor</label>
                                         </div>
                                         <div class="radio">
-                                            <input type="radio" name="radio2" id="radio4" value="option2">
-                                            <label for="radio2">Otros</label>
+                                            <input type="radio" name="forma_contacto" id="fc_otros" value="Otros">
+                                            <label for="fc_otros">Otros</label>
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label for="exampleInputNombre">Nombre y Apellido</label>
-                                            <input type="email" class="form-control" placeholder="">
+                                            <label>Nombre y Apellido</label>
+                                            <input type="text" name="nombre_paciente" requierd="true" class="form-control" placeholder="">
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleInputcedula">Cédula</label>
-                                            <input type="email" class="form-control" placeholder="">
+                                            <label>Cédula</label>
+                                            <input type="text" name="cedula_paciente" requierd="true" class="form-control" placeholder="">
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleInputEmail">Email</label>
-                                            <input type="email" class="form-control" id="InputEmail" placeholder="">
+                                            <label>Email</label>
+                                            <input type="email" name="email_paciente" requierd="true" class="form-control" placeholder="">
                                         </div>
-                                        <div class="form-group" id="data_3">
+                                        <div class="form-group" id="fecha_nacimiento_paciente">
                                             <label>Fecha de nacimiento</label>
                                             <div class="input-group date">
-                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="03/03/2017">
+                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" name="fecha_nacimiento_paciente" requierd="true" class="form-control">
                                             </div>
                                         </div>                                
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="InputSexo">Sexo</label>
-                                            <select class="selectpicker form-control">
+                                            <select class="selectpicker form-control" name="sexo_solicitante">
                                                 <option>Masculino</option>
                                                 <option>Femenino</option>
                                             </select>    
                                         </div>
                                         <div class="form-group">
                                             <label for="InputTelefono">Teléfono</label>
-                                            <input type="text" id="InputTelefono" class="form-control" data-mask="(999) 999-9999" placeholder="">
+                                            <input type="text" id="InputTelefono"  name="telefono_solicitante" class="form-control" data-mask="(999) 999-9999" placeholder="">
                                         </div>
                                         <div class="form-group">
                                             <label for="InputDireccion">Dirección</label>
-                                            <input type="text" class="form-control" id="InputDireccion" placeholder="">
+                                            <input type="text" class="form-control" name="direccion_solicitante" id="InputDireccion" placeholder="">
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <h1>Confirmación</h1>
-                            <div class="step-content">
+                            </fieldset>
+                            <h3>Confirmación</h3>
+                            <fieldset class="step-content">
                                 <div class="row">
                                     <h3>Comprobante N°03475631</h3>
                                     <div class="col-lg-12">
@@ -268,8 +264,9 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                            </fieldset>
+                        
+                        </form>
                     </div>
                 </div>
             </div>
