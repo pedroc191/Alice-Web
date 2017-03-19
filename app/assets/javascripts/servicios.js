@@ -61,8 +61,9 @@ $(function() {
                 return false;
             }
             
-            
-            // Needed in some cases if the user went back (clean up)
+            mostrar_datos(check_radio('input[name="tipo_paciente"]'));
+
+           // Needed in some cases if the user went back (clean up)
             if (currentIndex < newIndex)
             {
                 // To remove error styles
@@ -85,7 +86,7 @@ $(function() {
         },
         onFinishing: function (event, currentIndex)
         {
-            form.validate().settings.ignore = ":disabled";
+            form.validate().settings.ignore = ":disabled,:hidden";
             return form.valid();
         },
         onFinished: function (event, currentIndex)
@@ -223,6 +224,7 @@ $(function() {
             validar_link(start_date);
 
         }
+
         Inicializar_fecha();
         
     });
@@ -244,7 +246,20 @@ $(function() {
         return value;
     }
     function mostrar_datos(opcion) {
-        
+
+        $('input[name="cedula_paciente_nuevo"]').prop("disabled", true);
+        $('input[name="nombre_paciente_nuevo"]').prop("disabled", true);          
+        $('input[name="apellido_paciente_nuevo"]').prop("disabled", true);
+        $('input[name="email_paciente_nuevo"]').prop("disabled", true);
+        $('input[name="fecha_nacimiento_paciente_nuevo"]').prop("disabled", true);
+        $('input[name="sexo_paciente_nuevo"]').prop("disabled", true);
+        $('input[name="telefono_paciente_nuevo"]').prop("disabled", true);
+        $('input[name="direccion_paciente_nuevo"]').prop("disabled", true);        
+            
+        $('input[name="sexo_paciente_usuario"]').prop("disabled", true);
+        $('input[name="telefono_paciente_usuario"]').prop("disabled", true);
+        $('input[name="direccion_paciente_usuario"]').prop("disabled", true);
+            
         if (opcion === 'paciente_solicita'){
 
             $('.paciente_diferente').css('display','none');
@@ -256,6 +271,11 @@ $(function() {
                 $('.paciente_solicita.viejo').css('display','none');
                 $('.paciente_solicita.nuevo').css('display','block');
                 $('.paciente_solicita.datos').css('display','block');
+                
+                $('input[name="sexo_paciente_usuario"]').prop("disabled", false);
+                $('input[name="telefono_paciente_usuario"]').prop("disabled", false);
+                $('input[name="direccion_paciente_usuario"]').prop("disabled", false);
+            
                 $('#nuevo').text('Por favor ' + $('input[name="nombre_solicitante"]').val() + ' ' + $('input[name="apellido_solicitante"]').val());
                     
             }
@@ -266,6 +286,9 @@ $(function() {
                 $('.paciente_solicita.nuevo').css('display','none');
                 $('.paciente_solicita.viejo').css('display','block');
                 $('.paciente_solicita.datos').css('display','none');
+                
+                $('.paciente_diferente').css('display','none');
+                     
             }
         }
         else{
@@ -273,12 +296,44 @@ $(function() {
             $('.paciente_solicita.nuevo').css('display','none');
             $('.paciente_solicita.viejo').css('display','none');
             $('.paciente_solicita.datos').css('display','none');
+            
             $('.paciente_diferente').css('display','block');
+
+            $('input[name="cedula_paciente_nuevo"]').prop("disabled", false);
+            $('input[name="nombre_paciente_nuevo"]').prop("disabled", false);
+            $('input[name="apellido_paciente_nuevo"]').prop("disabled", false);
+            $('input[name="email_paciente_nuevo"]').prop("disabled", false);
+            $('input[name="fecha_nacimiento_paciente_nuevo"]').prop("disabled", false);
+            $('input[name="sexo_paciente_nuevo"]').prop("disabled", false);
+            $('input[name="telefono_paciente_nuevo"]').prop("disabled", false);
+            $('input[name="direccion_paciente_nuevo"]').prop("disabled", false);
         }
     }
 
-    var capas = ["Usuario_viejo", "Usuario_nuevo"];
-    function mostrar(capa) {
-        for (i = 0, total = capas.length; i < total; i ++)
-            document.getElementById(capas[i]).style.display = (capas[i] == capa) ? "block":"none";
+    function mostrar (capa) {
+        
+        if(capa === "Usuario_viejo"){
+
+            $("#Usuario_viejo").css("display", "block");
+
+            $('input[name="cedula_solicitante"]').prop("disabled", true);
+            $('input[name="nombre_solicitante"]').prop("disabled", true);
+            $('input[name="apellido_solicitante"]').prop("disabled", true);
+            $('input[name="email_solicitante"]').prop("disabled", true);
+            $('input[name="fecha_nacimiento_solicitante"]').prop("disabled", true);
+            
+            $("#Usuario_nuevo").css("display", "none");
+        }
+        else{
+
+            $("#Usuario_viejo").css("display", "none");
+
+            $('input[name="cedula_solicitante"]').prop("disabled", false);
+            $('input[name="nombre_solicitante"]').prop("disabled", false);
+            $('input[name="apellido_solicitante"]').prop("disabled", false);
+            $('input[name="email_solicitante"]').prop("disabled", false);
+            $('input[name="fecha_nacimiento_solicitante"]').prop("disabled", false);
+            
+            $("#Usuario_nuevo").css("display", "block");
+        }
     }
