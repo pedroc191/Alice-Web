@@ -61,37 +61,7 @@ $(function() {
                 return false;
             }
             
-            if (check_radio('input[name="tipo_paciente"]') === 'paciente_solicita'){
-
-                $('.paciente_diferente').css('display','none');
-                 
-                if (check_radio('input[name="tipo_usuario"]') === 'Usuario_nuevo'){
-
-                    // Nuevo Usuario y Solicita una cita para Si mismo
-                    
-                    $('.paciente_solicita.viejo').css('display','none');
-                    $('.paciente_solicita.nuevo').css('display','block');
-                    $('.paciente_solicita.datos').css('display','block');
-                    $('#nuevo').text('Por favor ' + $('input[name="nombre_solicitante"]').val() + ' ' + $('input[name="apellido_solicitante"]').val());
-                    
-                }
-                else{
-
-                    // Usuario Registrado y Solicita una cita para si mismo
-                    
-                    $('.paciente_solicita.nuevo').css('display','none');
-                    $('.paciente_solicita.viejo').css('display','block');
-                    $('.paciente_solicita.datos').css('display','none');
-                }
-            }
-            else{
-
-                $('.paciente_solicita.nuevo').css('display','none');
-                $('.paciente_solicita.viejo').css('display','none');
-                $('.paciente_solicita.datos').css('display','none');
-                $('.paciente_diferente').css('display','block');
-            }
-
+            
             // Needed in some cases if the user went back (clean up)
             if (currentIndex < newIndex)
             {

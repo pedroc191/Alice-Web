@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get "home/login"
+
   get "home/index"
   
   get "home/suscripcion"
