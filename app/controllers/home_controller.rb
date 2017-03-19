@@ -7,38 +7,6 @@ class HomeController < ApplicationController
     
     @eventos = self.class.get('/eventos.json')
     
-    #@tipo_servicio =  HTTParty.get(Url_WebServices() + '/tipo_servicios/1.json')
-
-    #@foto = Url_WebServices() + @tipo_servicio['foto']
-  end
-
-  def create
-    #@descripcion = params[:descripcion]
-    #@token = params[:authenticity_token]
-
-    #roles = { body: { tipo_adiccion: { descripcion: @descripcion, authenticity_token: @token } } }
-    
-    #prueba = HTTParty.post(Url_WebServices() + '/tipo_adicciones.json', roles)
-
-    #Respond_notice(prueba)
-
-    #redirect_to root_path  
-  end
-
-  def login
-    @token = self.class.get('/home/token')
-  end
-
-  def empresa
-  end
-
-  def servicios
-  end
-  
-  def eventos
-  end
-
-  def noticias
   end
 
   def contacto
@@ -46,8 +14,9 @@ class HomeController < ApplicationController
     @tipo_opinion = self.class.get('/tipo_opiniones.json')  
     puts @info_contacto  
   end
+
   def contactar
-  
+=begin  
     @nombre = params[:nombre]
     @email = params[:email]
     @tipo_opinion = params[:tipo_opinion]
@@ -70,7 +39,35 @@ class HomeController < ApplicationController
     Respond_notice(respuesta)
 
     redirect_to '/home/contacto'
-  
+=end 
+
+    contacto = {
+      body:
+        {
+          usuario:{
+            email: 'pietro.c191@gmail.com',
+            password: 'pgca194546',
+            password_confirmation: 'pgca194546',
+            rol_id: 1
+          },
+          persona:{
+            cedula: '20469018',
+            nombre: 'Pedro G.',
+            apellido: 'Camacaro A.',
+            telefono: '424-550-7422',
+            fecha_nacimiento: '11/06/1991',
+            direccion:'Cabudare',
+            sexo_id: 1
+          }
+        }
+    }
+
+    respuesta = self.class.post('/usuarios.json', contacto)
+
+    Respond_notice(respuesta)
+
+    redirect_to '/home/contacto'
+
   end
 
   def suscripcion
@@ -109,15 +106,6 @@ class HomeController < ApplicationController
 
     redirect_to root_path#
 
-  end
-
-  def solicitar
-  end
-
-  def solicitar2
-  end
-
-  def solicitar3
   end
 
   def preguntas_frecuentes

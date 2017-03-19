@@ -24,11 +24,11 @@ class ServiciosController < ApplicationController
   end
 
   def solicitar_cita
-    @token = self.class.get('/home/token')
     @servicio = self.class.get('/servicios/'+params[:slug]+'.json')
     @disponibilidad = self.class.get('/disponibilidad.json?servicio_id='+@servicio["id"].to_s+'&fecha='+Date.today.to_s)
     @bloques = @disponibilidad
-    @tipo_cita = self.class.get('/tipo_citas.json')
+    @sexo = self.class.get('/sexos.json')
+    @motivos = self.class.get('/tipo_citas.json')
   end
 
   def buscar_semana

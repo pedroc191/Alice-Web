@@ -8,6 +8,7 @@
 //= require datapicker/bootstrap-datepicker.js
 
 
+
     $(function() {
 
         $("#wizard").steps({

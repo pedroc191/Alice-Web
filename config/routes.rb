@@ -23,15 +23,9 @@ Rails.application.routes.draw do
   get "home/index"
   
   get "home/suscripcion"
-
   post "home/suscribirse"
-
-  #get "servicios/especialistas"
-
-  get "citas/solicitar"
   
   get "home/contacto"
-  
   post "home/contactar"
 
   get "home/preguntas_frecuentes"
@@ -42,16 +36,6 @@ Rails.application.routes.draw do
   get "eventos/ver/:slug", to: "eventos#ver", as: "eventos_ver"
   get "eventos/categoria/:slug", to: "eventos#categoria", as: "eventos_categoria"
   
-  get "home/solicitar"
-  
-  get "home/solicitar2"
-  get "home/solicitar3"
-
-
-  #servicios
-    get "noticias/leer"
-  get "eventos/ver"
-
   get "categoria_servicios/ver/:slug", to: "categoria_servicios#ver", as: "categoria_servicios_ver"
   get "categoria_servicios/mas_servicios/:slug", to: "categoria_servicios#mas_servicios", as: "categoria_servicios_mas_servicios"
   
@@ -59,14 +43,16 @@ Rails.application.routes.draw do
   get "servicios/solicitar_cita/:slug", to: "servicios#solicitar_cita", as: "servicios_solicitar_cita"
   
   get "/buscar_semana", to: "servicios#buscar_semana", as: "buscar_semana"
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   
   root to: 'home#index'
+  
   get "/buscar_semana", to: "servicios#buscar_semana"#, as: "servicios_buscar_semana"
-  get '/especialistas', :to => 'servicios#especialistas'
+  get "/especialistas", to: "servicios#especialistas"
 
 
   # Example of regular route:
