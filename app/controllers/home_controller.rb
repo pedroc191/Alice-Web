@@ -25,6 +25,10 @@ class HomeController < ApplicationController
     #redirect_to root_path  
   end
 
+  def login
+    @token = self.class.get('/home/token')
+  end
+
   def empresa
   end
 

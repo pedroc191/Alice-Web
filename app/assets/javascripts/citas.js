@@ -7,8 +7,6 @@
 
 //= require datapicker/bootstrap-datepicker.js
 
-//= require datapicker/locales/bootstrap-datepicker.es.js
-
 
     $(function() {
 

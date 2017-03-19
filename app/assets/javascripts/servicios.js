@@ -76,7 +76,7 @@ $(function() {
             console.log($('input[name="tipo_paciente"]').val());
             // Used to skip the "Warning" step if the user is old enough.
             
-if ($('input[name="tipo_paciente"]').val() === 'paciente_solicita')
+            if ($('input[name="tipo_paciente"]').val() === 'paciente_solicita')
             {
                 $('input[name="nombre_paciente"]').prop( "disabled", true );
                 $('input[name="cedula_paciente"]').prop( "disabled", true );
@@ -106,6 +106,7 @@ if ($('input[name="tipo_paciente"]').val() === 'paciente_solicita')
                 $('input[name="cedula_paciente"]').val('');
                 $('input[name="email_paciente"]').val('');
                 $('input[name="fecha_nacimiento_paciente"]').val('');
+                }
             }
             if ($('input[name="tipo_paciente"]').val() === 'paciente_diferente')
             {

@@ -1,0 +1,27 @@
+<h2>Sign in</h2>
+<%= form_tag('192.168.1.103:3000/usuarios/sign_in.json' ,:html => {:id => "sign_in_user"}, :format => :json,:remote => true ) do %>
+  <br><br><br>
+  <div>
+    <%= email_field_tag :email, placeholder: 'email' %>
+  </div>
+  <div>
+    <%= password_field_tag :password, placeholder: "password" %>
+  </div>
+      <div class="remember">
+      <%= check_box_tag :remember_me %>
+      <%= label_tag :remember_me %>
+    </div>
+  <div>
+<%= hidden_field_tag :authenticity_token, @token["token"] -%>
+    <%= submit_tag "Sign in", class: 'btn btn-success btn-medium' %>
+  </div>
+<% end %>
+<%= @token %>
+<script type="text/javascript">
+  
+  $.ajaxSetup({
+  headers: {
+    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+</script>
