@@ -20,6 +20,51 @@ class CitasController < ApplicationController
   # GET /citas/1/edit
   def edit
   end
+
+  def registrar
+    @fecha = params[:week]
+    @servicio  = params[:slug]
+    @tipo_usuario = params[:tipo_usuario]
+    @tipo_cita = params[:tipo_cita]
+    @email = params[:email]
+    @password = params[:password]
+    @cedula_solicitante = params[:cedula_solicitante]
+    @nombre_solicitante = params[:nombre_solicitante]
+    @apellido_solicitante = params[:apellido_solicitante]
+    @tipo_paciente = params[:paciente_solicita]
+    @sexo_paciente_usuario = params[:sexo_paciente_usuario]
+    @sexo_paciente_nuevo = params[:sexo_paciente_nuevo]
+
+     contacto = {
+      body:
+        {
+          usuario:{
+            email: @email,
+            password: @password,
+            password_confirmation: @password,
+            rol_id: 1
+          },
+          persona:{
+            cedula: @cedula_solicitante,
+            nombre: @nombre_solicitante,
+            apellido: @apellido_solicitante,
+            telefono: '424-550-7422',
+            fecha_nacimiento: '11/06/1991',
+            direccion:'Cabudare',
+            sexo_id: 1
+          }
+        }
+    }
+
+    respuesta = self.class.post('/usuarios.json', contacto)
+
+    Respond_notice(respuesta)
+
+    redirect_to '/home/contacto'
+
+
+  end
+  
   def solicitar
     
   end
