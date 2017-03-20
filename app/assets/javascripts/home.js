@@ -19,3 +19,17 @@ $(window).on('load', function() {
     $('#twitter-widget-0').addClass('embed-responsive-item');
 });
 
+$(document).ready(function() {
+    alturasIguales('.faq-item .row:first-child');
+    alturasIguales('.faq-item .row:first-child .col');
+});
+
+$(window).on('load', function() {
+    alturasIguales('.faq-item .row:first-child');
+    alturasIguales('.faq-item .row:first-child .col');
+});
+
+$(window).on('resize', function() {
+    alturasIguales('.faq-item .row:first-child');
+    alturasIguales('.faq-item .row:first-child .col');
+});

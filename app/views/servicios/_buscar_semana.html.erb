@@ -1,58 +1,117 @@
- <div class="col-lg-9 col-md-8 col-sm-8">
+                                    <script type="text/javascript">
+
+                                        Date.prototype.addDays = function(days) {
+                                            var dat = new Date(this.valueOf());
+                                            dat.setDate(dat.getDate() + days);
+                                            return dat;
+                                        }
+
+                                        function Validar_busqueda() {
+                                            
+                                            var date = new Date();
+                                            
+                                            var select = new Date('<%= @fecha %>');
+
+
+                                            for (i = 0; i < 7; i++) {
+                                            
+                                                Obtener_dia(select, date, i);    
+                                            }
+                                        }
+
+                                        function Obtener_dia(fecha_inicio, fecha_hoy, add) {
+
+                                            var fecha_add = fecha_inicio.addDays(add + 1);
+                                            
+                                            var dia = fecha_add.getDate();
+                                            var mes = fecha_add.getMonth() + 1;
+
+                                            if (dia <= 9){
+                                                dia = '0'+ dia;
+                                            }
+                                            if (mes <= 9){
+                                                mes = '0'+ mes;
+                                            }
+                                            var fecha = dia + '/' + mes + '/' + fecha_add.getFullYear();
+                                            
+                                            var i = add + 1;
+
+                                            $('.dia-'+i).text(fecha);
+
+                                            if(fecha_add < fecha_hoy){
+                                            
+                                                $('.tabla-horarios.manana tr td:nth-child('+(i+1)+')').empty();  
+                                            }
+                                        }
+                                        var validar = new Date('<%= @fecha %>');
+                                        
+                                        if (isNaN(validar) == false){
+
+                                            Validar_busqueda();  
+                                        }
+                                    </script>
+                                    <div class="col-lg-9 col-md-8 col-sm-8">
                                         <div class="ibox float-e-margins">
                                             <div class="ibox-content">
-                                                <table class="tabla-horarios table table-bordered table-hover" width="100%">
+                                                <table class="tabla-horarios table table-bordered table-hover" width="100%" style="border: 0px solid;">
                                                     <thead>
-                                                        <h3>Mañana</h3>
                                                         <tr>
-                                                            <th style="width:14%;" class="text-center">Lunes</th>
-                                                            <th style="width:14%;" class="text-center">Martes</th>
-                                                            <th style="width:14%;" class="text-center">Miércoles</th>
-                                                            <th style="width:14%;" class="text-center">Jueves</th>
-                                                            <th style="width:14%;" class="text-center">Viernes</th>
-                                                            <th style="width:14%;" class="text-center">Sabado</th>
-                                                            <th style="width:14%;" class="text-center">Domingo</th>
+                                                            <th style="width:12.5%;" class="text-center">Fecha</th>
+                                                            <th style="width:12.5%;" class="text-center dia-1"></th>
+                                                            <th style="width:12.5%;" class="text-center dia-2"></th>
+                                                            <th style="width:12.5%;" class="text-center dia-3"></th>
+                                                            <th style="width:12.5%;" class="text-center dia-4"></th>
+                                                            <th style="width:12.5%;" class="text-center dia-5"></th>
+                                                            <th style="width:12.5%;" class="text-center dia-6"></th>
+                                                            <th style="width:12.5%;" class="text-center dia-7"></th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th style="width:12.5%;" class="text-center">Turno</th>
+                                                            <th style="width:12.5%;" class="text-center">Lunes</th>
+                                                            <th style="width:12.5%;" class="text-center">Martes</th>
+                                                            <th style="width:12.5%;" class="text-center">Miércoles</th>
+                                                            <th style="width:12.5%;" class="text-center">Jueves</th>
+                                                            <th style="width:12.5%;" class="text-center">Viernes</th>
+                                                            <th style="width:12.5%;" class="text-center">Sabado</th>
+                                                            <th style="width:12.5%;" class="text-center">Domingo</th>
                                                         </tr>
                                                     </thead>
+                                                </table>
+
+                                                <table class="tabla-horarios manana table table-bordered table-hover" width="100%">
                                                     <tbody>
                                                         <tr>
+                                                            <td class="text-center" style="width: 12.5%;">Mañana<br>(AM)</td>
                                                         <% @disponibilidad.first[1][0]["manana"].each do |turno| %>
-                                                            <td class= "text-center">
+                                                            <td class= "text-center" style="width: 12.5%;">
+                                                            <% if turno["turno"].length > 0 %>
                                                                 <select class="selectpicker form-control">
                                                                     <option></option> 
-                                                            <% turno["turno"].each do |hora| %>
-                                                                <option><%= hora["hora"].to_datetime.strftime("%H:%M%p") %><br></option>
-                                                            <% end %>
-                                                            </select>  
+                                                                <% turno["turno"].each do |hora| %>
+                                                                    <option><%= hora["hora"].to_datetime.strftime("%I:%M %p") %></option>
+                                                                <% end %>
+                                                                </select>
+
+                                                            <% end %>  
                                                             </td>
                                                          <% end %>
                                                         </tr>
                                                     </tbody>
                                                 </table>
-
-                                                <table class="tabla-horarios table table-bordered table-hover" width="100%">
-                                                    <thead>
-                                                        <h3>Tarde</h3>
-                                                        <tr>
-                                                            <th style="width:14%;" class="text-center">Lunes</th>
-                                                            <th style="width:14%;" class="text-center">Martes</th>
-                                                            <th style="width:14%;" class="text-center">Miércoles</th>
-                                                            <th style="width:14%;" class="text-center">Jueves</th>
-                                                            <th style="width:14%;" class="text-center">Viernes</th>
-                                                            <th style="width:14%;" class="text-center">Sabado</th>
-                                                            <th style="width:14%;" class="text-center">Domingo</th>
-                                                        </tr>
-                                                    </thead>
+                                                <table class="tabla-horarios tarde table table-bordered table-hover" width="100%">
                                                     <tbody>
-                                                         <tr>
+                                                        <tr>
+                                                            <td class="text-center" style="width: 12.5%;">Tarde<br>(PM)</td>
                                                         <% @disponibilidad.first[1][1]["tarde"].each do |turno| %>
-                                                            <td class= "text-center">
+                                                            <td class= "text-center" style="width: 12.5%;">
+                                                            <% if turno["turno"].length > 0 %>
                                                                 <select class="selectpicker form-control">
                                                                     <option></option> 
-                                                            <% turno["turno"].each do |hora| %>
-                                                                <option><%= hora["hora"].to_datetime.strftime('%H:%M%p' ) %><br></option>
-                                                            <% end %>
-                                                            </select>  
+                                                                <% turno["turno"].each do |hora| %>
+                                                                    <option><%= hora["hora"].to_datetime.strftime("%I:%M %p") %></option>
+                                                                <% end %>
+                                                                </select>
+                                                            <% end %>  
                                                             </td>
                                                          <% end %>
                                                         </tr>
