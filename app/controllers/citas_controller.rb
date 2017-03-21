@@ -32,11 +32,14 @@ class CitasController < ApplicationController
   def registrar
     #raise params
     ############### CITA
+
     @semana = params[:week]
     @servicio  = params[:slug]
     @tipo_usuario = params[:tipo_usuario]
     @tipo_cita = params[:tipo_cita]
+
     ############## NuEVO USUARIO (SOLICITANTE)
+
     @email_usuario = params[:email_usuario]
     @password_usuario = params[:password_usuario]
     @email_solicitante = params[:email_solicitante]
@@ -46,9 +49,13 @@ class CitasController < ApplicationController
     @apellido_solicitante = params[:apellido_solicitante]
     @sexo_solicitante = params[:sexo_solicitante]
     @fecha_nacimiento_solicitante = params[:fecha_nacimiento_solicitante]
+    @telefono_solicitante = params[:telefono_solicitante]
+    @direccion_solicitante = params[:direccion_solicitante]
     @tipo_paciente = params[:tipo_paciente]
     @sexo_paciente_usuario = params[:sexo_paciente_usuario]
+
     ############## PACIENTE NUEVO    
+
     @sexo_paciente_nuevo = params[:sexo_paciente_nuevo]
     @cedula_paciente_nuevo = params[:cedula_paciente_nuevo]
     @nombre_paciente_nuevo = params[:cedula_paciente_nuevo]
@@ -144,7 +151,7 @@ class CitasController < ApplicationController
             cedula: @cedula_solicitante,
             nombre: @nombre_solicitante,
             apellido: @apellido_solicitante,
-            telefono: '424-550-7422',
+            telefono: @telefono_solicitante,
             fecha_nacimiento: @fecha_nacimiento_solicitante,
             sexo_id: @sexo_solicitante
           }
@@ -165,7 +172,7 @@ class CitasController < ApplicationController
             cedula: @cedula_paciente_nuevo,
             nombre: @nombre_paciente_nuevo,
             apellido: @apellido_paciente_nuevo,
-            telefono: '424-550-7422',
+            telefono: @telefono_solicitante,
             fecha_nacimiento: @fecha_nacimiento_nuevo,
             sexo_id: @sexo_paciente_nuevo
           }

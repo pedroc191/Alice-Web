@@ -12,7 +12,7 @@
             <h2 class="text-white"><strong><%= categoria_servicio["descripcion"] %></strong></h2>
           </div>
           
-          <div class="content-list-especialidades">
+          <div class="content-list-especialidades servicios" style="border-bottom: 0px;">
             <ul class="list-especialidades">
             <% categoria_servicio["tipo_servicios"].take(5).each do |tipo| %>
                 <li>
@@ -21,21 +21,21 @@
                 </li>
             <% end %>
             </ul>
+          </div>
+          <div class="content-list-especialidades adicionales" style="border-top: 0px;">
             <ul class="list-especialidades">
-              <li class="ver-mas">
-
-          <%= link_to categoria_servicios_mas_categorias_path(categoria_servicio["slug"]), class: "link-ver" do %>
-            <i class="fa fa-plus"></i> Categorias
-          <% end %>
+              <li class="ver-mas row">
+                <%= link_to categoria_servicios_mas_categorias_path(categoria_servicio["slug"]), class: "link-ver col-sm-6", style: "margin: 0px;" do %>
+                  <i class="fa fa-plus"></i> Categorias
+                <% end %>
+                <%= link_to categoria_servicios_mas_servicios_path(categoria_servicio["slug"]), class: "link-ver col-sm-6", style: "margin: 0px;" do %>
+                  <i class="fa fa-plus"></i> Servicios
+                <% end %>
               </li>
             </ul>
-
           </div>
           <div class="content-btn-categoria-servicio text-center" style="margin-top: 10px;">
             
-                <%= link_to categoria_servicios_mas_servicios_path(categoria_servicio["slug"]), class: "btn btn-dark-blue" do %>
-                  <i class="fa fa-plus"></i> <%= categoria_servicio["descripcion"] %>
-                <% end %>
           </div>
         </div>
       </div>

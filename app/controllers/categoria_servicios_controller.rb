@@ -25,7 +25,7 @@ class CategoriaServiciosController < ApplicationController
      # pager.replace(@tipo_servicios)
     #end
 
-    @per_page = params[:per_page] || 2
+    @per_page = params[:per_page] || 4
     @especialidades= @tipo_servicios.paginate(:per_page => @per_page, :page => params[:page])
 
   end
@@ -41,7 +41,7 @@ class CategoriaServiciosController < ApplicationController
         break
       end
     end
-    @per_page = params[:per_page] || 2
+    @per_page = params[:per_page] || 4
     @especialidades= @servicios.paginate(:per_page => @per_page, :page => params[:page])
     
 
@@ -59,7 +59,7 @@ class CategoriaServiciosController < ApplicationController
       end
     end
 
-    @per_page = params[:per_page] || 2
+    @per_page = params[:per_page] || 4
     @especialidades= @tipo_servicios.paginate(:per_page => @per_page, :page => params[:page])
 
   end
@@ -75,7 +75,7 @@ class CategoriaServiciosController < ApplicationController
       end
     end
 
-    @per_page = params[:per_page] || 2
+    @per_page = params[:per_page] || 4
     @especialidades= @tipo_servicios.paginate(:per_page => @per_page, :page => params[:page])
 
     respond_to do |format|

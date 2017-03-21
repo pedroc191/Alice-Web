@@ -7,6 +7,7 @@
 $(document).ready(function() {
     alturasIguales('.content-especialista');
     alturasIguales('.col-sm-8');
+    alturasIguales('.contact-box.content-servicio');
     $('.landing-page #servicio .content-especialista .btn-dark-blue').css('position','inherit');
     $('.landing-page #servicio .content-especialista .btn-dark-blue').css('bottom','0px');
 });
@@ -14,6 +15,7 @@ $(document).ready(function() {
 $(window).on('load', function() {
     alturasIguales('.content-especialista');
     alturasIguales('.col-sm-8');
+    alturasIguales('.contact-box.content-servicio');
     $('.landing-page #servicio .content-especialista .btn-dark-blue').css('position','inherit');
     $('.landing-page #servicio .content-especialista .btn-dark-blue').css('bottom','0px');
 });
@@ -21,6 +23,7 @@ $(window).on('load', function() {
 $(window).on('resize', function() {
     alturasIguales('.content-especialista');    
     alturasIguales('.col-sm-8');
+    alturasIguales('.contact-box.content-servicio');
 });
 
 
@@ -429,6 +432,8 @@ $(function() {
             $('input[name="apellido_solicitante"]').val("");
             $('select[name="sexo_solicitante"]').val("");
             $('input[name="fecha_nacimiento_solicitante"]').val("");
+            $('input[name="telefono_solicitante"]').val("");
+            $('input[name="direccion_solicitante"]').val("");
             
             $('#fecha-n-solicitante .input-group.date').datepicker('setDate', "");
             $('#fecha-n-solicitante .input-group.date').datepicker('update');
@@ -442,6 +447,8 @@ $(function() {
             $('input[name="apellido_solicitante"]').prop("disabled", true);
             $('select[name="sexo_solicitante"]').prop("disabled", true);
             $('input[name="fecha_nacimiento_solicitante"]').prop("disabled", true);
+            $('input[name="telefono_solicitante"]').prop("disabled", true);
+            $('input[name="direccion_solicitante"]').prop("disabled", true);
             
             $(".usuario-nuevo").css("display", "none");
             
@@ -466,6 +473,9 @@ $(function() {
             $('input[name="password_solicitante"]').prop("disabled", false);
             $('select[name="sexo_solicitante"]').prop("disabled", false);
             $('input[name="fecha_nacimiento_solicitante"]').prop("disabled", false);
+            $('input[name="telefono_solicitante"]').prop("disabled", false);
+            $('input[name="direccion_solicitante"]').prop("disabled", false);
+            
             
             $(".usuario-nuevo").css("display", "block");
             $("#datos-basicos-s").removeClass('col-lg-6 col-md-6 col-sm-6');
