@@ -49,7 +49,7 @@ class CategoriaServiciosController < ApplicationController
      #@categoria_servicio.especialidades.paginate(page: params[:page], per_page: 4)
   end
 
-  def mas_servicios
+  def mas_categorias
     @categorias = self.class.get('/categorias.json')
     @categorias.each do |categoria|
       if categoria["slug"] == params[:slug]
@@ -61,9 +61,64 @@ class CategoriaServiciosController < ApplicationController
 
     @per_page = params[:per_page] || 2
     @especialidades= @tipo_servicios.paginate(:per_page => @per_page, :page => params[:page])
-    
+
   end
 
+  def especialidades
+
+    @categorias = self.class.get('/categorias.json')
+    @categorias.each do |categoria|
+      if categoria["slug"] == params[:slug]
+        @categoria = categoria
+        @tipo_servicios = categoria["tipo_servicios"]
+        break
+      end
+    end
+
+    @per_page = params[:per_page] || 2
+    @especialidades= @tipo_servicios.paginate(:per_page => @per_page, :page => params[:page])
+
+    respond_to do |format|
+        #format.html { render partial: 'especialistas', locals: { :servicio => @servicio } }
+      format.js
+    end
+  end
+
+  def mas_servicios
+
+    @categorias = self.class.get('/categorias.json')
+    @categorias.each do |categoria|
+      if categoria["slug"] == params[:slug]
+        @categoria = categoria
+        @servicios = categoria["tipo_servicios"]
+        break
+      end
+    end
+
+    @per_page = params[:per_page] || 4
+    @servicios = @servicios.paginate(:per_page => @per_page, :page => params[:page])
+
+  end
+
+  def especialistas
+    
+    @categorias = self.class.get('/categorias.json')
+    @categorias.each do |categoria|
+      if categoria["slug"] == params[:slug]
+        @categoria = categoria
+        @servicios = categoria["tipo_servicios"]
+        break
+      end
+    end
+
+    @per_page = params[:per_page] || 4
+    @servicios = @servicios.paginate(:per_page => @per_page, :page => params[:page])
+
+    respond_to do |format|
+        #format.html { render partial: 'especialistas', locals: { :servicio => @servicio } }
+      format.js
+    end
+  end
   # GET /categoria_servicios/new
   def new
     @categoria_servicio = CategoriaServicio.new

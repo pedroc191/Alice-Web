@@ -119,4 +119,40 @@
 			}
 		}
 	}
+    
+    #servicio{
+        margin: 0px 0px;
+
+        .modal-header .close{
+            border-radius: 50%;
+            background-color: $red;
+            width: 22px;
+            height: 22px;
+            color: #FFFFFF;
+            opacity: 1;
+        }
+        table.tabla-horarios.table-bordered > thead > tr > th{
+            background-color: $color-darkblue;
+            color: #FFFFFF;
+        }
+        .text-promo{
+            width: 800px;
+            margin: 20px 0px;
+        }
+        @media (min-width: 768px) {
+          .container {
+            width: 630px;
+          }
+        }
+        @media (min-width: 992px) {
+          .container {
+            width: 850px;
+          }
+        }
+        @media (min-width: 1200px) {
+          .container {
+            width: 1050px;
+          }
+        }
+    }
 }
