@@ -82,16 +82,17 @@
                                                     <tbody>
                                                         <tr>
                                                             <td class="text-center" style="width: 12.5%;">Mañana<br>(AM)</td>
+                                                            <% @turnoid = 1 %>
                                                         <% @disponibilidad.first[1][0]["manana"].each do |turno| %>
                                                             <td class= "text-center" style="width: 12.5%;">
                                                             <% if turno["turno"].length > 0 %>
-                                                                <select class="selectpicker form-control">
+                                                                <select name="turno<%= @turnoid %>" class="selectpicker form-control">
                                                                     <option></option> 
                                                                 <% turno["turno"].each do |hora| %>
                                                                     <option><%= hora["hora"].to_datetime.strftime("%I:%M %p") %></option>
                                                                 <% end %>
                                                                 </select>
-
+                                                                <% @turnoid = @turnoid+1 %>
                                                             <% end %>  
                                                             </td>
                                                          <% end %>
@@ -102,15 +103,17 @@
                                                     <tbody>
                                                         <tr>
                                                             <td class="text-center" style="width: 12.5%;">Tarde<br>(PM)</td>
+                                                            <% @turnoid = 8 %>
                                                         <% @disponibilidad.first[1][1]["tarde"].each do |turno| %>
                                                             <td class= "text-center" style="width: 12.5%;">
                                                             <% if turno["turno"].length > 0 %>
-                                                                <select class="selectpicker form-control">
+                                                                <select name="turno<%= @turnoid %>" class="selectpicker form-control">
                                                                     <option></option> 
                                                                 <% turno["turno"].each do |hora| %>
                                                                     <option><%= hora["hora"].to_datetime.strftime("%I:%M %p") %></option>
                                                                 <% end %>
                                                                 </select>
+                                                                <% @turnoid = @turnoid+1 %>
                                                             <% end %>  
                                                             </td>
                                                          <% end %>

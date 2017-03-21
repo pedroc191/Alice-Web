@@ -70,7 +70,7 @@ $(function() {
                 form.find(".body:eq(" + newIndex + ") label.error").remove();
                 form.find(".body:eq(" + newIndex + ") .error").removeClass("error");
             }
-            form.validate().settings.ignore = ":disabled,:hidden";
+            form.validate().settings.ignore = ":disabled, :hidden";
             return form.valid();
         },
         onStepChanged: function (event, currentIndex, priorIndex)
@@ -86,12 +86,13 @@ $(function() {
         },
         onFinishing: function (event, currentIndex)
         {
-            form.validate().settings.ignore = ":disabled,:hidden";
+            form.validate().settings.ignore = ":disabled, :hidden";
             return form.valid();
         },
         onFinished: function (event, currentIndex)
         {
-            alert("Submitted!");
+            
+            form.submit();
         }
     }).validate({
         errorPlacement: function errorPlacement(error, element) { element.before(error); }
@@ -326,6 +327,8 @@ $(function() {
         Inicializar_fecha();
         
     });
+
+    // Metodo Kevin radio
     function check_radio(chkradio) {
     
         var radios = $(chkradio);
