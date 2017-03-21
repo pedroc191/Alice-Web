@@ -39,7 +39,7 @@ Rails.application.routes.draw do
   get "eventos/ver/:slug", to: "eventos#ver", as: "eventos_ver"
   get "eventos/categoria/:slug", to: "eventos#categoria", as: "eventos_categoria"
   
-  get "categoria_servicios/ver/:slug", to: "categoria_servicios#ver", as: "categoria_servicios_ver"
+  get "categoria_servicios/mas_categorias/:slug", to: "categoria_servicios#mas_categorias", as: "categoria_servicios_mas_categorias"
   get "categoria_servicios/mas_servicios/:slug", to: "categoria_servicios#mas_servicios", as: "categoria_servicios_mas_servicios"
   
   get "servicios/ver/:slug", to: "servicios#ver", as: "servicios_ver"
