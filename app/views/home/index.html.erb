@@ -12,8 +12,8 @@
                     <h3>Consulta Médica</h3>
                     <p class="carousel-subtitle">Atención personalizada y Diagnosticos Precisos</p>
                     <p class="carousel-link-content">
-                        <a class="btn btn-lg btn-dark-blue" href="#" role="button">Buscar</a>
-                        <a class="btn btn-lg btn-dark-blue" href="#" role="button">Solicita una Cita</a>
+                        <a class="btn btn-lg btn-dark-blue" href="/categoria_servicios/mas_servicios/atencion-primaria-en-salud" role="button">Buscar Servicio</a>
+
                     </p>
                 </div>
                 <div class="carousel-image wow zoomIn">
@@ -29,8 +29,7 @@
                     <h3>Laboratorio</h3>
                     <p class="carousel-subtitle">Tecnología de avanzada para resultados en menos tiempo</p>
                     <p class="carousel-link-content">
-                        <a class="btn btn-lg btn-dark-blue" href="#" role="button">Buscar</a>
-                        <a class="btn btn-lg btn-dark-blue" href="#" role="button">Solicita una Cita</a>
+                        <a class="btn btn-lg btn-dark-blue" href="/categoria_servicios/mas_servicios/laboratorio" role="button">Buscar Servicio</a>
                     </p>
                 </div>
                 <div class="carousel-image wow zoomIn">
@@ -96,8 +95,8 @@
                         <p class="text-white">Chequea el estatus de tu cita en la comodidad de tu hogar.</p> 
                     </div>
 
-                    <form id="form-consulta" >
-                        <input type="text" placeholder="Número de Cita" class="form-control">
+                    <form id="form-consulta" action="/citas/consultar" >
+                        <input type="text" name="cita_id" placeholder="Número de Cita" class="form-control">
                         <button class="btn btn-info" type="submit">Consultar</button>
                     </form>
                 </div>

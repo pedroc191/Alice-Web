@@ -44,8 +44,15 @@ class ServiciosController < ApplicationController
 
   def especialistas
     #@servicio = Servicio.friendly.find(params[:id])
-        @servicio = Servicio.where("id = ?", params[:id]).take
-           @especialistas = @servicio.especialistas.paginate(page: params[:page], per_page: 4)
+    #@servicio = self.class.get('/tipo_servicios/filtrar.json?tipo_servicio_id='+params[:id].to_s)
+    @servicios = self.class.get('/servicios.json?slug='+params[:slug]+'&especialista=3')
+
+      puts @servicio.to_json
+           puts '3333333333333333333333333333333'
+       # @servicio = Servicio.where("id = ?", params[:id]).take
+           @especialistas = @servicio.paginate(page: params[:page], per_page: 1)
+           puts @especialistas
+           puts '555555555555555555555555555555'
                  respond_to do |format|
         #format.html { render partial: 'especialistas', locals: { :servicio => @servicio } }
         format.js

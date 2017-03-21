@@ -193,7 +193,8 @@ class CitasController < ApplicationController
                       usuario_id: usuario["id"],
                       persona_id: @paciente["id"],
                       fecha: @fechahora,
-                      estatus: 1
+                      estatus: 1,
+                      tipo_cita_id: @tipo_cita
                       }
                     }
                   }
