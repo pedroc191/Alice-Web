@@ -22,17 +22,20 @@
             <% end %>
             </ul>
             <ul class="list-especialidades">
-            <% #if categoria_servicio["tipo_servicios"].size > 5 %>
               <li class="ver-mas">
-                <%= link_to categoria_servicios_mas_servicios_path(categoria_servicio["slug"]), class: "link-ver" do %>
-                  <i class="fa fa-plus"></i> Servicios
-                <% end %>
+
+          <%= link_to categoria_servicios_mas_categorias_path(categoria_servicio["slug"]), class: "link-ver" do %>
+            <i class="fa fa-plus"></i> Categorias
+          <% end %>
               </li>
-              <% #end %>
             </ul>
+
           </div>
-          <div class="content-btn-categoria-servicio">
+          <div class="content-btn-categoria-servicio text-center" style="margin-top: 10px;">
             
+                <%= link_to categoria_servicios_mas_servicios_path(categoria_servicio["slug"]), class: "btn btn-dark-blue" do %>
+                  <i class="fa fa-plus"></i> <%= categoria_servicio["descripcion"] %>
+                <% end %>
           </div>
         </div>
       </div>

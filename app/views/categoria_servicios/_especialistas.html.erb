@@ -1,0 +1,150 @@
+				
+				<%= ajax_will_paginate @servicios %>
+
+				<div class="row">
+			    	<% @servicios.each do |tipo_servicio| %>
+			    		<% tipo_servicio["servicios"].each do |servicio| %>
+			    			
+				    	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+				       		<div class="contact-box content-servicio">
+				        		<div class="col-sm-4">
+				                	<div class="text-center">
+		                                                <% if tipo_servicio["tipo_atencion_id"] == 1 %>
+										                	<div class="text-center">
+										                    	<img alt="image" class="img-circle m-t-xs img-responsive" src="<%= image_url 'landing/default_profile.png' %>" style="width: 120px; margin: 0px auto;">
+										               		</div>
+					                					<% else %> 
+										                	<div class="text-center">
+										                    	<img alt="image" class="m-t-xs img-responsive" src="<%= image_url 'landing/default_servicio.png' %>" style="width: 120px; margin: 0px auto;">
+										               		</div>
+					                					<% end %>
+				               		</div>
+				            	</div>
+				            	<div class="col-sm-8">
+				            		<% if !servicio["especialista_id"].nil? %>
+					                	<!-- especialista -->
+					                	<h3><strong><%= servicio["descripcion"] %></strong></h3>
+					                	<div class="m-t-xs font-bold">Especialista: <%= servicio["especialista"]["persona"]["nombre"]+" "+servicio["especialista"]["persona"]["apellido"]%></div>
+					                <% else %>
+					                	<!-- ubicacion -->
+					                	<div class="m-t-xs font-bold">Ubicacion: <%= servicio["ubicacion"]['descripcion'] %></div>
+						            <% end %>
+					                	<p class="m-t-xs font-bold">Pacientes a atender: <strong>Adultos</strong></p>
+					                	
+					                <p class="m-t-xs font-bold">Ver Disponibilidad: 
+					                <%= link_to "", '#modal-' + servicio["id"].to_s, class: "fa fa-calendar-check-o fa-2x", style: "padding: 8px; margin-left: 10px;", data: {toggle: "modal"}, type: "button" %></p>
+						            <div id="<%= "modal-" + servicio["id"].to_s %>" class="modal fade in" aria-hidden="true">
+		                                <div class="modal-dialog">
+		                                    <div class="modal-content">
+										      	<div class="modal-header">
+										        	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+										        	<h4 class="modal-title text-blue-dark">
+											        	<%= servicio["descripcion"] %> 
+											        </h4>
+										      	</div>
+		                                        <div class="modal-body">
+		                                            <div class="row">
+		                                                <div class="col-sm-3 b-r">
+		                                                <% if tipo_servicio["tipo_atencion_id"] == 1 %>
+										                	<div class="text-center">
+										                    	<img alt="image" class="img-circle m-t-xs img-responsive" src="<%= image_url 'landing/default_profile.png' %>" style="width: 120px; margin: 0px auto;">
+										               		</div>
+					                						<div class="m-t-xs font-bold">
+					                							<p class="text-blue-dark" style="font-size:14px;">Especialista: <%= servicio["especialista"]["persona"]["nombre"]+" "+servicio["especialista"]["persona"]["apellido"]%>
+					                						</div>
+					                					<% else %> 
+										                	<div class="text-center">
+										                    	<img alt="image" class="m-t-xs img-responsive" src="<%= image_url 'landing/default_servicio.png' %>" style="width: 120px; margin: 0px auto;">
+										               		</div>
+					                						<div class="m-t-xs font-bold">
+					                							<p class="text-blue-dark" style="font-size:14px;">Ubicacion:</p> 
+					                							<%= servicio["ubicacion"]["descripcion"] %>
+					                						</div>
+					                					<% end %>
+		                                                </div>
+		                                                <div class="col-sm-9">
+		                                                	<h3 class="text-blue-dark">Horario de Atencion</h3>
+
+		                                                	<table class="tabla-horarios table table-bordered table-hover" width="100%">
+		                                                		<thead>
+		                                                			<tr>
+		                                                				<th style="width:10%;" class="text-center">Turno</th>
+		                                                				<th style="width:18%;" class="text-center">Lunes</th>
+		                                                				<th style="width:18%;" class="text-center">Martes</th>
+		                                                				<th style="width:18%;" class="text-center">Miercoles</th>
+		                                                				<th style="width:18%;" class="text-center">Jueves</th>
+		                                                				<th style="width:18%;" class="text-center">Viernes</th>
+		                                                				<th style="width:18%;" class="text-center">Sabado</th>
+		                                                				<th style="width:18%;" class="text-center">Domingo</th>
+		                                                			</tr>
+		                                                		</thead>
+		                                                		<tbody>
+		                                                			<tr>
+		                                                				<td class= "text-center text-blue-dark">Mañana</td>
+		                                                				<% servicio["horarios"].first["turnos"].each do |turno| %>
+		                                                				<% if turno["tipo_turno_id"]==1 %>
+
+		                                                				<td class= "text-center"><%= turno["hora_inicio"].to_datetime.strftime("%I:%M %p")+" - "+turno["hora_fin"].to_datetime.strftime("%I:%M %p") %></td>
+		                                                				<% end %>
+		                                                				<% end %>
+		                                                			</tr>
+		                                                			<tr>
+		                                                				<td class= "text-center text-blue-dark">Tarde</td>
+		                                                				<% servicio["horarios"].first["turnos"].each do |turno| %>
+		                                                				<% if turno["tipo_turno_id"]==2 %>
+
+		                                                				<td class= "text-center"><%= turno["hora_inicio"].to_datetime.strftime("%I:%M %p")+" - "+turno["hora_fin"].to_datetime.strftime("%I:%M %p") %></td>
+		                                                				<% end %>
+		                                                				<% end %>
+		                                                				</tr>
+		                                                		</tbody>
+		                                                	</table>
+		                                            	</div>
+		                                        	</div>
+		                                        	<div class="row" style="margin-top: 20px;">
+		                                        		<div class="col-sm-4">
+					                					<% #if comparacion con tipo_horario_id: %>
+					                						<div class="m-t-xs font-bold">
+					                							<p style="font-size:14px;">
+					                								<strong class="text-blue-dark">Atencion por Orden de llegada: </strong> Cupos Limitados
+					                							</p>
+					                						</div>
+					                					<% #else %>
+					                						<div class="m-t-xs font-bold">
+					                							<p style="font-size:14px;">
+					                							<strong class="text-blue-dark">Tiempo Estimado por Consulta:</strong> 15 minutos</p>
+					                						</div>
+					                					<% #end %>
+		                                        		</div>
+		                                        		<div class="col-sm-4">
+		                                        		<% #if comparacion con tipo_horario_id: %>
+					                						<div class="m-t-xs font-bold">
+					                							<p style="font-size:14px;">
+					                								<strong class="text-blue-dark">Tiempo Estimado por Consulta:</strong> 15 minutos
+					                							</p>
+					                						</div>
+					                					<% #end %>
+		                                        		</div>
+		                                        		<div class="col-sm-4">
+					                						<div class="m-t-xs font-bold text-center">
+					                							
+			  													<%= link_to "Solicita una Cita", servicios_solicitar_cita_path(slug: servicio["slug"]), class: "btn btn-lg btn-dark-blue", type: "button" %>
+					                						</div>
+		                                        		</div>
+		                                        	</div>
+		                                    	</div>
+		                                    </div>
+		                                </div>
+		                        	</div>
+			  						<%= link_to "Solicita una Cita", servicios_solicitar_cita_path(slug: servicio["slug"]), class: "btn btn-lg btn-dark-blue", type: "button" %>
+			  						<%#= link_to "Solicitar una Cita", servicios_solicitar_cita_path(slug: servicio["slug"]) %>
+				            	</div>
+				            	<div class="clearfix"></div>
+				        	</div>
+				    	</div>
+
+			    		<% end %>
+			    	<% end %>
+		    	</div>
+
+		    	<%= ajax_will_paginate @servicios %>

@@ -1,19 +1,26 @@
+
 default: &default
-  adapter: postgresql
-  encoding: unicode
-  host: localhost
+  adapter: mysql2
+  encoding: utf8
   pool: 5
-  username: postgres
+  username: root
   password: 1234
+  socket: /var/run/mysqld/mysqld.sock
 
 development:
   <<: *default
-  database: alice_Web_development
+  database: AliceWeb_development
 
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: alice_Web_test
- 
+  database: AliceWeb_test
+
 production:
   <<: *default
-  database: alice_Web_production
+  database: AliceWeb_production
+  username: AliceWeb
+  password: <%= ENV['ATLASCRM_DATABASE_PASSWORD'] %>
+
