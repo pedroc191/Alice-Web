@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     end
   end
 
+  get "citas/registrar", to: "citas#registrar"
   get "home/login"
 
   get "home/index"
@@ -29,6 +30,8 @@ Rails.application.routes.draw do
   post "home/contactar"
 
   get "home/preguntas_frecuentes"
+
+  get 'citas/consultar'
 
   get "noticias/ver/:slug", to: "noticias#ver", as: "noticias_ver"
   get "noticias/categoria/:slug", to: "noticias#categoria", as: "noticias_categoria"

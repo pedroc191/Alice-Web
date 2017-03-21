@@ -100,10 +100,9 @@ $(function() {
 
         var fecha_inicio = new Date();
         var fecha_fin = new Date(fecha_inicio.getFullYear(), 11, 31);
-        var fecha_solicitante = new Date(fecha_inicio.getFullYear() - 16, (fecha_inicio.getMonth()- 1), fecha_inicio.getDate());
+        var fecha_solicitante = new Date(fecha_inicio.getFullYear() - 18, (fecha_inicio.getMonth()- 1), fecha_inicio.getDate());
 
         $('#fecha-n-solicitante .input-group.date').datepicker({
-            todayBtn: "linked",
             keyboardNavigation: false,
             forceParse: false,
             autoclose: true,
@@ -165,20 +164,84 @@ $(function() {
             var tr = $('body').find('.datepicker-days table tbody tr td.active.day').parent();
             tr.addClass('week-active');
 
-
             var date = e.date;
-            var start_date = new Date(date.getFullYear(), date.getMonth(), date.getDate() - date.getDay());
-            var end_date = new Date(date.getFullYear(), date.getMonth(), date.getDate() - date.getDay() + 6);
+            var start_date;
 
-            var text_date_inicio = start_date.getDate() + '/' + (start_date.getMonth() + 1) + '/' + start_date.getFullYear();
+            if (date.getDay() == 0){
+                start_date = new Date(date.getFullYear(), date.getMonth(), date.getDate() - 6);
+            }
+            else if(date.getDay() == 1){
+            
+                start_date = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+            }
+            else{
+                start_date = new Date(date.getFullYear(), date.getMonth(), date.getDate() - date.getDay() + 1);
+            }
+            
+            var end_date = start_date.addDays(6);
 
-            var text_date_fin = end_date.getDate() + '/' + (end_date.getMonth() + 1) + '/' + end_date.getFullYear();
+            var dia = start_date.getDate();
+            var mes = start_date.getMonth() + 1;
+
+            if (dia <= 9){
+                dia = '0'+ dia;
+            }
+            if (mes <= 9){
+                mes = '0'+ mes;
+            }
+
+            var text_date_inicio = dia + '/' + mes + '/' + start_date.getFullYear();
+
+            dia = end_date.getDate();
+            mes = end_date.getMonth() + 1;
+
+            if (dia <= 9){
+                dia = '0'+ dia;
+            }
+            if (mes <= 9){
+                mes = '0'+ mes;
+            }
+            var text_date_fin = dia + '/' + mes + '/' + end_date.getFullYear();
+
             $('#week-star input').val(text_date_inicio);
             $('#week-end input').val(text_date_fin);
             
             validar_link(start_date);
+            
         }
-        
+
+        Date.prototype.addDays = function(days) {
+            var dat = new Date(this.valueOf());
+            dat.setDate(dat.getDate() + days);
+            return dat;
+        }
+
+        function Obtener_dia(fecha_inicio, fecha_hoy, add) {
+
+            var fecha_add = fecha_inicio.addDays(add);
+            
+            var dia = fecha_add.getDate();
+            var mes = fecha_add.getMonth() + 1;
+
+            if (dia <= 9){
+                dia = '0'+ dia;
+            }
+            if (mes <= 9){
+                mes = '0'+ mes;
+            }
+            var fecha = dia + '/' + mes + '/' + fecha_add.getFullYear();
+
+            var i = add + 1;
+
+            $('.dia-'+i).text(fecha);
+
+            if(fecha_add < fecha_hoy){
+            
+                $('.tabla-horarios.manana tr td:nth-child('+(i+1)+')').empty();   
+            
+            }
+        }
+
         function validar_link(start_date) {
     
             var link = $('#boton_horario').attr('href');
@@ -209,21 +272,56 @@ $(function() {
 
         function Inicializar_fecha () {
                     
-            var date = new Date();
+            var date = new Date();            
 
-            var start_date = new Date(date.getFullYear(), date.getMonth(), date.getDate() - date.getDay());
-            var end_date = new Date(date.getFullYear(), date.getMonth(), date.getDate() - date.getDay() + 6);
+            var start_date;
+            
+            if (date.getDay() == 0){
+                start_date = new Date(date.getFullYear(), date.getMonth(), date.getDate() - 6);
+            }
+            else if(date.getDay() == 1){
+            
+                start_date = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+            }
+            else{
+                start_date = new Date(date.getFullYear(), date.getMonth(), date.getDate() - date.getDay() + 1);
+            }
+            
+            var end_date = start_date.addDays(6);
 
-            // make a friendly string
+            var dia = start_date.getDate();
+            var mes = start_date.getMonth() + 1;
 
-            var text_date_inicio = start_date.getDate() + '/' + (start_date.getMonth() + 1) + '/' + start_date.getFullYear();
+            if (dia <= 9){
+                dia = '0'+ dia;
+            }
+            if (mes <= 9){
+                mes = '0'+ mes;
+            }
 
-            var text_date_fin = end_date.getDate() + '/' + (end_date.getMonth() + 1) + '/' + end_date.getFullYear();
+            var text_date_inicio = dia + '/' + mes + '/' + start_date.getFullYear();
+
+            dia = end_date.getDate();
+            mes = end_date.getMonth() + 1;
+
+            if (dia <= 9){
+                dia = '0'+ dia;
+            }
+            if (mes <= 9){
+                mes = '0'+ mes;
+            }
+            var text_date_fin = dia + '/' + mes + '/' + end_date.getFullYear();
+            
             $('#week-star input').val(text_date_inicio);
             $('#week-end input').val(text_date_fin);
 
             validar_link(start_date);
 
+            for (i = 0; i < 7; i++) {
+            
+                Obtener_dia(start_date, date, i);    
+            
+            }
         }
 
         Inicializar_fecha();
@@ -249,24 +347,29 @@ $(function() {
         return value;
     }
     function mostrar_datos(opcion) {
-
-        $('input[name="cedula_paciente_nuevo"]').prop("disabled", true);
-        $('input[name="nombre_paciente_nuevo"]').prop("disabled", true);          
-        $('input[name="apellido_paciente_nuevo"]').prop("disabled", true);
-        $('input[name="email_paciente_nuevo"]').prop("disabled", true);
-        $('input[name="fecha_nacimiento_paciente_nuevo"]').prop("disabled", true);
-        $('input[name="sexo_paciente_nuevo"]').prop("disabled", true);
-        $('input[name="telefono_paciente_nuevo"]').prop("disabled", true);
-        $('input[name="direccion_paciente_nuevo"]').prop("disabled", true);        
-            
-        $('input[name="sexo_paciente_usuario"]').prop("disabled", true);
-        $('input[name="telefono_paciente_usuario"]').prop("disabled", true);
-        $('input[name="direccion_paciente_usuario"]').prop("disabled", true);
-            
+    
         if (opcion === 'paciente_solicita'){
 
             $('.paciente_diferente').css('display','none');
-                 
+                
+            $('input[name="cedula_paciente_nuevo"]').val("");
+            $('input[name="nombre_paciente_nuevo"]').val("");          
+            $('input[name="apellido_paciente_nuevo"]').val("");
+            $('input[name="email_paciente_nuevo"]').val("");
+            $('input[name="fecha_nacimiento_paciente_nuevo"]').val("");
+            $('select[name="sexo_paciente_nuevo"]').val("");      
+                
+            $('#fecha-n-nuevo .input-group.date').datepicker('setDate', "");
+            $('#fecha-n-nuevo .input-group.date').datepicker('update');
+            $('#fecha-n-nuevo .input-group.date').val("");
+
+            $('input[name="cedula_paciente_nuevo"]').prop("disabled", true);
+            $('input[name="nombre_paciente_nuevo"]').prop("disabled", true);          
+            $('input[name="apellido_paciente_nuevo"]').prop("disabled", true);
+            $('input[name="email_paciente_nuevo"]').prop("disabled", true);
+            $('input[name="fecha_nacimiento_paciente_nuevo"]').prop("disabled", true);
+            $('select[name="sexo_paciente_nuevo"]').prop("disabled", true);      
+            
             if (check_radio('input[name="tipo_usuario"]') === 'Usuario_nuevo'){
 
                 // Nuevo Usuario y Solicita una cita para Si mismo
@@ -275,11 +378,7 @@ $(function() {
                 $('.paciente_solicita.nuevo').css('display','block');
                 $('.paciente_solicita.datos').css('display','block');
                 
-                $('input[name="sexo_paciente_usuario"]').prop("disabled", false);
-                $('input[name="telefono_paciente_usuario"]').prop("disabled", false);
-                $('input[name="direccion_paciente_usuario"]').prop("disabled", false);
-            
-                $('#nuevo').text('Por favor ' + $('input[name="nombre_solicitante"]').val() + ' ' + $('input[name="apellido_solicitante"]').val());
+                $('#nuevo').text('Bienvenido ' + $('input[name="nombre_solicitante"]').val() + ' ' + $('input[name="apellido_solicitante"]').val());
                     
             }
             else{
@@ -307,7 +406,7 @@ $(function() {
             $('input[name="apellido_paciente_nuevo"]').prop("disabled", false);
             $('input[name="email_paciente_nuevo"]').prop("disabled", false);
             $('input[name="fecha_nacimiento_paciente_nuevo"]').prop("disabled", false);
-            $('input[name="sexo_paciente_nuevo"]').prop("disabled", false);
+            $('select[name="sexo_paciente_nuevo"]').prop("disabled", false);
             $('input[name="telefono_paciente_nuevo"]').prop("disabled", false);
             $('input[name="direccion_paciente_nuevo"]').prop("disabled", false);
         }
@@ -317,26 +416,59 @@ $(function() {
         
         if(capa === "Usuario_viejo"){
 
-            $("#Usuario_viejo").css("display", "block");
+            $(".usuario-viejo").css("display", "block");
+
+            $('input[name="email_usuario"]').prop("disabled", false);
+            $('input[name="password_usuario"]').prop("disabled", false);
+
+            $('input[name="email_solicitante"]').val("");
+            $('input[name="password_solicitante"]').val("");
+
+            $('input[name="cedula_solicitante"]').val("");
+            $('input[name="nombre_solicitante"]').val("");
+            $('input[name="apellido_solicitante"]').val("");
+            $('select[name="sexo_solicitante"]').val("");
+            $('input[name="fecha_nacimiento_solicitante"]').val("");
+            
+            $('#fecha-n-solicitante .input-group.date').datepicker('setDate', "");
+            $('#fecha-n-solicitante .input-group.date').datepicker('update');
+            $('#fecha-n-solicitante .input-group.date').val("");
+
+            $('input[name="email_solicitante"]').prop("disabled", true);
+            $('input[name="password_solicitante"]').prop("disabled", true);
 
             $('input[name="cedula_solicitante"]').prop("disabled", true);
             $('input[name="nombre_solicitante"]').prop("disabled", true);
             $('input[name="apellido_solicitante"]').prop("disabled", true);
-            $('input[name="email_solicitante"]').prop("disabled", true);
+            $('select[name="sexo_solicitante"]').prop("disabled", true);
             $('input[name="fecha_nacimiento_solicitante"]').prop("disabled", true);
             
-            $("#Usuario_nuevo").css("display", "none");
+            $(".usuario-nuevo").css("display", "none");
+            
+            $("#datos-basicos-s").removeClass('col-lg-4 col-md-4 col-sm-4');
+            $("#datos-basicos-s").addClass('col-lg-6 col-md-6 col-sm-6');
+
         }
         else{
 
-            $("#Usuario_viejo").css("display", "none");
+            $(".usuario-viejo").css("display", "none");
+
+            $('input[name="email_usuario"]').val("");
+            $('input[name="password_usuario"]').val("");
+
+            $('input[name="email_usuario"]').prop("disabled", true);
+            $('input[name="password_usuario"]').prop("disabled", true);
 
             $('input[name="cedula_solicitante"]').prop("disabled", false);
             $('input[name="nombre_solicitante"]').prop("disabled", false);
             $('input[name="apellido_solicitante"]').prop("disabled", false);
             $('input[name="email_solicitante"]').prop("disabled", false);
+            $('input[name="password_solicitante"]').prop("disabled", false);
+            $('select[name="sexo_solicitante"]').prop("disabled", false);
             $('input[name="fecha_nacimiento_solicitante"]').prop("disabled", false);
             
-            $("#Usuario_nuevo").css("display", "block");
+            $(".usuario-nuevo").css("display", "block");
+            $("#datos-basicos-s").removeClass('col-lg-6 col-md-6 col-sm-6');
+            $("#datos-basicos-s").addClass('col-lg-4 col-md-4 col-sm-4');
         }
     }

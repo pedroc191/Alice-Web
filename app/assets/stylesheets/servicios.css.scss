@@ -175,9 +175,13 @@
           padding: 5px 10px;
           margin-bottom: 0px;
       }
-      table.tabla-horarios.table-bordered > thead > tr > th{
-        background-color: $color-darkblue;
-        color: #FFFFFF;
+      table.tabla-horarios > thead > tr:nth-child(1) > th{
+            background-color: $color-darkblue;
+            color: #FFFFFF;
+      }
+      table.tabla-horarios > thead > tr:nth-child(2) > th{
+            background-color: $color-blue;
+            color: #FFFFFF;
       }
         .text-promo{
             width: 800px;
@@ -195,7 +199,7 @@
         }
         @media (min-width: 1200px) {
           .container {
-            width: 1150px;
+            width: 1250px;
           }
         }
     }

@@ -1,0 +1,87 @@
+<section id="suscripcion" class="white-section" style="background: transparent url('<%= image_path('cita/suscripcion-alice.jpg') %>')  50% 0 no-repeat; background-size: cover;">
+	<div class="container">
+		<h2 class="title-section"></h2>
+		<div class="row">
+            <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
+			<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+				<div class="content-suscripcion blue">
+					
+
+                                <div class="row">
+                                   
+                                    <h3 align="center" style="color:white;">Comprobante N°<%= @cita["id"] %>   </h3>  <h4>Estado: <%= @cita['estatus'] %></h4>
+                                    
+                                    <div class="col-lg-12">
+                                        <div class="ibox float-e-margins">
+                                            <div class="ibox-content">
+                                                <table class="tabla-horarios table table-bordered table-hover" width="100%">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Nombre y Apellido del Paciente</th>
+                                                            <th>Cedula</th>
+                                                            <th>Fecha de Solicitud</th>
+                                                            <th>Fecha de la Cita</th>
+                                                            <th>Hora</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><%= @paciente['nombre']+' '+@paciente['apellido'] %></td>
+                                                            <td><%= @paciente['cedula'] %></td>
+                                                            <td><%= @cita['created_at'].to_date.strftime("%d/%m/%Y %H:%M %p") %></td>
+                                                            <td><%= @cita['fecha'].to_date.strftime("%d/%m/%Y") %></td>
+                                                            <td><%= @cita['fecha'].to_date.strftime("%H:%M %p") %></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <table class="tabla-horarios table table-bordered table-hover" width="100%">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Tipo de Servicio</th>
+                                                            <th>Detalle</th>
+                                                            <th>Razon de Cita</th>
+                                                            
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><%= @cita["turno"]["horario"]["servicio"]["tipo_servicio"]["descripcion"]%></td>
+                                                            <td><%= @cita["turno"]["horario"]["servicio"]["descripcion"]%></td>
+                                                            <td><%= @tipo_cita["descripcion"] %></td>
+                                                    </tbody>
+                                                </table>
+                                                <table class="tabla-horarios table table-bordered table-hover" width="100%">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Ubicacion</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><%= @cita["turno"]["horario"]["servicio"]["ubicacion"]["descripcion"]%></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>  
+
+
+
+
+
+                </div>
+                    
+                </div>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
+        </div>
+    </div>
+</section>
+
+<% content_for :javascript do %>
+    <script type="text/javascript">
+        $(".select-preferencias").select2();
+    </script>
+<% end %>
