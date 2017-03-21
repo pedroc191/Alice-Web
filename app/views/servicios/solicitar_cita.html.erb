@@ -108,17 +108,6 @@
                                         </div>
                                     </div>
                                     <div class="usuario-nuevo col-lg-4 col-md-4 col-sm-4" style="display: none;">
-                                        
-                                        <div class="form-group">
-                                            <label>Email (*)</label>
-                                            <input type="email" name="email_solicitante" required="true" class="form-control" placeholder="">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Contraseña (*)</label> 
-                                            <input type="password" name="password_solicitante" required="true" placeholder="" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="usuario-nuevo col-lg-4 col-md-4 col-sm-4" style="display: none;">
                                         <div class="form-group">
                                             <label>Cédula (*)</label>
                                             <div class="form-group row">
@@ -150,6 +139,9 @@
                                             <% end %>
                                             </select>    
                                         </div>
+                                    </div>
+                                    <div class="usuario-nuevo col-lg-4 col-md-4 col-sm-4" style="display: none;">
+                                        
                                         <div class="form-group" id="fecha-n-solicitante">
                                             <label>Fecha de Nacimiento (*)</label>
                                             <div class="input-group date">
@@ -158,6 +150,22 @@
                                                 </span>
                                                 <input type="text" name="fecha_nacimiento_solicitante" required="true" class="form-control">
                                             </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Telefono (*)</label>
+                                                <input type="text" name="telefono_solicitante" required="true" class="form-control" data-mask="999-999-9999" maxlength="14">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Direccion (*)</label>
+                                            <input type="text" name="direccion_solicitante" required="true" class="form-control" placeholder="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Email (*)</label>
+                                            <input type="email" name="email_solicitante" required="true" class="form-control" placeholder="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Contraseña (*)</label> 
+                                            <input type="password" name="password_solicitante" required="true" placeholder="" class="form-control">
                                         </div>
                                     </div>   
                                 </div>

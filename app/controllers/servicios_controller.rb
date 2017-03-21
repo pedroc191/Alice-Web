@@ -19,7 +19,7 @@ class ServiciosController < ApplicationController
   def ver
     @tipo_servicios = self.class.get('/tipo_servicios/'+params[:slug]+'.json')
     @servicios = self.class.get('/servicios.json?slug='+params[:slug])
-    @per_page = params[:per_page] || 2
+    @per_page = params[:per_page] || 4
     @servicios = @servicios.paginate(:per_page => @per_page, :page => params[:page])
   end
 
