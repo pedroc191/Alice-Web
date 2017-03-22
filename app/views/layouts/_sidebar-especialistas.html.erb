@@ -1,48 +1,31 @@
-    <div class="content-filtro">
+
+    
+
+        <div class="content-filtro">
         <h3 class="title-filtro text-blue-dark">Especialidad</h3>
         <ul class="nav">
+        <% @especialidades.each do |especialidad| %>
             <li>
                 <div class="checkbox checkbox-primary">
-                    <input type="checkbox" name="Estudios" value="Prueba1">
-                    <label> Cardiologia Infantil</label>
+                    <input type="checkbox" name="especialidad" value="<%= especialidad["id"] %>">
+                    <label><%= especialidad["descripcion"] %></label>
                 </div>
             </li>
-            <li>
-                <div class="checkbox checkbox-primary">
-                    <input type="checkbox" name="Estudios" value="Prueba2">
-                    <label> Coronarias</label>
-                </div>
-            </li>
-            <li>
-                <div class="checkbox checkbox-primary">
-                    <input type="checkbox" name="Estudios" value="Prueba3">
-                    <label> Cirujano Cardiologo</label>
-                </div>
-            </li>
+            <% end %>
         </ul>
     </div>
     
     <div class="content-filtro">
         <h3 class="title-filtro text-blue-dark">Pacientes a Atender</h3>
         <ul class="nav">
+            <% @edades.each do |edad| %>
             <li>
                 <div class="checkbox checkbox-primary">
-                    <input type="checkbox" name="Paciente" value="Niños">
-                    <label> Niños</label>
+                    <input type="checkbox" name="edades" value="<%= edad["id"] %>">
+                    <label> <%= edad["descripcion"] %></label>
                 </div>
             </li>
-            <li>
-                <div class="checkbox checkbox-primary">
-                    <input type="checkbox" name="Paciente" value="Adulto">
-                    <label> Adulto</label>
-                </div>
-            </li>
-            <li>
-                <div class="checkbox checkbox-primary">
-                    <input type="checkbox" name="Paciente" value="Adulto Mayor">
-                    <label> Adulto Mayor</label>
-                </div>
-            </li>
+            <% end %>
         </ul>
     </div>
     <div class="content-filtro">
@@ -50,13 +33,13 @@
         <ul class="nav">
             <li>
                 <div class="checkbox checkbox-primary">
-                    <input type="checkbox" name="Turno" value="Mañana">
+                    <input type="checkbox" name="tipo_turno" value="1">
                     <label> Mañana</label>
                 </div>
             </li>
             <li>
                 <div class="checkbox checkbox-primary">
-                    <input type="checkbox" name="Turno" value="Tarde">
+                    <input type="checkbox" name="tipo_turno" value="2">
                     <label> Tarde</label>
                 </div>
             </li>
@@ -65,53 +48,27 @@
     <div class="content-filtro">
         <h3 class="title-filtro text-blue-dark">Sexo del Paciente</h3>
         <ul class="nav">
+            <% @sexos.each do |sexo| %>
             <li>
                 <div class="checkbox checkbox-primary">
-                    <input type="checkbox" name="Turno" value="Mañana">
-                    <label> Hombre</label>
+                    <input type="checkbox" name="Turno" value="<%= sexo["id"] %>">
+                    <label> <%= sexo["descripcion"] %></label>
                 </div>
             </li>
-            <li>
-                <div class="checkbox checkbox-primary">
-                    <input type="checkbox" name="Turno" value="Tarde">
-                    <label> Mujer</label>
-                </div>
-            </li>
+            <% end %>
         </ul>
     </div>
 
     <div class="content-filtro">
-        <h3 class="title-filtro text-blue-dark">Enfermedad Hereditaria</h3>
+        <h3 class="title-filtro text-blue-dark">Patologias</h3>
         <ul class="nav">
+            <% @patologias.each do |patologia| %>
             <li>
                 <div class="checkbox checkbox-primary">
-                    <input type="checkbox" name="Turno" value="Mañana">
-                    <label> Hipertension</label>
+                    <input type="checkbox" name="patologia" value="<% patologia["id"] %>">
+                    <label> <%= patologia["descripcion"] %></label>
                 </div>
             </li>
-            <li>
-                <div class="checkbox checkbox-primary">
-                    <input type="checkbox" name="Turno" value="Tarde">
-                    <label> Diabetes Tipo 1</label>
-                </div>
-            </li>
-            <li>
-                <div class="checkbox checkbox-primary">
-                    <input type="checkbox" name="Turno" value="Tarde">
-                    <label> Diabetes Tipo 2</label>
-                </div>
-            </li>
-            <li>
-                <div class="checkbox checkbox-primary">
-                    <input type="checkbox" name="Turno" value="Tarde">
-                    <label> Diabetes Tipo 3</label>
-                </div>
-            </li>
-            <li>
-                <div class="checkbox checkbox-primary">
-                    <input type="checkbox" name="Turno" value="Tarde">
-                    <label> Afecciones Dermatologicas</label>
-                </div>
-            </li>
+            <% end %>
         </ul>
     </div>

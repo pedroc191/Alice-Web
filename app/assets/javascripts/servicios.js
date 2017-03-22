@@ -101,6 +101,7 @@ $(function() {
         errorPlacement: function errorPlacement(error, element) { element.before(error); }
     });
 
+
         var fecha_inicio = new Date();
         var fecha_fin = new Date(fecha_inicio.getFullYear(), 11, 31);
         var fecha_solicitante = new Date(fecha_inicio.getFullYear() - 18, (fecha_inicio.getMonth()- 1), fecha_inicio.getDate());
