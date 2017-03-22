@@ -66,78 +66,79 @@ class CitasController < ApplicationController
 
 
 
-    if !params[:turno1].nil? and !params[:turno1]=="")
+    if (!params[:turno1].nil? and params[:turno1]!="")
         @turno = 13
         @hora = params[:turno1]
         @fecha = @semana.to_date
     end
-    if !params[:turno2].nil?  and !params[:turno2]=="")
+    if (!params[:turno2].nil?  and params[:turno2]!="")
         @turno = 12
         @hora = params[:turno2]
         @fecha = @semana.to_date + 1.day
     end
-    if !params[:turno3].nil? and !params[:turno3]=="")
+    if (!params[:turno3].nil? and params[:turno3]!="")
         @turno = 11
         @hora = params[:turno3]
         @fecha = @semana.to_date + 2.day
     end
-    if !params[:turno4].nil?  and !params[:turno4]=="")
+    if ((!params[:turno4].nil?)  and (params[:turno4]!=""))
         @turno = 10
         @hora = params[:turno4]
         @fecha = @semana.to_date + 3.day
     end
-    if (!params[:turno5].nil? and !params[:turno5]=="")
+    if (!params[:turno5].nil? and params[:turno5]!="")
         @turno = 9
         @hora = params[:turno5]
         @fecha = @semana.to_date + 4.day
     end
-    if !params[:turno6].nil? and !params[:turno6]=="")
+    if (!params[:turno6].nil? and params[:turno6]!="")
         @turno = 8
         @hora = params[:turno6]
         @fecha = @semana.to_date + 5.day
     end
-    if !params[:turno7].nil? and !params[:turno7]=="")
+    if (!params[:turno7].nil? and params[:turno7]!="")
         @turno = 7
         @hora = params[:turno7]
         @fecha = @semana.to_date + 6.day
     end
-    if !params[:turno8].nil? and !params[:turno8]=="")
+    if (!params[:turno8].nil? and params[:turno8]!="")
         @turno = 6
         @hora = params[:turno8]
         @fecha = @semana.to_date
     end
-    if !params[:turno9].nil? and !params[:turno9]=="")
+    if (!params[:turno9].nil? and params[:turno9]!="")
         @turno = 5
         @hora = params[:turno9]
         @fecha = @semana.to_date + 1.day
     end
-    if !params[:turno10].nil? and !params[:turno10]=="")
+    if (!params[:turno10].nil? and params[:turno10]!="")
         @turno = 4
         @hora = params[:turno10]
         @fecha = @semana.to_date + 2.day
     end
-    if !params[:turno11].nil? and !params[:turno11]=="")
+    if (!params[:turno11].nil? and params[:turno11]!="")
         @turno = 3
         @hora = params[:turno11]
         @fecha = @semana.to_date + 3.day
     end
-    if !params[:turno12].nil? and !params[:turno12]=="")
+    if (!params[:turno12].nil? and params[:turno12]!="")
         @turno = 2
         @hora = params[:turno12]
         @fecha = @semana.to_date + 4.day
     end
-    if !params[:turno13].nil? and !params[:turno13]=="")
+    if (!params[:turno13].nil? and params[:turno13]!="")
         @turno = 1
         @hora = params[:turno13]
         @fecha = @semana.to_date + 5.day
     end
-    if !params[:turno14].nil? and !params[:turno14]=="")
+    if (!params[:turno14].nil? and params[:turno14]!="")
         @turno = 0
         @hora = params[:turno14]
         @fecha = @semana.to_date + 6.day
     end
 
     if params[:tipo_usuario] == "Usuario_nuevo"
+      puts '78888888888888888888888888888888888'
      new_usuario = {
       body:
         {
@@ -157,9 +158,10 @@ class CitasController < ApplicationController
           }
         }
     }
-     usuario = self.class.get('/login_movil.json?email='+@email_solicitante+'&password='+@password_solicitante)
-    respuesta = self.class.post('/usuarios.json', new_usuario)
-
+     
+    respuesta = self.class.post('/usuarios/create.json', new_usuario)
+    usuario = self.class.get('/login_movil.json?email='+@email_solicitante+'&password='+@password_solicitante)
+    @paciente = self.class.get('/personas.json').last
     Respond_notice(respuesta)
     else
      usuario = self.class.get('/login_movil.json?email='+@email_usuario+'&password='+@password_usuario)
@@ -191,8 +193,9 @@ class CitasController < ApplicationController
 
    
     serv = self.class.get('/servicios/'+@servicio+'.json')
-
-    @turno_id = (serv["id"]*14)-@turno
+    puts "ssssssssssssssssssssssssssssssssssssssssssssssssssssss"
+    puts @turno
+    @turno_id = (serv["id"]*14) - @turno
     d = @fecha
     puts '111111111111111111111111111111111111111111'
 
