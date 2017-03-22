@@ -7,7 +7,15 @@
 				       		<div class="contact-box content-servicio">
 				        		<div class="col-sm-4">
 				                	<div class="text-center">
-				                    	<img alt="image" class="img-circle m-t-xs img-responsive" src="<%= image_url 'landing/default_profile.png' %>">
+		                            	<% if servicio["tipo_servicio"]["tipo_atencion_id"] == 1 %>
+										<div class="text-center">
+										 	<img alt="image" class="img-circle m-t-xs img-responsive" src="<%= image_url 'landing/default_profile.png' %>" style="width: 120px; margin: 0px auto;">
+										</div>
+					 					<% else %> 
+										<div class="text-center">
+										 	<img alt="image" class="m-t-xs img-responsive" src="<%= image_url 'landing/default_servicio.png' %>" style="width: 120px; margin: 0px auto;">
+										</div>
+					 					<% end %>
 				               		</div>
 				            	</div>
 
@@ -29,15 +37,9 @@
 		                                    <div class="modal-content">
 										      	<div class="modal-header">
 										        	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-										        <% #if comparacion con tipo atencion %>
-											        <h4 class="modal-title text-blue-dark">
-											        	<%= @tipo_servicios["descripcion"] %> - <%= servicio["tipo_servicio"]["descripcion"] %> 
+										        	<h4 class="modal-title text-blue-dark">
+											        	<%= servicio["descripcion"] %> 
 											        </h4>
-											    <% #else %>
-											        <h4 class="modal-title text-blue-dark">
-											        	<%= @tipo_servicios["descripcion"] %> - <%= servicio["tipo_servicio"]["descripcion"]+'especialidad' %> infantil
-											        </h4>
-											    <% #end %>
 										      	</div>
 		                                        <div class="modal-body">
 		                                            <div class="row">
@@ -50,6 +52,9 @@
 					                							<p class="text-blue-dark" style="font-size:14px;">Especialista: <%= servicio["especialista"]["persona"]["nombre"]+" "+servicio["especialista"]["persona"]["apellido"]%>
 					                						</div>
 					                					<% else %> 
+					                						<div class="text-center">
+										                    	<img alt="image" class="m-t-xs img-responsive" src="<%= image_url 'landing/default_servicio.png' %>" style="width: 120px; margin: 0px auto;">
+										               		</div>
 					                						<div class="m-t-xs font-bold">
 					                							<p class="text-blue-dark" style="font-size:14px;">Ubicacion:</p> 
 					                							<%= servicio["ubicacion"]["descripcion"] %>
@@ -62,14 +67,14 @@
 		                                                	<table class="tabla-horarios table table-bordered table-hover" width="100%">
 		                                                		<thead>
 		                                                			<tr>
-		                                                				<th style="width:10%;" class="text-center">Turno</th>
-		                                                				<th style="width:18%;" class="text-center">Lunes</th>
-		                                                				<th style="width:18%;" class="text-center">Martes</th>
-		                                                				<th style="width:18%;" class="text-center">Miercoles</th>
-		                                                				<th style="width:18%;" class="text-center">Jueves</th>
-		                                                				<th style="width:18%;" class="text-center">Viernes</th>
-		                                                				<th style="width:18%;" class="text-center">Sabado</th>
-		                                                				<th style="width:18%;" class="text-center">Domingo</th>
+		                                                				<th style="width:12,5%;" class="text-center">Turno</th>
+		                                                				<th style="width:12,5%;" class="text-center">Lunes</th>
+		                                                				<th style="width:12,5%;" class="text-center">Martes</th>
+		                                                				<th style="width:12,5%;" class="text-center">Miercoles</th>
+		                                                				<th style="width:12,5%;" class="text-center">Jueves</th>
+		                                                				<th style="width:12,5%;" class="text-center">Viernes</th>
+		                                                				<th style="width:12,5%;" class="text-center">Sabado</th>
+		                                                				<th style="width:12,5%;" class="text-center">Domingo</th>
 		                                                			</tr>
 		                                                		</thead>
 		                                                		<tbody>
@@ -78,7 +83,7 @@
 		                                                				<% servicio["horarios"].first["turnos"].each do |turno| %>
 		                                                				<% if turno["tipo_turno_id"]==1 %>
 
-		                                                				<td class= "text-center"><%= turno["hora_inicio"].to_datetime.strftime("%H:%M %p")+" - "+turno["hora_fin"].to_datetime.strftime("%H:%M %p") %></td>
+		                                                				<td class= "text-center"><%= turno["hora_inicio"].to_datetime.strftime("%I:%M %p")+" - "+turno["hora_fin"].to_datetime.strftime("%I:%M %p") %></td>
 		                                                				<% end %>
 		                                                				<% end %>
 		                                                			</tr>
@@ -87,7 +92,7 @@
 		                                                				<% servicio["horarios"].first["turnos"].each do |turno| %>
 		                                                				<% if turno["tipo_turno_id"]==2 %>
 
-		                                                				<td class= "text-center"><%= turno["hora_inicio"].to_datetime.strftime("%H:%M %p")+" - "+turno["hora_fin"].to_datetime.strftime("%H:%M %p") %></td>
+		                                                				<td class= "text-center"><%= turno["hora_inicio"].to_datetime.strftime("%I:%M %p")+" - "+turno["hora_fin"].to_datetime.strftime("%I:%M %p") %></td>
 		                                                				<% end %>
 		                                                				<% end %>
 		                                                				</tr>
