@@ -5,11 +5,20 @@
             <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
 			<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
 				<div class="content-suscripcion blue">
-					
-
                                 <div class="row">
                                    
-                                    <h3 align="center" style="color:white;">Comprobante N°<%= @cita["id"] %>   </h3>  <h4>Estado: <%= @cita['estatus'] %></h4>
+                                    <h3 align="center" style="color:#000000;">Comprobante N°<%= @cita["id"] %>   </h3>  
+                                    <% if @cita['estatus'] == 1 %>
+                                        <h4 style="background-color: #FFFFFF; padding: 10px;">Estado: <strong style="color: #167ac6;">Solicitada</strong></h4>
+                                    <% elsif  @cita['estatus'] == 2 %>
+                                        <h4 style="background-color: #FFFFFF; padding: 10px;">Estado: <strong style="color: #30bec2;">Confirmada</strong></h4>
+                                    <% elsif  @cita['estatus'] == 3 %>
+                                        <h4 style="background-color: #FFFFFF; padding: 10px;">Estado: <strong style="color: #30bec2;">Atendida</strong></h4>
+                                    <% elsif  @cita['estatus'] == 4 %>
+                                        <h4 style="background-color: #FFFFFF; padding: 10px;">Estado: <strong style="color: #f8ac59;">Evaluada</strong></h4>
+                                    <% else %>
+                                        <h4 style="background-color: #FFFFFF; padding: 10px;">Estado: <strong style="color: #ED5565;">Cancelada</strong></h4>
+                                    <% end %>
                                     
                                     <div class="col-lg-12">
                                         <div class="ibox float-e-margins">
