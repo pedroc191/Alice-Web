@@ -19,6 +19,8 @@ class ServiciosController < ApplicationController
   def ver
     @tipo_servicios = self.class.get('/tipo_servicios/'+params[:slug]+'.json')
     @servicios = self.class.get('/servicios.json?slug='+params[:slug])
+    puts'@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'
+    puts @servicios
     @per_page = params[:per_page] || 4
     @servicios = @servicios.paginate(:per_page => @per_page, :page => params[:page])
   end
@@ -27,6 +29,8 @@ class ServiciosController < ApplicationController
     @servicio = self.class.get('/servicios/'+params[:slug]+'.json')
     @disponibilidad = self.class.get('/disponibilidad.json?servicio_id='+@servicio["id"].to_s+'&fecha='+Date.today.to_s)
     @bloques = @disponibilidad
+    puts '$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$'
+    puts @bloques
     @sexo = self.class.get('/sexos.json')
     @motivos = self.class.get('/tipo_citas.json')
   end

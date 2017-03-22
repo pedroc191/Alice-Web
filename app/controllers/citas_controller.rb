@@ -66,72 +66,72 @@ class CitasController < ApplicationController
 
 
 
-    if !params[:turno1].nil?
+    if !params[:turno1].nil? and !params[:turno1]=="")
         @turno = 13
         @hora = params[:turno1]
         @fecha = @semana.to_date
     end
-    if !params[:turno2].nil?
+    if !params[:turno2].nil?  and !params[:turno2]=="")
         @turno = 12
         @hora = params[:turno2]
         @fecha = @semana.to_date + 1.day
     end
-    if !params[:turno3].nil?
+    if !params[:turno3].nil? and !params[:turno3]=="")
         @turno = 11
         @hora = params[:turno3]
         @fecha = @semana.to_date + 2.day
     end
-    if !params[:turno4].nil?
+    if !params[:turno4].nil?  and !params[:turno4]=="")
         @turno = 10
         @hora = params[:turno4]
         @fecha = @semana.to_date + 3.day
     end
-    if !params[:turno5].nil?
+    if (!params[:turno5].nil? and !params[:turno5]=="")
         @turno = 9
         @hora = params[:turno5]
         @fecha = @semana.to_date + 4.day
     end
-    if !params[:turno6].nil?
+    if !params[:turno6].nil? and !params[:turno6]=="")
         @turno = 8
         @hora = params[:turno6]
         @fecha = @semana.to_date + 5.day
     end
-    if !params[:turno7].nil?
+    if !params[:turno7].nil? and !params[:turno7]=="")
         @turno = 7
         @hora = params[:turno7]
         @fecha = @semana.to_date + 6.day
     end
-    if !params[:turno8].nil?
+    if !params[:turno8].nil? and !params[:turno8]=="")
         @turno = 6
         @hora = params[:turno8]
         @fecha = @semana.to_date
     end
-    if !params[:turno9].nil?
+    if !params[:turno9].nil? and !params[:turno9]=="")
         @turno = 5
         @hora = params[:turno9]
         @fecha = @semana.to_date + 1.day
     end
-    if !params[:turno10].nil?
+    if !params[:turno10].nil? and !params[:turno10]=="")
         @turno = 4
         @hora = params[:turno10]
         @fecha = @semana.to_date + 2.day
     end
-    if !params[:turno11].nil?
+    if !params[:turno11].nil? and !params[:turno11]=="")
         @turno = 3
         @hora = params[:turno11]
         @fecha = @semana.to_date + 3.day
     end
-    if !params[:turno12].nil?
+    if !params[:turno12].nil? and !params[:turno12]=="")
         @turno = 2
         @hora = params[:turno12]
         @fecha = @semana.to_date + 4.day
     end
-    if !params[:turno13].nil?
+    if !params[:turno13].nil? and !params[:turno13]=="")
         @turno = 1
         @hora = params[:turno13]
         @fecha = @semana.to_date + 5.day
     end
-    if !params[:turno14].nil?
+    if !params[:turno14].nil? and !params[:turno14]=="")
         @turno = 0
         @hora = params[:turno14]
         @fecha = @semana.to_date + 6.day
@@ -182,7 +182,11 @@ class CitasController < ApplicationController
     Respond_notice(respuesta)
     @paciente = self.class.get('/personas.json').last
     else
+      puts '@@@@@@s@@@@@@@@@@@@@@@@@@@@@@@@'
+      puts usuario
+      puts '##############################3'
       @paciente = usuario["persona"]
+      puts @paciente
     end
 
    
@@ -190,6 +194,8 @@ class CitasController < ApplicationController
 
     @turno_id = (serv["id"]*14)-@turno
     d = @fecha
+    puts '111111111111111111111111111111111111111111'
+
     t = DateTime.parse(@hora) 
     @fechahora = DateTime.new(d.year, d.month, d.day, t.hour, t.min, t.sec, t.zone)
 
