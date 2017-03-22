@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20170219211634) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "categoria_servicios", force: :cascade do |t|
     t.string   "codigo"
     t.string   "nombre"
@@ -19,7 +22,7 @@ ActiveRecord::Schema.define(version: 20170219211634) do
     t.string   "estatus"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["slug"], name: "index_categoria_servicios_on_slug", unique: true
+    t.index ["slug"], name: "index_categoria_servicios_on_slug", unique: true, using: :btree
   end
 
   create_table "especialidades", force: :cascade do |t|
@@ -30,8 +33,8 @@ ActiveRecord::Schema.define(version: 20170219211634) do
     t.string   "estatus"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
-    t.index ["categoria_servicio_id"], name: "index_especialidades_on_categoria_servicio_id"
-    t.index ["slug"], name: "index_especialidades_on_slug", unique: true
+    t.index ["categoria_servicio_id"], name: "index_especialidades_on_categoria_servicio_id", using: :btree
+    t.index ["slug"], name: "index_especialidades_on_slug", unique: true, using: :btree
   end
 
   create_table "especialista_servicios", force: :cascade do |t|
@@ -41,8 +44,8 @@ ActiveRecord::Schema.define(version: 20170219211634) do
     t.string   "estatus"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.index ["especialista_id"], name: "index_especialista_servicios_on_especialista_id"
-    t.index ["servicio_id"], name: "index_especialista_servicios_on_servicio_id"
+    t.index ["especialista_id"], name: "index_especialista_servicios_on_especialista_id", using: :btree
+    t.index ["servicio_id"], name: "index_especialista_servicios_on_servicio_id", using: :btree
   end
 
   create_table "especialistas", force: :cascade do |t|
@@ -60,10 +63,10 @@ ActiveRecord::Schema.define(version: 20170219211634) do
     t.string   "sluggable_type", limit: 50
     t.string   "scope"
     t.datetime "created_at"
-    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
-    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
-    t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
-    t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+    t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+    t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
   end
 
   create_table "servicios", force: :cascade do |t|
@@ -74,8 +77,12 @@ ActiveRecord::Schema.define(version: 20170219211634) do
     t.string   "estatus"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.index ["especialidad_id"], name: "index_servicios_on_especialidad_id"
-    t.index ["slug"], name: "index_servicios_on_slug", unique: true
+    t.index ["especialidad_id"], name: "index_servicios_on_especialidad_id", using: :btree
+    t.index ["slug"], name: "index_servicios_on_slug", unique: true, using: :btree
   end
 
+  add_foreign_key "especialidades", "categoria_servicios"
+  add_foreign_key "especialista_servicios", "especialistas"
+  add_foreign_key "especialista_servicios", "servicios"
+  add_foreign_key "servicios", "especialidades"
 end

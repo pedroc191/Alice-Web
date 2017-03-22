@@ -16,7 +16,7 @@ class HomeController < ApplicationController
   end
 
   def contactar
-=begin  
+
     @nombre = params[:nombre]
     @email = params[:email]
     @tipo_opinion = params[:tipo_opinion]
@@ -39,8 +39,7 @@ class HomeController < ApplicationController
     Respond_notice(respuesta)
 
     redirect_to '/home/contacto'
-=end 
-
+=begin
     contacto = {
       body:
         {
@@ -67,7 +66,7 @@ class HomeController < ApplicationController
     Respond_notice(respuesta)
 
     redirect_to '/home/contacto'
-
+=end
   end
 
   def suscripcion

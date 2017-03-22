@@ -87,6 +87,10 @@ class CategoriaServiciosController < ApplicationController
   def mas_servicios
 
     @categorias = self.class.get('/categorias.json')
+    @especialidades = self.class.get('/especialidades.json')
+    @edades = self.class.get('/rango_edades.json')
+    @sexos = self.class.get('/sexos.json')
+    @patologias = self.class.get('/patologias.json')
     @categorias.each do |categoria|
       if categoria["slug"] == params[:slug]
         @categoria = categoria

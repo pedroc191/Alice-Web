@@ -90,10 +90,10 @@ GEM
     minitest (5.10.1)
     multi_json (1.12.1)
     multi_xml (0.6.0)
-    mysql2 (0.4.5)
     nio4r (2.0.0)
     nokogiri (1.7.0.1)
       mini_portile2 (~> 2.1.0)
+    pg (0.20.0)
     puma (3.8.2)
     rack (2.0.1)
     rack-test (0.6.3)
@@ -185,7 +185,7 @@ DEPENDENCIES
   jquery-rails
   jquery-validation-rails
   listen (~> 3.0.5)
-  mysql2
+  pg
   puma (~> 3.0)
   rails (~> 5.0.1)
   rails-i18n (~> 5.0.0)
