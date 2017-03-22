@@ -43,8 +43,9 @@
                             <p class="font-bold text-blue-dark text-content-solo">Direccion:</p>
                             <p class="text-blue-dark text-content-solo"><%= @info_contacto["direccion"] %></p>
                             <p class="font-bold text-blue-dark text-content-solo">Telefonos:</p>
-                            <p class="text-blue-dark text-content-solo"><%= @info_contacto["tlf1"] %></p>
-                            <p class="text-blue-dark text-content-solo"><%= @info_contacto["tlf2"] %></p>  
+                            <p class="text-blue-dark text-content-solo"><%= @info_contacto["tlf"] %></p>
+                            <p class="font-bold text-blue-dark text-content-solo">Email:</p>
+                            <p class="text-blue-dark text-content-solo"><%= @info_contacto["email"] %></p>  
                         </div>
                         <div class="col-sm-6">
                             <div class="row">
@@ -134,11 +135,11 @@
             '<div id="content">' +
                 '<div id="siteNotice">' +
                 '</div>' +
-                '<h2 id="firstHeading" class="firstHeading text-blue-dark text-center"><img src="<%= @info_contacto["logo"] %>" width="350" height="100"></h2>' +
+                '<h2 id="firstHeading" class="firstHeading text-blue-dark text-center"><img src="<%= image_path('logos/logo-trinidad.png') %>" width="350" height="100"></h2>' +
                 '<div id="bodyContent">' +
                     '<p><br><b><%= @info_contacto["slogan"] %></b></p>' +
                     '<p><b>Direccion: </b><%= @info_contacto["direccion"] %></p>' +
-                    '<p><b>Telefonos: </b><%= @info_contacto["@tlf1"] %> - <%= @info_contacto["@tlf2"] %></p>'+
+                    '<p><b>Telefonos: </b><%= @info_contacto["tlf"] %> - <%= @info_contacto["@tlf2"] %></p>'+
                 '</div>' +
             '</div>';
 
