@@ -196,12 +196,9 @@ class CitasController < ApplicationController
     puts @turno
     @turno_id = (serv["id"]*14) - @turno
     d = @fecha
-    puts '111111111111111111111111111111111111111111'
-    puts usuario
-    puts '111111111111111111111111111111111111111111'
-
     t = DateTime.parse(@hora) 
-    @fechahora = DateTime.new(d.year, d.month, d.day, t.hour, t.min, t.sec, t.zone)  
+    @fechahora = DateTime.new(d.year, d.month, d.day, t.hour, t.min, t.sec, t.zone)
+ 
     new_cita = {body:
                   {
                     cita:{
