@@ -28,7 +28,7 @@
                                                     <div class="row">
                                                         <label class="col-sm-1" style="margin: 10px 0px;">Desde</label>
                                                             <div class="col-sm-3" id="week-star">
-                                                                <input type="text" class="form-control text-center" disabled>
+                                                                <input type="text" class="form-control text-center" name="week_start" >
                                                             </div>
                                                             <label class="col-sm-1" style="margin: 10px 0px;">Hasta</label>
                                                             <div class="col-sm-3" id="week-end">
@@ -36,7 +36,7 @@
                                                             </div>
                                                             <%= hidden_field_tag :slug, @servicio["slug"] %>
                                                             <div class="btn-content col-sm-4 text-center">
-                                                            <%= link_to "Buscar horario", buscar_semana_path(:slug => @servicio["slug"], :week_star => Date.today), remote: true, class: "btn btn-dark-blue btn-buscar-horario", id: "boton_horario" %>
+                                                            <%= link_to "Buscar Semana", buscar_semana_path(:slug => @servicio["slug"], :week_star => Date.today), remote: true, class: "btn btn-dark-blue btn-buscar-horario", id: "boton_horario" %>
                                                             </div>
                                                     </div>
                                                 </div>
@@ -209,7 +209,6 @@
                                     </div>
                                     <div class="col-lg-8 paciente_solicita viejo">
                                         <h3 class="text-center">Bienvenido de Nuevo</h3>
-                                        <h3 id="usuario" class="text-center">Nombre Persona</h3>
                                         <img src="<%= image_path('logos/alice-horizontal-inverted.png') %>" style="width: 400px; position: absolute; margin: 30px 20%;">
                                     </div>
 
@@ -262,7 +261,7 @@
                             </fieldset>
                             <h3>Confirmación</h3>
                             <fieldset class="step-content">
-                                <div class="row">
+                         <!--       <div class="row">
                                     <h3>Comprobante N°03475631</h3>
                                     <div class="col-lg-12">
                                         <div class="ibox float-e-margins">
@@ -318,7 +317,19 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>  
+                                </div>  -->
+                                <div class="text-center">
+                                    <h2 class="text-blue-dark">
+                                        <strong> Muchas Gracias Por usar Alice</strong>
+                                    </h2>
+                                    <h2 class="text-blue-dark">
+                                        <strong>Por favor presione Solicitar para confirmar su solicitud</strong>
+                                        
+                                    </h2>
+                                    <h2 class="text-blue-dark">
+                                        <img src="<%= image_path('logos/alice-horizontal-inverted.png') %>" style="width: 400px; margin: 30px 0px;">
+                                    </h2>
+                                </div>
                             </fieldset>
                         
                         </form>

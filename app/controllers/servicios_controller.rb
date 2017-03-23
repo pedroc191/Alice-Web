@@ -19,13 +19,15 @@ class ServiciosController < ApplicationController
   def ver
     @tipo_servicios = self.class.get('/tipo_servicios/'+params[:slug]+'.json')
     @servicios = self.class.get('/servicios.json?slug='+params[:slug])
+    puts'@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'
+    puts @servicios
     @per_page = params[:per_page] || 4
     @servicios = @servicios.paginate(:per_page => @per_page, :page => params[:page])
   end
 
   def solicitar_cita
     @servicio = self.class.get('/servicios/'+params[:slug]+'.json')
-    @disponibilidad = self.class.get('/disponibilidad.json?servicio_id='+@servicio["id"].to_s+'&fecha='+Date.today.to_s)
+    @disponibilidad = self.class.get('/disponibilidad.json?servicio_id='+@servicio["id"].to_s+'&fecha='+Date.today.at_beginning_of_week.to_s)
     @bloques = @disponibilidad
     @sexo = self.class.get('/sexos.json')
     @motivos = self.class.get('/tipo_citas.json')
@@ -33,7 +35,12 @@ class ServiciosController < ApplicationController
 
   def buscar_semana
     @fecha = params[:week_star]
-    
+    @anio = @fecha[0..3].to_i
+    @mes = @fecha[5..6].to_i
+    @dia = @fecha[8..9].to_i
+    @fecha = Date.new(@anio,@mes,@dia)
+    puts '$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$'
+    puts @fecha.to_time.to_formatted_s(:db)
     @servicio = self.class.get('/servicios/'+params[:slug]+'.json')
     @disponibilidad = self.class.get('/disponibilidad.json?servicio_id='+@servicio["id"].to_s+'&fecha='+@fecha.to_s)
     @bloques = @disponibilidad

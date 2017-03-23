@@ -9,9 +9,11 @@
 <div class="row">
     <div class="col-sidebar col-lg-2 col-md-2 col-sm-12">
         <nav class="navbar-default sidebar-filtro">
-             
+    <%= form_tag("/especialistas", remote: true, method: "get") do %>
+
+
             <div class="content-btn-filtro text-center">
-                            <%= link_to "Buscar Especialistas", especialistas_path(:id => 1), remote: true, class: "btn-filter btn btn-dark-blue boton_especialistas", id: "" %>
+                            <%= button_to "Buscar Servicios", remote: true, class: "btn-filter btn btn-dark-blue boton_especialistas", id: "" %>
 
                 <%#= link_to "Buscar Especialistas", especialistas_path(:id => @servicio.id), remote: true, class: "btn-filter btn btn-dark-blue", id: "boton_especialidad" %>
             </div>
@@ -19,8 +21,10 @@
             <%= render 'layouts/sidebar-especialistas' %>   
             
             <div class="content-btn-filtro text-center">
-                            <%= link_to "Buscar Especialistas", especialistas_path(:id => 1), remote: true, class: "btn-filter btn btn-dark-blue boton_especialistas", id: "" %>
+                            <%= button_to "Buscar Servicios", remote: true, class: "btn-filter btn btn-dark-blue boton_especialistas", id: "" %>
             </div>
+
+<% end -%>
         </nav>  
     </div>
     <div class="col-content col-lg-10 col-md-10 col-sm-12">
