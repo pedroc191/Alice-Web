@@ -30,10 +30,10 @@ class CitasController < ApplicationController
   end
 
   def registrar
-    #raise params
+   # raise params
     ############### CITA
 
-    @semana = params[:week]
+    @semana = params[:week].to_date.at_beginning_of_week
     @servicio  = params[:slug]
     @tipo_usuario = params[:tipo_usuario]
     @tipo_cita = params[:tipo_cita]
@@ -72,62 +72,62 @@ class CitasController < ApplicationController
         @fecha = @semana.to_date
     end
     if (!params[:turno2].nil?  and params[:turno2]!="")
-        @turno = 12
+        @turno = 11
         @hora = params[:turno2]
         @fecha = @semana.to_date + 1.day
     end
     if (!params[:turno3].nil? and params[:turno3]!="")
-        @turno = 11
+        @turno = 9
         @hora = params[:turno3]
         @fecha = @semana.to_date + 2.day
     end
     if ((!params[:turno4].nil?)  and (params[:turno4]!=""))
-        @turno = 10
+        @turno = 7
         @hora = params[:turno4]
         @fecha = @semana.to_date + 3.day
     end
     if (!params[:turno5].nil? and params[:turno5]!="")
-        @turno = 9
+        @turno = 5
         @hora = params[:turno5]
         @fecha = @semana.to_date + 4.day
     end
     if (!params[:turno6].nil? and params[:turno6]!="")
-        @turno = 8
+        @turno = 3
         @hora = params[:turno6]
         @fecha = @semana.to_date + 5.day
     end
     if (!params[:turno7].nil? and params[:turno7]!="")
-        @turno = 7
+        @turno = 1
         @hora = params[:turno7]
         @fecha = @semana.to_date + 6.day
     end
     if (!params[:turno8].nil? and params[:turno8]!="")
-        @turno = 6
+        @turno = 12
         @hora = params[:turno8]
         @fecha = @semana.to_date
     end
     if (!params[:turno9].nil? and params[:turno9]!="")
-        @turno = 5
+        @turno = 10
         @hora = params[:turno9]
         @fecha = @semana.to_date + 1.day
     end
     if (!params[:turno10].nil? and params[:turno10]!="")
-        @turno = 4
+        @turno = 8
         @hora = params[:turno10]
         @fecha = @semana.to_date + 2.day
     end
     if (!params[:turno11].nil? and params[:turno11]!="")
-        @turno = 3
+        @turno = 6
         @hora = params[:turno11]
         @fecha = @semana.to_date + 3.day
     end
     if (!params[:turno12].nil? and params[:turno12]!="")
-        @turno = 2
+        @turno = 4
         @hora = params[:turno12]
         @fecha = @semana.to_date + 4.day
     end
     if (!params[:turno13].nil? and params[:turno13]!="")
-        @turno = 1
+        @turno = 2
         @hora = params[:turno13]
         @fecha = @semana.to_date + 5.day
     end
@@ -182,12 +182,12 @@ class CitasController < ApplicationController
     }
       respuesta = self.class.post('/personas.json', new_paciente)
     Respond_notice(respuesta)
-    @paciente = @cedula_paciente_nuevo
+      @paciente = self.class.get('/personas.json').last#@paciente = @cedula_paciente_nuevo
     else
       puts '@@@@@@s@@@@@@@@@@@@@@@@@@@@@@@@'
       puts usuario
       puts '##############################3'
-      @paciente = usuario["persona"]["cedula"]
+      @paciente = usuario["persona"]#@paciente = usuario["persona"]["cedula"]
       puts @paciente
     end
 
@@ -207,11 +207,11 @@ class CitasController < ApplicationController
                     cita:{
                       turno_id: @turno_id,
                       usuario_id: usuario["id"],
-                      #persona_id: @paciente["id"],
+                      persona_id: @paciente["id"],
                       fecha: @fechahora,
                       estatus: 1,
-                      tipo_cita_id: @tipo_cita,
-                      paciente_cedula: @paciente
+                      tipo_cita_id: @tipo_cita#,
+                      #paciente_cedula: @paciente
                       }
                     }
                   }

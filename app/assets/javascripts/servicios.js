@@ -209,7 +209,8 @@ $(function() {
 
             $('#week-star input').val(text_date_inicio);
             $('#week-end input').val(text_date_fin);
-            
+
+            input.val(start_date);
             validar_link(start_date);
             
         }
