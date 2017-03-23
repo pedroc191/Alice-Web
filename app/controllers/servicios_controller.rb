@@ -28,6 +28,7 @@ class ServiciosController < ApplicationController
   def solicitar_cita
     @servicio = self.class.get('/servicios/'+params[:slug]+'.json')
     @disponibilidad = self.class.get('/disponibilidad.json?servicio_id='+@servicio["id"].to_s+'&fecha='+Date.today.at_beginning_of_week.to_s)
+    puts Date.today.at_beginning_of_week
     @bloques = @disponibilidad
     @sexo = self.class.get('/sexos.json')
     @motivos = self.class.get('/tipo_citas.json')
@@ -40,7 +41,7 @@ class ServiciosController < ApplicationController
     @dia = @fecha[8..9].to_i
     @fecha = Date.new(@anio,@mes,@dia)
     puts '$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$'
-    puts @fecha.to_time.to_formatted_s(:db)
+    puts @fecha#.to_time.to_formatted_s(:db)
     @servicio = self.class.get('/servicios/'+params[:slug]+'.json')
     @disponibilidad = self.class.get('/disponibilidad.json?servicio_id='+@servicio["id"].to_s+'&fecha='+@fecha.to_s)
     @bloques = @disponibilidad

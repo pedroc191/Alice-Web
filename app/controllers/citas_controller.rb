@@ -30,7 +30,7 @@ class CitasController < ApplicationController
   end
 
   def registrar
-   # raise params
+    raise params
     ############### CITA
 
     @semana = params[:week].to_date.at_beginning_of_week
@@ -182,12 +182,12 @@ class CitasController < ApplicationController
     }
       respuesta = self.class.post('/personas.json', new_paciente)
     Respond_notice(respuesta)
-      @paciente = self.class.get('/personas.json').last#@paciente = @cedula_paciente_nuevo
+     @paciente = @cedula_paciente_nuevo# @paciente = self.class.get('/personas.json').last
     else
       puts '@@@@@@s@@@@@@@@@@@@@@@@@@@@@@@@'
       puts usuario
       puts '##############################3'
-      @paciente = usuario["persona"]#@paciente = usuario["persona"]["cedula"]
+      @paciente = usuario["persona"]["cedula"]#@paciente = usuario["persona"]#
       puts @paciente
     end
 
@@ -210,8 +210,8 @@ class CitasController < ApplicationController
                       persona_id: @paciente["id"],
                       fecha: @fechahora,
                       estatus: 1,
-                      tipo_cita_id: @tipo_cita#,
-                      #paciente_cedula: @paciente
+                      tipo_cita_id: @tipo_cita,
+                      paciente_cedula: @paciente
                       }
                     }
                   }
