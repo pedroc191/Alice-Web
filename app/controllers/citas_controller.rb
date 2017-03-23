@@ -211,8 +211,8 @@ class CitasController < ApplicationController
                       fecha: @fechahora,
                       estatus: 1,
                       tipo_cita_id: @tipo_cita,
+                      },
                       paciente_cedula: @paciente
-                      }
                     }
                   }
 
