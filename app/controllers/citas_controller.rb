@@ -182,12 +182,12 @@ class CitasController < ApplicationController
     }
       respuesta = self.class.post('/personas.json', new_paciente)
     Respond_notice(respuesta)
-    @paciente = self.class.get('/personas.json').last
+    @paciente = @cedula_paciente_nuevo
     else
       puts '@@@@@@s@@@@@@@@@@@@@@@@@@@@@@@@'
       puts usuario
       puts '##############################3'
-      @paciente = usuario["persona"]
+      @paciente = usuario["persona"]["cedula"]
       puts @paciente
     end
 
@@ -201,16 +201,17 @@ class CitasController < ApplicationController
 
     t = DateTime.parse(@hora) 
     @fechahora = DateTime.new(d.year, d.month, d.day, t.hour, t.min, t.sec, t.zone)
-
+ 
     new_cita = {body:
                   {
                     cita:{
                       turno_id: @turno_id,
                       usuario_id: usuario["id"],
-                      persona_id: @paciente["id"],
+                      #persona_id: @paciente["id"],
                       fecha: @fechahora,
                       estatus: 1,
-                      tipo_cita_id: @tipo_cita
+                      tipo_cita_id: @tipo_cita,
+                      paciente_cedula: @paciente
                       }
                     }
                   }
