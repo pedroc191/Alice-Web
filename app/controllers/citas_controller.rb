@@ -30,7 +30,7 @@ class CitasController < ApplicationController
   end
 
   def registrar
-    raise params
+    #raise params
     ############### CITA
 
     @semana = params[:week].to_date.at_beginning_of_week
@@ -58,7 +58,7 @@ class CitasController < ApplicationController
 
     @sexo_paciente_nuevo = params[:sexo_paciente_nuevo]
     @cedula_paciente_nuevo = params[:cedula_paciente_nuevo]
-    @nombre_paciente_nuevo = params[:cedula_paciente_nuevo]
+    @nombre_paciente_nuevo = params[:nombre_paciente_nuevo]
     @apellido_paciente_nuevo = params[:apellido_paciente_nuevo]
     @fecha_nacimiento_nuevo = params[:fecha_nacimiento_nuevo]
 
@@ -160,7 +160,7 @@ class CitasController < ApplicationController
     }
      
     respuesta = self.class.post('/usuarios/create.json', new_usuario)
-    usuario = self.class.get('/login_movil.json?email='+@email_solicitante+'&password='+@password_solicitante)
+    usuario = self.class.get('/encontrar_usuario.json?email='+@email_solicitante)
     @paciente = self.class.get('/personas.json').last
     Respond_notice(respuesta)
     else
@@ -174,7 +174,6 @@ class CitasController < ApplicationController
             cedula: @cedula_paciente_nuevo,
             nombre: @nombre_paciente_nuevo,
             apellido: @apellido_paciente_nuevo,
-            telefono: @telefono_solicitante,
             fecha_nacimiento: @fecha_nacimiento_nuevo,
             sexo_id: @sexo_paciente_nuevo
           }
@@ -198,16 +197,17 @@ class CitasController < ApplicationController
     @turno_id = (serv["id"]*14) - @turno
     d = @fecha
     puts '111111111111111111111111111111111111111111'
+    puts usuario
+    puts '111111111111111111111111111111111111111111'
 
     t = DateTime.parse(@hora) 
-    @fechahora = DateTime.new(d.year, d.month, d.day, t.hour, t.min, t.sec, t.zone)
- 
+    @fechahora = DateTime.new(d.year, d.month, d.day, t.hour, t.min, t.sec, t.zone)  
     new_cita = {body:
                   {
                     cita:{
                       turno_id: @turno_id,
                       usuario_id: usuario["id"],
-                      persona_id: @paciente["id"],
+                      #persona_id: @paciente["id"],
                       fecha: @fechahora,
                       estatus: 1,
                       tipo_cita_id: @tipo_cita,

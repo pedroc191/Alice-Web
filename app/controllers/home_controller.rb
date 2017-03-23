@@ -86,11 +86,11 @@ class HomeController < ApplicationController
 
     json = {
             body: {
-                  suscriptor: {
+                  usuario: {
                           nombre: @nombre,
                           apellidos: @apellido,
                           correo: @correo,
-                          persona_id: 5
+                          rol_id: 4
                           #especialidades: @especialidades,
                           #tipo_noticias:  @tipo_noticias,
                           #tipo_eventos: @tipo_eventos
@@ -99,7 +99,7 @@ class HomeController < ApplicationController
           }
     puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
     puts json
-    @servicio = self.class.post('/suscriptores.json', json)
+    @servicio = self.class.post('/.json', json)
 
     Respond_notice( @servicio )
 
