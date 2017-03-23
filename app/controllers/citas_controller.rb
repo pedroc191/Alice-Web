@@ -30,7 +30,7 @@ class CitasController < ApplicationController
   end
 
   def registrar
-   # raise params
+    raise params
     ############### CITA
 
     @semana = params[:week].to_date.at_beginning_of_week
@@ -188,7 +188,7 @@ class CitasController < ApplicationController
       puts '@@@@@@s@@@@@@@@@@@@@@@@@@@@@@@@'
       puts usuario
       puts '##############################3'
-      @paciente = usuario["persona"]["cedula"]#usuario["persona"]
+      @paciente = usuario["persona"]["cedula"]#@paciente = usuario["persona"]#
       puts @paciente
     end
 
@@ -211,8 +211,7 @@ class CitasController < ApplicationController
                       #persona_id: @paciente["id"],
                       fecha: @fechahora,
                       estatus: 1,
-                      tipo_cita_id: @tipo_cita,
-                      
+                      tipo_cita_id: @tipo_cita,                      
                       },
                       paciente_cedula: @paciente
                     }
