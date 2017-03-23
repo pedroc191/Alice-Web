@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
     include HTTParty
   
-    base_uri 'http://192.168.2.8:3000/' #'https://alice-intranet-kevingn.c9users.io/'
+    base_uri 'http://192.168.1.118:3001/' #'https://alice-intranet-kevingn.c9users.io/'
 
   
   	def Respond_notice(response)

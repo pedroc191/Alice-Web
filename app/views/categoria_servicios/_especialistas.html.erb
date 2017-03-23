@@ -68,14 +68,14 @@
 		                                                	<table class="tabla-horarios table table-bordered table-hover" width="100%">
 		                                                		<thead>
 		                                                			<tr>
-		                                                				<th style="width:12,5%;" class="text-center">Turno</th>
-		                                                				<th style="width:12,5%;" class="text-center">Lunes</th>
-		                                                				<th style="width:12,5%;" class="text-center">Martes</th>
-		                                                				<th style="width:12,5%;" class="text-center">Miercoles</th>
-		                                                				<th style="width:12,5%;" class="text-center">Jueves</th>
-		                                                				<th style="width:12,5%;" class="text-center">Viernes</th>
-		                                                				<th style="width:12,5%;" class="text-center">Sabado</th>
-		                                                				<th style="width:12,5%;" class="text-center">Domingo</th>
+		                                                				<th style="width:12.5%;" class="text-center">Turno</th>
+		                                                				<th style="width:12.5%;" class="text-center">Lunes</th>
+		                                                				<th style="width:12.5%;" class="text-center">Martes</th>
+		                                                				<th style="width:12.5%;" class="text-center">Miercoles</th>
+		                                                				<th style="width:12.5%;" class="text-center">Jueves</th>
+		                                                				<th style="width:12.5%;" class="text-center">Viernes</th>
+		                                                				<th style="width:12.5%;" class="text-center">Sabado</th>
+		                                                				<th style="width:12.5%;" class="text-center">Domingo</th>
 		                                                			</tr>
 		                                                		</thead>
 		                                                		<tbody>
@@ -84,7 +84,11 @@
 		                                                				<% servicio["horarios"].first["turnos"].each do |turno| %>
 		                                                				<% if turno["tipo_turno_id"]==1 %>
 
-		                                                				<td class= "text-center"><%= turno["hora_inicio"].to_datetime.strftime("%I:%M %p")+" - "+turno["hora_fin"].to_datetime.strftime("%I:%M %p") %></td>
+		                                                				<td class= "text-center">
+		                                                					<% if turno["hora_inicio"].to_datetime.strftime("%I:%M %p") != turno["hora_fin"].to_datetime.strftime("%I:%M %p") %>
+		                                                				<%= turno["hora_inicio"].to_datetime.strftime("%I:%M %p")+" - "+turno["hora_fin"].to_datetime.strftime("%I:%M %p") %>
+		                                                				<% end %>
+		                                                				</td>
 		                                                				<% end %>
 		                                                				<% end %>
 		                                                			</tr>
@@ -93,7 +97,11 @@
 		                                                				<% servicio["horarios"].first["turnos"].each do |turno| %>
 		                                                				<% if turno["tipo_turno_id"]==2 %>
 
-		                                                				<td class= "text-center"><%= turno["hora_inicio"].to_datetime.strftime("%I:%M %p")+" - "+turno["hora_fin"].to_datetime.strftime("%I:%M %p") %></td>
+		                                                				<td class= "text-center">
+		                                                				<% if turno["hora_inicio"].to_datetime.strftime("%I:%M %p") != turno["hora_fin"].to_datetime.strftime("%I:%M %p") %>
+		                                                				<%= turno["hora_inicio"].to_datetime.strftime("%I:%M %p")+" - "+turno["hora_fin"].to_datetime.strftime("%I:%M %p") %>
+		                                                				<% end %>
+		                                                				</td>
 		                                                				<% end %>
 		                                                				<% end %>
 		                                                				</tr>
@@ -103,27 +111,12 @@
 		                                        	</div>
 		                                        	<div class="row" style="margin-top: 20px;">
 		                                        		<div class="col-sm-4">
-					                					<% #if comparacion con tipo_horario_id: %>
 					                						<div class="m-t-xs font-bold">
 					                							<p style="font-size:14px;">
-					                								<strong class="text-blue-dark">Atencion por Orden de llegada: </strong> Cupos Limitados
-					                							</p>
+					                							<strong class="text-blue-dark">Tiempo Estimado por Consulta:</strong> <%= servicio["horarios"].first["tiempo_cita"]%></p>
 					                						</div>
-					                					<% #else %>
-					                						<div class="m-t-xs font-bold">
-					                							<p style="font-size:14px;">
-					                							<strong class="text-blue-dark">Tiempo Estimado por Consulta:</strong> 15 minutos</p>
-					                						</div>
-					                					<% #end %>
 		                                        		</div>
 		                                        		<div class="col-sm-4">
-		                                        		<% #if comparacion con tipo_horario_id: %>
-					                						<div class="m-t-xs font-bold">
-					                							<p style="font-size:14px;">
-					                								<strong class="text-blue-dark">Tiempo Estimado por Consulta:</strong> 15 minutos
-					                							</p>
-					                						</div>
-					                					<% #end %>
 		                                        		</div>
 		                                        		<div class="col-sm-4">
 					                						<div class="m-t-xs font-bold text-center">
