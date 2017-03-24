@@ -79,44 +79,60 @@
 		                                                			</tr>
 		                                                		</thead>
 		                                                		<tbody>
-		                                                			<tr>
+		                                                		<tr>
 		                                                				<td class= "text-center text-blue-dark">Mañana</td>
-		                                                				<% servicio["horarios"].first["turnos"].each do |turno| %>
-		                                                				<% if turno["tipo_turno_id"]==1 %>
-
-		                                                				<td class= "text-center">
-		                                                					<% if turno["hora_inicio"].to_datetime.strftime("%I:%M %p") != turno["hora_fin"].to_datetime.strftime("%I:%M %p") %>
-		                                                				<%= turno["hora_inicio"].to_datetime.strftime("%I:%M %p")+" - "+turno["hora_fin"].to_datetime.strftime("%I:%M %p") %>
-		                                                				<% end %>
-		                                                				</td>
-		                                                				<% end %>
-		                                                				<% end %>
+		                                                					<% servicio["horarios"].first["turnos_ordenados"].each do |turno| %>
+																				<% if turno["tipo_turno_id"]==1 %>
+																					<% @t = turno["id"]-((servicio["id"]-1)*14)%>
+		                                                							<td class= "text-center">
+		                                                								<% if( @t ==1 ||@t ==3 ||@t ==5 ||@t ==7 ||@t ==9 ||@t ==11 ||@t ==13)%>
+			                                                								<% if turno["hora_inicio"].to_datetime.strftime("%I:%M %p") != turno["hora_fin"].to_datetime.strftime("%I:%M %p") %>
+			                                                									<%= turno["hora_inicio"].to_datetime.strftime("%I:%M %p")+" - "+turno["hora_fin"].to_datetime.strftime("%I:%M %p") %>
+			                                                								<% end %>
+		                                                								<%end%>
+		                                                							</td>
+		                                                						<% end %>
+		                                                					<% end %>
 		                                                			</tr>
-		                                                			<tr>
-		                                                				<td class= "text-center text-blue-dark">Tarde</td>
-		                                                				<% servicio["horarios"].first["turnos"].each do |turno| %>
-		                                                				<% if turno["tipo_turno_id"]==2 %>
 
-		                                                				<td class= "text-center">
-		                                                				<% if turno["hora_inicio"].to_datetime.strftime("%I:%M %p") != turno["hora_fin"].to_datetime.strftime("%I:%M %p") %>
-		                                                				<%= turno["hora_inicio"].to_datetime.strftime("%I:%M %p")+" - "+turno["hora_fin"].to_datetime.strftime("%I:%M %p") %>
-		                                                				<% end %>
-		                                                				</td>
-		                                                				<% end %>
-		                                                				<% end %>
-		                                                				</tr>
+		                                                			<tr>
+		                                                					<td class= "text-center text-blue-dark">Tarde</td>
+		                                                					<% servicio["horarios"].first["turnos_ordenados"].each do |turno| %>
+		                                                						<% if turno["tipo_turno_id"]==2 %>
+																					<% @t = turno["id"]-((servicio["id"]-1)*14)%>
+		                                                							<td class= "text-center">
+		                                                								<% if( @t ==2 ||@t ==4 ||@t ==6 ||@t ==8 ||@t ==10 ||@t ==12 ||@t ==14)%>
+		                                                									<% if turno["hora_inicio"].to_datetime.strftime("%I:%M %p") != turno["hora_fin"].to_datetime.strftime("%I:%M %p") %>
+		                                                										<%= turno["hora_inicio"].to_datetime.strftime("%I:%M %p")+" - "+turno["hora_fin"].to_datetime.strftime("%I:%M %p") %>
+		                                                									<% end %>
+		                                                								<% end%>
+		                                                							</td>
+		                                                						<% end %>
+		                                                					<% end %>
+		                                                			</tr>
 		                                                		</tbody>
 		                                                	</table>
 		                                            	</div>
 		                                        	</div>
-		                                        	<div class="row" style="margin-top: 20px;">
+		                                        <div class="row" style="margin-top: 20px;">
 		                                        		<div class="col-sm-4">
+					                						<% if servicio["horarios"].first["tipo_horario_id"] == 2%>
+
 					                						<div class="m-t-xs font-bold">
-					                							<p style="font-size:14px;">
-					                							<strong class="text-blue-dark">Tiempo Estimado por Consulta:</strong> <%= servicio["horarios"].first["tiempo_cita"]%></p>
+					                							
+					                							<strong class="text-blue-dark">Atención: Tiempo Estimado por Consulta:</strong>  <%= servicio["horarios"].first["tiempo_cita"]%>
 					                						</div>
+					                							<% else %>
+					                							<div class="m-t-xs font-bold">
+					                							<strong class="text-blue-dark">Atención: Cantidad de pacientes </strong>
+					                							</div>
+					                							<%end %>
+					                						
 		                                        		</div>
 		                                        		<div class="col-sm-4">
+		                                        			<div class="m-t-xs font-bold">					                							<strong class="text-blue-dark">Precio:</strong>
+					                							<%= servicio["precio"] %>
+					                						</div>
 		                                        		</div>
 		                                        		<div class="col-sm-4">
 					                						<div class="m-t-xs font-bold text-center">
