@@ -45,6 +45,7 @@ Rails.application.routes.draw do
   get "servicios/ver/:slug", to: "servicios#ver", as: "servicios_ver"
   get "servicios/solicitar_cita/:slug", to: "servicios#solicitar_cita", as: "servicios_solicitar_cita"
   
+  get "servicios/validar", to: "servicios#validar", as: "servicios_validar"
   get "/buscar_semana", to: "servicios#buscar_semana", as: "buscar_semana"
   
   # The priority is based upon order of creation: first created -> highest priority.

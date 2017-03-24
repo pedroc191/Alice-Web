@@ -59,9 +59,29 @@ $(function() {
                 return true;
             }
             // Forbid next action on "Warning" step if the user is to young
-            if (newIndex === 3 && Number($("#age-2").val()) < 18)
+            if (newIndex === 2)
             {
-                return false;
+                var condicion = "email=" + $('input[name="email_usuario"]').val() + "&password=" + $('input[name="password_usuario"]').val();
+                var url = "/servicios/validar.json?"+condicion;
+
+                   var respuesta = $.ajax({
+                       url: url,
+                       success: function (response) {
+                       },
+                       error: function () {
+                           alert("Usuario Invalido");
+                       }
+                   });
+                   console.log($.isEmptyObject(respuesta.responseText));
+                   console.log(respuesta.responseText);
+                   if ($.isEmptyObject(respuesta.responseText)){
+
+                        return false;
+                           alert("Usuario Invalido");
+                   }
+                   else{
+                            return true;
+                       }
             }
             
             mostrar_datos(check_radio('input[name="tipo_paciente"]'));
@@ -483,4 +503,8 @@ $(function() {
             $("#datos-basicos-s").removeClass('col-lg-6 col-md-6 col-sm-6');
             $("#datos-basicos-s").addClass('col-lg-4 col-md-4 col-sm-4');
         }
+    }
+
+    function login_movil(){
+
     }

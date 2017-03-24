@@ -66,7 +66,18 @@ class ServiciosController < ApplicationController
         format.js
       end
   end
+  def validar
+    @clave = params[:password].to_s
+    @correo = params[:email].to_s
+    #raise params
+    @respuesta = self.class.get('/login_web.json?email='+@correo+'&password='+@clave);
+    
+    puts @respuesta
 
+    respond_to do |format|
+      format.json {render json: @respuesta}
+    end
+  end
   # GET /servicios/new
   def new
     @servicio = Servicio.new
