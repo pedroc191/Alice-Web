@@ -25,8 +25,12 @@ class CitasController < ApplicationController
     @cita = self.class.get('/citas/'+params[:cita_id]+'.json')
     @paciente = self.class.get('/personas/'+@cita["persona_id"].to_s+'.json')
     @tipo_cita = self.class.get('/tipo_citas/'+@cita['tipo_cita_id'].to_s+'.json')
-    
+    Respond_notice(@cita)
+    if @cita.to_json.blank?
+      redirect_to root_path, notice: "cita no encontrada"
+    end
     puts '@@@@@@@@@@@@@@@@@@@@@@@'
+    puts @cita.to_json
   end
 
   def registrar
@@ -184,7 +188,7 @@ class CitasController < ApplicationController
      @paciente = @cedula_paciente_nuevo# @paciente = self.class.get('/personas.json').last
     else
       puts '@@@@@@s@@@@@@@@@@@@@@@@@@@@@@@@'
-      puts usuario
+      puts usuario.to_json
       puts '##############################3'
       @paciente = usuario["persona"]["cedula"]#@paciente = usuario["persona"]#
       puts @paciente

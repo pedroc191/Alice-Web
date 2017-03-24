@@ -61,14 +61,17 @@ $(function() {
             // Forbid next action on "Warning" step if the user is to young
             if (newIndex === 2)
             {
+            /*    if ($('input[name="email_usuario"]').val() !== "")
                 var condicion = "email=" + $('input[name="email_usuario"]').val() + "&password=" + $('input[name="password_usuario"]').val();
                 var url = "/servicios/validar.json?"+condicion;
 
                    var respuesta = $.ajax({
                        url: url,
-                       success: function (response) {
+                       dataType: "json",
+                       success: function (data) {
                        },
-                       error: function () {
+                       error: function (xhr) {
+                              var errors = $.parseJSON(xhr.responseText).errors
                            alert("Usuario Invalido");
                        }
                    });
@@ -81,7 +84,7 @@ $(function() {
                    }
                    else{
                             return true;
-                       }
+                       }*/
             }
             
             mostrar_datos(check_radio('input[name="tipo_paciente"]'));
